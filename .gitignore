@@ -19,3 +19,14 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# ignore Jampack cache files
+.jampack/
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
