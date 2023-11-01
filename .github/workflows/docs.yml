@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "docs/**"
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -20,7 +18,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18.18.0
 
       - uses: pnpm/action-setup@v2.0.1
         name: Install pnpm
@@ -46,7 +44,7 @@ jobs:
         run: pnpm install
 
       - name: Build Astro site
-        run: pnpm  run build
+        run: pnpm run build
              
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2
