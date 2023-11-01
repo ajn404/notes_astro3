@@ -28,7 +28,7 @@ export default defineConfig({
         port: 3333,
         open: true,
     },
-    base: "/mono_notes",
+    base: "/notes_astro3",
     build: {
         assets: "static",
         inlineStylesheets: "always",
