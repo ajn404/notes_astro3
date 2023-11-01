@@ -25,6 +25,7 @@ import Common from "@components/react/doodle/common.tsx";
 <fieldset>
 
 {" "}
+
 <legend>什么是D3</legend>
 
     <blockquote cite="https://d3js.org/what-is-d3">
@@ -223,14 +224,14 @@ const Gear = () => {
         },
       ])
       .join("path")
-      .attr("fill", (d) => d.fill)
-      .attr("d", (d) => gear({ ...d, toothRadius: 0.008, holeRadius: 0.02 }));
+      .attr("fill", d => d.fill)
+      .attr("d", d => gear({ ...d, toothRadius: 0.008, holeRadius: 0.02 }));
 
     Object.assign(svg.node() as SVGSVGElement, {
       update({ angle, frameAngle }: { angle: number; frameAngle: number }) {
         path.attr(
           "transform",
-          (d) => `translate(${d.origin}) rotate(${(angle / d.radius) % 360})`
+          d => `translate(${d.origin}) rotate(${(angle / d.radius) % 360})`
         );
         frame.attr("transform", `rotate(${frameAngle % 360})`);
       },
@@ -319,11 +320,11 @@ import Common from "@components/react/doodle/common.tsx";
 
 ### webgl
 
-- [webgl in regl](/mono_notes/posts/webgl)
+- [webgl in regl](/notes_astro3/posts/webgl)
 
 ### svg
 
-- [svg basic](/mono_notes/posts/svg)
+- [svg basic](/notes_astro3/posts/svg)
 
 ### d3 基础
 
@@ -395,11 +396,8 @@ svgElement.remove();
 }
 })
 return (
-<svg ref={ref} >
-</svg>
-)
-}
-export default Template;
+
+<svg ref={ref}></svg>) } export default Template;
 
 ```
 </details>

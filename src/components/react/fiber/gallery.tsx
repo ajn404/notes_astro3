@@ -116,8 +116,8 @@ function Frames({
   return (
     <group
       ref={ref}
-      onClick={(e) => (
-        e.stopPropagation(), setLocation("/mono_notes/posts/gallery#5")
+      onClick={e => (
+        e.stopPropagation(), setLocation("/notes_astro3/posts/gallery#5")
       )}
       onPointerMissed={() => setLocation("/")}
     >
@@ -161,7 +161,7 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
     <group {...props}>
       <mesh
         name={name}
-        onPointerOver={(e) => (e.stopPropagation(), hover(true))}
+        onPointerOver={e => (e.stopPropagation(), hover(true))}
         onPointerOut={() => hover(false)}
         scale={[1, GOLDENRATIO, 0.05]}
         position={[0, GOLDENRATIO / 2, 0]}

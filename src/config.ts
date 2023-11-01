@@ -1,7 +1,7 @@
 import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
-  website: "https://ajn404.github.io/mono_notes/",
+  website: "https://ajn404.github.io/notes_astro3/",
   author: "ajn404",
   desc: "mono notes copying everything",
   title: "笔记",
@@ -22,7 +22,7 @@ export const LOGO_IMAGE = {
 export const SOCIALS: SocialObjects = [
   {
     name: "Github",
-    href: "https://github.com/ajn404/mono_notes",
+    href: "https://github.com/ajn404/notes_astro3",
     linkTitle: ` ${SITE.title}的代码仓库`,
     active: true,
   },

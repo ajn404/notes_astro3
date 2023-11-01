@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 export default () => {
   useEffect(() => {
-    import("peaks.js").then((modele) => {
+    import("peaks.js").then(modele => {
       const Peaks = modele.default;
       const options = {
         zoomview: {
@@ -75,7 +75,7 @@ export default () => {
       </div>
       <div id="overview-container" className=" h-[200px]"></div>
       <audio id="audio" controls>
-        <source src="/mono_notes/assets/sorry.mp3" type="audio/mpeg" />
+        <source src="/notes_astro3/assets/sorry.mp3" type="audio/mpeg" />
       </audio>
     </div>
   );

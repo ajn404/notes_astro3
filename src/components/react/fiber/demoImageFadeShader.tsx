@@ -43,9 +43,9 @@ extend({ ImageFadeMaterial });
 function FadingImage() {
   const ref = useRef();
   const [texture1, texture2, dispTexture] = useTexture([
-    "/mono_notes/assets/xiaoGong.jpg",
-    "/mono_notes/assets/xiaoGong.jpg",
-    "/mono_notes/assets/xiaoGong.jpg",
+    "/notes_astro3/assets/xiaoGong.jpg",
+    "/notes_astro3/assets/xiaoGong.jpg",
+    "/notes_astro3/assets/xiaoGong.jpg",
   ]);
   const [hovered, setHover] = useState(false);
   useFrame(() => {

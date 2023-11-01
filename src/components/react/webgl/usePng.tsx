@@ -15,7 +15,7 @@ export default () => {
       ></canvas>
       <img
         className="hidden w-[200px]"
-        src="/mono_notes/assets/xiao.jpg"
+        src="/notes_astro3/assets/xiao.jpg"
         id="image2"
       />
 

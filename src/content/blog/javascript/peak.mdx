@@ -69,7 +69,7 @@ function formatTime(value: string) {
   return time;
 }
 
-export const Audio: React.FC<any> = (props) => {
+export const Audio: React.FC<any> = props => {
   const { src, width = "80%", height = "30px" } = props;
 
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -97,19 +97,19 @@ export const Audio: React.FC<any> = (props) => {
         });
       });
 
-      audioRef.current.addEventListener("loadedmetadata", (e) => {
+      audioRef.current.addEventListener("loadedmetadata", e => {
         const duration = transTime(
           (e.target as HTMLAudioElement).duration as number
         );
         setDuration(duration);
       });
-      audioRef.current.addEventListener("play", (_res) => {
+      audioRef.current.addEventListener("play", _res => {
         setToggle(false);
       });
       audioRef.current.addEventListener("pause", () => {
         setToggle(true);
       });
-      audioRef.current.addEventListener("timeupdate", (e) => {
+      audioRef.current.addEventListener("timeupdate", e => {
         let value =
           (e.target as HTMLAudioElement).currentTime /
           (audioRef.current as HTMLAudioElement).duration;
@@ -261,6 +261,6 @@ export default Audio;
 
 - [peakjs - npm](https://www.npmjs.com/package/peaks.js)
 - [ai 根据风格生成音乐](https://bgmcat.com/home)
-- [深入体验 audiomotion-analyzer 1](/mono_notes/music)
+- [深入体验 audiomotion-analyzer 1](/notes_astro3/music)
 
-<iframe class="h-[30vh] w-full" src="/mono_notes/music" />
+<iframe class="h-[30vh] w-full" src="/notes_astro3/music" />
