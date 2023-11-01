@@ -59,7 +59,7 @@ export default () => {
   const [disease, setDisease] = useState("Measles");
 
   const initPot = async () => {
-    let url = `${import.meta.env.BASE_URL}assets/vaccines.json`;
+    let url = `${import.meta.env.BASE_URL}/assets/vaccines.json`;
     let data: any = await fetch(url);
     data = await data.json();
 
@@ -105,7 +105,7 @@ export default () => {
       },
       marks: [
         Plot.barX(
-          vaccines.filter((d) => d.disease === disease),
+          vaccines.filter(d => d.disease === disease),
           {
             x: "date",
             y: "state",
@@ -115,15 +115,15 @@ export default () => {
             title: "cases",
           }
         ),
-        Plot.ruleX([introductions.find((d) => d.disease === disease)], {
+        Plot.ruleX([introductions.find(d => d.disease === disease)], {
           x: "date",
         }),
-        Plot.text([introductions.find((d) => d.disease === disease)], {
+        Plot.text([introductions.find(d => d.disease === disease)], {
           x: "date",
           dy: 4,
           lineAnchor: "top",
           frameAnchor: "bottom",
-          text: (d) => `${d.date.getUTCFullYear()}\nVaccine introduced`,
+          text: d => `${d.date.getUTCFullYear()}\nVaccine introduced`,
         }),
       ],
       document,
@@ -131,7 +131,7 @@ export default () => {
     return plot;
   };
   useEffect(() => {
-    initPot().then((plot) => {
+    initPot().then(plot => {
       div.current?.appendChild(plot);
     });
     return () => {
@@ -145,7 +145,7 @@ export default () => {
       <select
         data-te-select-init
         value={disease}
-        onChange={(e) => {
+        onChange={e => {
           setDisease(e.target.value);
         }}
       >

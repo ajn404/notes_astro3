@@ -33,7 +33,7 @@ export default defineConfig({
         assets: "static",
         inlineStylesheets: "always",
     },
-    site: 'https://example.com',
+    site: "https://ajn404.github.io/notes_astro3/", // replace this with your deployed domain
     integrations: [
         mdx(),
         sitemap(),
