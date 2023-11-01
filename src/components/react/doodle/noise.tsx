@@ -1,4 +1,3 @@
-import "css-doodle";
 import { useRef, useEffect, useState } from "react";
 
 const Noise: React.FunctionComponent = () => {
@@ -20,10 +19,12 @@ const Noise: React.FunctionComponent = () => {
         rotate(@rn(-720deg, 720deg))
         scale(@rn(.8, 1.2, 3));`);
   const click = () => {
-    setShow((show) => !show);
+    setShow(show => !show);
   };
   useEffect(() => {
-    setShow(true);
+    import("css-doodle").then(() => {
+      setShow(true);
+    });
   });
   return (
     show && (

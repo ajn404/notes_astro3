@@ -1,4 +1,3 @@
-import "css-doodle";
 import {
   useEffect,
   useState,
@@ -23,7 +22,9 @@ const Doodle: React.FunctionComponent<Props> = ({
   let [show, setShow] = useState(false);
 
   useEffect(() => {
-    setShow(true);
+    import("css-doodle").then(() => {
+      setShow(true);
+    });
   });
   const downloadClick = () => {
     doodle.current &&

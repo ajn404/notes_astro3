@@ -1,4 +1,3 @@
-import "css-doodle";
 import { useEffect, useState } from "react";
 
 const Doodle: React.FunctionComponent = () => {
@@ -17,10 +16,12 @@ const Doodle: React.FunctionComponent = () => {
 
   let [show, setShow] = useState(false);
   const click = () => {
-    setShow((show) => !show);
+    setShow(show => !show);
   };
   useEffect(() => {
-    setShow(true);
+    import("css-doodle").then(() => {
+      setShow(true);
+    });
   });
   return show && <css-doodle onClick={click}>{sync}</css-doodle>;
 };
