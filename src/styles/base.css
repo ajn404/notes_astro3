@@ -67,8 +67,8 @@
     prose-blockquote:border-opacity-50 prose-blockquote:opacity-80 prose-blockquote:!text-skin-base prose-figcaption:!text-skin-base prose-figcaption:opacity-70 prose-strong:!text-skin-base
 
     
-    prose-code:rounded prose-code:bg-skin-card 
-    prose-code:bg-opacity-75 prose-code:p-1 prose-code:!text-skin-base 
+    prose-code:rounded prose-code:!text-skin-inverted prose-code:bg-skin-card 
+    prose-code:bg-opacity-75 prose-code:p-1 
     prose-code:before:!content-[''] prose-code:after:!content-['']
     prose-pre:!text-skin-base prose-ol:!text-skin-base 
     prose-ul:overflow-x-clip prose-ul:!text-skin-base prose-li:marker:!text-skin-accent
@@ -79,10 +79,7 @@
     prose-img:border-skin-line prose-hr:!border-skin-line;
   }
 
-  .prose *{
-    @apply text-skin-base
 
-  }
   .prose a {
     @apply hover:!text-skin-accent;
   }
@@ -132,6 +129,7 @@
   code {
     white-space: pre;
     overflow: scroll;
+    color: #fbc2eb!important;
   }
 }
 
