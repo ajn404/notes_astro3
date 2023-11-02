@@ -1,7 +1,5 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
-
-
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import lit from '@astrojs/lit';
@@ -28,7 +26,7 @@ export default defineConfig({
         port: 3333,
         open: true,
     },
-    base: "/notes_astro3",
+    base: "/notes_astro3/",
     build: {
         assets: "static",
         inlineStylesheets: "always",
