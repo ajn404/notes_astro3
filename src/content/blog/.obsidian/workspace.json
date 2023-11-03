@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "713a6c80957a7cfa",
+        "id": "6af79ecb663cd69e",
         "type": "tabs",
         "children": [
           {
-            "id": "777a76a56a80985c",
+            "id": "d9ea3e78a2ddbf49",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "tools/mathTable.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "tools/mathTable.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "tools/mathTable.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "tools/mathTable.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -146,6 +138,6 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "777a76a56a80985c",
-  "lastOpenFiles": []
+  "active": "d9ea3e78a2ddbf49",
+  "lastOpenFiles": ["tools/mathTable.md"]
 }
