@@ -5,19 +5,21 @@ import Tag from "@components/react/UI/Tag.astro";
 import Datetime from "@components/react/UI/Datetime";
 import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
-
+import SideToc from "./SideToc.astro";
 export interface Props {
   post: CollectionEntry<"blog">;
 }
-
-const { post } = Astro.props;
-
+const { post, } = Astro.props;
 const { title, author, description, ogImage, canonicalURL, pubDatetime, tags } = post.data;
+const data = await post.render();
 
-const { Content, remarkPluginFrontmatter  } = await post.render();
+const { Content, remarkPluginFrontmatter, headings } = data;
+
 
 const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
   .href;
+
+
 ---
 
 <Layout activeNav="posts" title={title} author={author} description={description} ogImage={ogUrl} canonicalURL={canonicalURL}>
@@ -46,17 +48,16 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
             字数：{remarkPluginFrontmatter.wordsRead}
         </span>
     </div>
+    <div class="contentbox flex " id="contentbox">
+        <SideToc headings={headings}/>
     <article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl">
       <Content />
     </article>
-
+    </div>
     <ul class="tags-container">
       {tags.map(tag => <Tag name={slugifyStr(tag)} />)}
     </ul>
-    
-   
   </main>
-
   <button
   type="button"
   data-te-ripple-init
@@ -80,17 +81,6 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
   <Footer />
 </Layout>
 
- <!-- <script>
-    //添加平滑滚动
-    import Lenis from '@studio-freight/lenis';
-
-    const lenis = new Lenis()
-    function raf(time:any) {
-        lenis.raf(time)
-        requestAnimationFrame(raf)
-    }
-    requestAnimationFrame(raf)
-  </script> -->
 
 <script>
 // back to top
