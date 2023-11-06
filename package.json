@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && touch ./dist/.nojekyll",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "cz": "git add .&&cz&&git push",
