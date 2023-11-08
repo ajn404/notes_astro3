@@ -1,0 +1,8 @@
+
+
+
+## 构建侧边目录
+
+一开始想做[这种](https://kld.dev/toc-animation/)的
+
+看到自己的文章全是零散的标签，如果把文章用section统筹，我想直接改defineCollection,奈何没找到配置的字段，放弃此路
