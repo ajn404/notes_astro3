@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "765fefaef78e0f2f",
+        "id": "6f191b99fda0b931",
         "type": "tabs",
         "children": [
           {
-            "id": "20f74dbf5771a8b0",
+            "id": "5a8d0778c3fb36a9",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -65,7 +65,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "e3e36cd298b0c1a8",
@@ -139,10 +139,13 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "20f74dbf5771a8b0",
+  "active": "5a8d0778c3fb36a9",
   "lastOpenFiles": [
-    "Excalidraw/Drawing 2023-11-08 10.14.05.excalidraw.md",
     "records/2023-11.md",
+    "javascript/barba.md",
+    "Excalidraw/Drawing 2023-11-08 10.14.05.excalidraw.md",
+    "records/2023-10.md",
+    "未命名.canvas",
     "tools/draw",
     "Excalidraw",
     "more/ts.md",
@@ -151,8 +154,6 @@
     "more/gpt.md",
     "javascript/vue3.md",
     "javascript/es6.md",
-    "javascript/barba.md",
-    "records/2023-10.md",
     "records/2023-11-01.md",
     "records/sidemenu",
     "tools/mathTable.md"
