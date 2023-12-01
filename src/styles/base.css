@@ -126,11 +126,6 @@
     @apply bg-skin-card-muted;
   }
 
-  code {
-    white-space: pre;
-    overflow: scroll;
-    color: #fbc2eb!important;
-  }
 }
 
 @layer components {
