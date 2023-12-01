@@ -65,7 +65,7 @@ export default defineConfig({
                     summary: str => "展开 " + str,
                 },
             ],
-            [remarkCodeHike, { theme: "dracula", lineNumbers: true }],
+            // [remarkCodeHike, { theme: "dracula", lineNumbers: true }],
             // [remarkCodeHike, { theme: "material-palenight" }],
             remarkMath,
             remarkReadingTime,
