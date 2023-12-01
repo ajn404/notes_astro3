@@ -27,6 +27,7 @@
     "@blocksuite/editor": "^0.9.0",
     "@blocksuite/lit": "^0.9.0",
     "@blocksuite/store": "^0.9.0",
+    "@code-hike/mdx": "^0.9.0",
     "@codemirror/lang-javascript": "^6.2.1",
     "@divriots/jampack": "^0.21.1",
     "@observablehq/plot": "^0.6.11",

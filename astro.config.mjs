@@ -13,6 +13,8 @@ import sitemap from "@astrojs/sitemap";
 import { remarkReadingTime } from "./plugin/remark-reading-time.mjs";
 import copy from 'rollup-plugin-copy';
 import css from 'rollup-plugin-css-only'
+
+import { remarkCodeHike } from '@code-hike/mdx'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import path from 'path';
 import { fileURLToPath } from 'url'
@@ -63,6 +65,8 @@ export default defineConfig({
                     summary: str => "展开 " + str,
                 },
             ],
+            [remarkCodeHike, { theme: "dracula", lineNumbers: true }],
+            // [remarkCodeHike, { theme: "material-palenight" }],
             remarkMath,
             remarkReadingTime,
         ],
