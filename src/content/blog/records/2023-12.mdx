@@ -10,12 +10,54 @@ tags:
 description: 2023年12月记录
 ---
 
+## 目录
+
 ## contents
 
 ### [Web Components Eliminate JavaScript Framework Lock-in](https://jakelazaroff.com/words/web-components-eliminate-javascript-framework-lock-in/)
 
 > web-components
 > nanostores
+
+### something new in 2023
+
+#### [Array.prototype.toSorted()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted)
+
+```js
+// 不传入函数
+toSorted();
+// 传入箭头函数
+toSorted((a, b) => {
+  /* … */
+});
+// 传入比较函数
+toSorted(compareFn);
+// 內联比较函数
+toSorted(function compareFn(a, b) {
+  /* … */
+});
+```
+
+        <div class="text-skin-blue">Array 实例的 toSorted() 方法是 sort() 方法的复制方法版本。它返回一个新数组，其元素按升序排列。</div>
+
+#### input type
+
+- search
+
+        <label for="site-search">Search the site:</label>
+        <input type="search" id="site-search" name="q" />
+        <button>Search</button>
+
+- week
+
+        <label for="camp-week">Choose a week in May or June:</label>
+        <input type="week" name="week" id="camp-week" min="2018-W18" max="2018-W26" required />
+
+#### dialog tag
+
+import VueFeature from "@components/vue/dialog/index.vue";
+
+<VueFeature client:only="vue" />
 
 ## collections
 
@@ -30,3 +72,5 @@ description: 2023年12月记录
 # mark[16:24]
 print("This is Code Hike")
 ```
+
+- https://codehike.org/
