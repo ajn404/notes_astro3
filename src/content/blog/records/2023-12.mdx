@@ -59,6 +59,57 @@ import VueFeature from "@components/vue/dialog/index.vue";
 
 <VueFeature client:only="vue" />
 
+#### [npm link](https://docs.npmjs.com/cli/v8/commands/npm-link)
+
+> npm link 是一个 npm 命令，用于在本地开发中创建软链接，将一个本地模块链接到另一个正在开发的项目中。<br/>
+> 当你在开发一个 npm 模块时，可以使用 npm link 将该模块链接到其他项目中进行测试和调试。这样做可以避免每次修改模块代码后都需要手动重新安装模块。<br />
+> 使用 npm link 的步骤如下：
+
+<div class="text-skin-purple">
+  1.在要链接的模块的根目录中运行 npm link 命令。这将在全局 node_modules
+  目录中创建一个指向该模块的软链接。
+  <br />
+  2.在要使用该模块的项目中，运行 npm link 模块名 命令。这将在项目的 node_modules
+  目录中创建一个指向全局 node_modules 目录中的软链接。
+</div>
+
+#### [promise practice](https://www.codingame.com/playgrounds/347/javascript-promises-mastering-the-asynchronous/more-pratice-with-promises)
+
+```js
+function job(data) {
+  return new Promise((resolve, reject) => {
+    if (typeof data !== "number") {
+      reject("error");
+    } else if (data % 2 === 0) {
+      setTimeout(() => {
+        reject("even");
+      }, 2000);
+    } else {
+      setTimeout(() => {
+        resolve("odd");
+      }, 1000);
+    }
+  });
+}
+
+module.exports = job;
+```
+
+#### [promise training](https://github.com/henriqueinonhe/promises-training)
+
+使用 promise training 的模板
+**sudo pnpm create promises-training@latest**
+
+赋予读写权限
+**sudo chmod -R 777 ./**
+
+测试,例如
+**pnpm run check src/tests/graph/1/test.test.ts**
+
+#### [queueMicrotask()](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API/Microtask_guide)
+
+#### [mutationObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver)
+
 ## collections
 
 - https://fullcalendar.io/demos

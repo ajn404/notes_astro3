@@ -10,7 +10,7 @@ export default () => {
         className="m-auto"
         style={{
           background:
-            "inear-gradient(to right,rgb(251, 254, 251),rgb(33, 39, 55));",
+            "linear-gradient(to right,rgb(251, 254, 251),rgb(33, 39, 55));",
         }}
       ></canvas>
       <img
