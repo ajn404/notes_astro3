@@ -1,0 +1,44 @@
+#目录+ul {
+    @apply hidden sm:block sm:fixed sm:right-[2rem] sm:top-0 sm:-z-10 sm:opacity-80;
+   width: calc(80% - 48rem - 0.75rem);
+   padding-left: 2em;
+}
+
+#目录.active+ul{
+    @apply sm:top-[7rem];
+}
+
+#目录+ul,#目录+ul ul{
+        list-style-type: none;
+}
+
+
+body:has(.contentbox):has(#目录+ul) {
+    margin-right: calc(80% - 48rem - 1.5rem);
+}
+
+body:has(.contentbox):has(#目录+ul) .nav-container,
+body:has(.contentbox):has(#目录+ul) header {
+    max-width: calc(100vw - 0.75rem);
+    width: calc(100vw - 0.75rem);
+    z-index: 9999;
+}
+
+body:has(.contentbox):has(#目录+ul) footer {
+    max-width: 80vw;
+    margin-left: calc(10vw - 1.5rem);
+    width: 80vw;
+}
+
+body:has(.contentbox):has(#目录+ul) article{
+    padding-bottom: 10rem;
+}
+
+#目录+ul a:not(.active) {
+    color: #899!important;
+    cursor: pointer;
+}
+
+:root {
+    scroll-behavior: smooth;
+}

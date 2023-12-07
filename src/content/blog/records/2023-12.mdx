@@ -110,6 +110,19 @@ module.exports = job;
 
 #### [mutationObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver)
 
+#### 正则匹配替换
+
+```regx
+/(?<=<div class=")(.*?)(?=">)/g
+$1
+
+```
+
+#### getElement vs querySelector
+
+getElement(s)Byxxxx 获取的是动态集合，querySelector 获取的是静态集合
+动态就是选出的元素会随文档改变，静态的不会 取出来之后就和文档的改变无关了
+
 ## collections
 
 - https://fullcalendar.io/demos
@@ -117,7 +130,7 @@ module.exports = job;
 - [在线查看 git 项目中某个文件更改历史](https://githistory.xyz/)
 - [前端社区](https://portal.gitnation.org/)
 
-## Code Hike 在 astro 中的支持不是非常好呀
+## CodeHike
 
 ```python hello.py
 # mark[16:24]
