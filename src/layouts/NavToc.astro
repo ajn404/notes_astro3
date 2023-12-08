@@ -17,6 +17,7 @@ function addIntersectionObserver() {
       link.classList[addRemove]("active");
     });
     updatePath();
+document.querySelector('#目录+ul li:has(a.active)+li:not(:has(a.active))')&&document.querySelector('#目录+ul li:has(a.active)+li:not(:has(a.active))').scrollIntoView({behavior: "smooth"})
   });
   document.querySelectorAll("h2, h3, h4, h5 ").forEach((section) => {
     observer.observe(section);

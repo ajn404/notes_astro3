@@ -1,13 +1,13 @@
 ---
-title: vue3设计与实现
+title: vue3相关
 author: ajn404
 pubDatetime: 2023-09-18T08:01:33Z
 postSlug: vue3
-featured: true
+featured: false
 draft: false
 tags:
   - vue3
-description: "阅读vue3设计与实现"
+description: "阅读 vue3 涉及与 vue3 的实现"
 ---
 
 # 阅读 vue3 涉及与 vue3 的实现
