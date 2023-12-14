@@ -102,6 +102,7 @@
     "vite-plugin-istanbul": "^5.0.0",
     "vue": "^3.3.7",
     "waveform-data": "^4.3.0",
+    "wavesurfer.js": "^7.5.2",
     "wouter": "^2.12.1",
     "yjs": "^13.6.8"
   },

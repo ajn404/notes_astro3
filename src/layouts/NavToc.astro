@@ -5,8 +5,11 @@ import '@styles/navbar.css'
 <script>
 const linkStarts = new WeakMap();
 const linkEnds = new WeakMap();
+if(document.getElementById("目录")){
 addIntersectionObserver()
 addResizeObserver()
+}
+
 function addIntersectionObserver() {
   const observer = new IntersectionObserver((sections) => {
     sections.forEach((heading) => {
