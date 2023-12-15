@@ -81,6 +81,7 @@ export default defineConfig({
         optimizeDeps: {
             exclude: ["@resvg/resvg-js"],
         },
+
         ssr: {
             noExternal: [
                 "@notes/editor", "@shoelace-style/shoelace"
@@ -91,19 +92,20 @@ export default defineConfig({
                 plugins: [
                     // resolve(),
                     // commonjs(),
-                    copy({
-                        copyOnce: true,
-                        targets: [
-                            {
-                                src: path.resolve(__dirname, 'node_modules/@shoelace-style/shoelace/dist/assets'),
-                                dest: path.resolve(__dirname, 'dist/shoelace')
-                            }
-                        ]
-                    }),
+                    // copy({
+                    //     copyOnce: true,
+                    //     targets: [
+                    //         {
+                    //             src: path.resolve(__dirname, 'node_modules/@shoelace-style/shoelace/dist/assets'),
+                    //             dest: path.resolve(__dirname, 'dist/shoelace')
+                    //         }
+                    //     ]
+                    // }),
                     css({
                         output: 'bundle.css'
                     }),
-                ]
+                ],
+                external: ["wavesurfer.js","wavesurfer.js/dist/plugins/spectrogram.esm.js"]
             }
         }
     },
