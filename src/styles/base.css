@@ -41,7 +41,7 @@
   }
   section,
   footer {
-    @apply mx-auto max-w-4xl px-4;
+    @apply mx-auto max-w-[100vw] px-4;
   }
   a {
     @apply outline-2 outline-offset-1 outline-skin-fill 
@@ -72,7 +72,7 @@
     prose-code:before:!content-[''] prose-code:after:!content-['']
     prose-pre:!text-skin-base prose-ol:!text-skin-base 
     prose-ul:overflow-x-clip prose-ul:!text-skin-base prose-li:marker:!text-skin-accent
-    prose-table:text-skin-base max-w-4xl overflow-auto prose-th:border
+    prose-table:text-skin-base max-w-[100vw] overflow-auto prose-th:border
     prose-th:border-skin-line prose-td:border 
     prose-td:border-skin-line prose-img:mx-auto break-all
     prose-img:!mt-2 prose-img:border-2 
