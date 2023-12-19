@@ -1,7 +1,7 @@
 ---
 ---
 
-<textarea id="textarea" class="min-w-full min-h-[30em]">
+<textarea id="textarea" class="min-w-full min-h-[30em] px-5">
 姐姐，今夜我在德令哈，夜色笼罩
 姐姐，今夜我只有戈壁
 草原尽头我两手空空
@@ -33,7 +33,6 @@
         const lines = textarea.value.split('\n');
         const lineIndex = 2;
         const start = lines.slice(0, lineIndex).reduce((acc, curr) => acc + curr.length + 1, 0);
-        console.log(start,lines.slice(0, lineIndex));
         // Add the length of the previous lines and the newline character
         const end = start + lines[lineIndex].length;
         textarea.focus();
@@ -41,3 +40,4 @@
     });
 });
 </script>
+

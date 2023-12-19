@@ -1,0 +1,86 @@
+
+
+<div class="container" id="container">
+    <div class="scrollable"></div>
+    <div class="scrollable"></div>
+</div>
+
+<script>
+const randomInteger = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("container");
+    if(!container) return
+    const elements = [...container.querySelectorAll(".scrollable")];
+
+    // Generate random blocks
+    elements.forEach((ele) => {
+        ele.innerHTML = '';
+        const numBlocks = randomInteger(40, 80);
+        Array(numBlocks).fill(0).forEach((_, index) => {
+            const div = document.createElement("div");
+            div.classList.add("block");
+            div.innerHTML = `${index + 1}`;
+            ele.appendChild(div);
+        });
+    });
+
+    const syncScroll = (scrolledEle, ele) => {
+        const scrolledPercent = scrolledEle.scrollTop / (scrolledEle.scrollHeight - scrolledEle.clientHeight);
+        const top = scrolledPercent * (ele.scrollHeight - ele.clientHeight);
+
+        const scrolledWidthPercent = scrolledEle.scrollLeft / (scrolledEle.scrollWidth - scrolledEle.clientWidth);
+        const left = scrolledWidthPercent * (ele.scrollWidth - ele.clientWidth);
+
+        ele.scrollTo({
+            behavior: "instant",
+            top,
+            left,
+        });
+    };
+
+    const handleScroll = (e) => {
+        new Promise((resolve) => {
+            requestAnimationFrame(() => resolve(null));
+        });
+        const scrolledEle = e.target;
+        elements.filter((item) => item !== scrolledEle).forEach((ele) => {
+            ele.removeEventListener("scroll", handleScroll);
+            syncScroll(scrolledEle, ele);
+            window.requestAnimationFrame(() => {
+                ele.addEventListener("scroll", handleScroll);
+            });
+        });
+    };
+
+    elements.forEach((ele) => {
+        ele.addEventListener("scroll", handleScroll);
+    });
+});
+
+</script>
+
+<style is:inline>
+    .container {
+    border: 1px solid rgb(203 213 225);
+    display: flex;
+    height: 32rem;
+}
+.scrollable {
+    flex: 1;
+    overflow: auto;
+    gap: 0.5rem;
+}
+.scrollable:first-child {
+    border-right: 1px solid rgb(203 213 225);
+}
+.block {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 3rem;
+}
+.block:not(:last-child) {
+    border-bottom: 1px solid rgb(203 213 225);
+}
+</style>

@@ -10,17 +10,22 @@ tags:
 description: dom操作
 ---
 
+# DOM operation tips
+
 ## 目录
 
-## Select a given line in a text area
+## editor
+
+### Select a given line in a text area
 
 import Textarea from "@components/astro/dom/textarea.astro";
+import Pre from "@components/react/custom-element/custom-pre.tsx";
+import ChangeCss from "@components/astro/dom/changeCssVar.astro";
 
 <Textarea />
 
-import Pre from "@components/react/custom-element/custom-pre.tsx";
+<Pre client:load>
 
-<Pre client:only="react">
 ```js
 document.addEventListener('DOMContentLoaded', () => {
     const selectButton = document.getElementById('select-button');
@@ -31,11 +36,85 @@ document.addEventListener('DOMContentLoaded', () => {
         const lines = textarea.value.split('\n');
         const lineIndex = 2;
         const start = lines.slice(0, lineIndex).reduce((acc, curr) => acc + curr.length + 1, 0);
-        console.log(start,lines.slice(0, lineIndex));
         // Add the length of the previous lines and the newline character
         const end = start + lines[lineIndex].length;
         textarea.focus();
         textarea.setSelectionRange(start, end);
     });
+
+```
+
+</Pre>
+
+### set css property
+
+<ChangeCss client:load></ChangeCss>
+
+<Pre client:load>
+
+```js
+
+ document.addEventListener('DOMContentLoaded', () => {
+    const changeButton = document.getElementById('change-css');
+    if(changeButton)
+    changeButton.addEventListener('click', () => {
+        const root = document.documentElement;
+        const primaryColor = getComputedStyle(root).getPropertyValue('--color-text-base');
+        console.log(primaryColor);
+        let r = Math.ceil(Math.random()*255);
+        let g = Math.ceil(Math.random()*255);
+        let b = Math.ceil(Math.random()*255);
+
+        root.style.setProperty('--color-text-base', `${r},${g},${b}`);
+    });
+ })
+
 ```
 </Pre>
+
+### inserNode on the select posion
+
+import InsertNode from "@components/astro/dom/insertNode.astro";
+
+<InsertNode client:load></InsertNode>
+
+<Pre>
+
+```js
+  document.addEventListener('DOMContentLoaded', () => {
+    const insertButton = document.getElementById('insert-button');
+    if(!insertButton) return
+    const handleInsert = () => {
+        // Get the current selection
+        const selection = window.getSelection();
+        // document.execCommand('bold', false, null);  
+        // document.execCommand('createLink', false, 'https://www.bilibili.com/');
+        if(!selection||selection.rangeCount===0||!selection.focusNode?.parentElement?.classList.contains('target-p')) return
+
+        // Get the range of the current selection
+        const range = selection.getRangeAt(0);
+        // Create a new element to insert
+        const newElement = document.createElement('span');
+        newElement.innerHTML = '海子';
+        // Insert the new element at the current position
+        range.insertNode(newElement);
+    };
+
+
+    insertButton.addEventListener('click', handleInsert);
+});
+```
+
+</Pre>
+
+## css animations
+
+### sync scroll
+
+import SyncScroll from "@components/astro/dom/SyncScroll.astro";
+
+<SyncScroll client:load></SyncScroll>
+
+## collections
+
+- [CSSStyleDeclaration.setProperty](https://developer.mozilla.org/zh-CN/docs/Web/API/CSSStyleDeclaration/setProperty)
