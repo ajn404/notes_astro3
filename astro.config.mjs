@@ -35,7 +35,9 @@ export default defineConfig({
     },
     site: "https://ajn404.github.io/notes_astro3/", // replace this with your deployed domain
     integrations: [
-        mdx(),
+        mdx({
+            
+        }),
         sitemap(),
         react({
             include: ["**/react/*"]

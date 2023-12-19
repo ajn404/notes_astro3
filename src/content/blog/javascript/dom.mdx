@@ -1,0 +1,41 @@
+---
+title: dom操作
+author: ajn404
+pubDatetime: 2023-12-19 02:35:54
+postSlug: dom
+featured: false
+draft: false
+tags:
+  - dom
+description: dom操作
+---
+
+## 目录
+
+## Select a given line in a text area
+
+import Textarea from "@components/astro/dom/textarea.astro";
+
+<Textarea />
+
+import Pre from "@components/react/custom-element/custom-pre.tsx";
+
+<Pre client:only="react">
+```js
+document.addEventListener('DOMContentLoaded', () => {
+    const selectButton = document.getElementById('select-button');
+    if(selectButton)
+    selectButton.addEventListener('click', () => {
+        const textarea = document.getElementById('textarea') as HTMLTextAreaElement;
+        if(!textarea) return
+        const lines = textarea.value.split('\n');
+        const lineIndex = 2;
+        const start = lines.slice(0, lineIndex).reduce((acc, curr) => acc + curr.length + 1, 0);
+        console.log(start,lines.slice(0, lineIndex));
+        // Add the length of the previous lines and the newline character
+        const end = start + lines[lineIndex].length;
+        textarea.focus();
+        textarea.setSelectionRange(start, end);
+    });
+```
+</Pre>
