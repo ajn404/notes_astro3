@@ -13,6 +13,91 @@ const { activeNav } = Astro.props;
 
 <header>
   <a id="skip-to-content" href="#main-content">Skip to content</a>
+
+<!-- Modal -->
+<div
+  data-te-modal-init
+  class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none bg-skin-fill"
+  id="exampleModalFullscreen"
+  tabindex="-1"
+  aria-labelledby="exampleModalFullscreenLabel"
+  aria-hidden="true">
+  <div
+    data-te-modal-dialog-ref
+    class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[0px]:m-0 min-[0px]:h-full min-[0px]:max-w-none">
+    <div
+      class="pointer-events-auto relative flex w-full flex-col rounded-md bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600 min-[0px]:h-full min-[0px]:rounded-none min-[0px]:border-0">
+      <div
+        class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50 min-[0px]:rounded-none">
+        <!-- Modal title -->
+        <h5
+          class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200"
+          id="exampleModalFullscreenLabel">
+          我的博客：为何独钟于黑色之美
+        </h5>
+        <!-- Close button -->
+        <button
+          type="button"
+          class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+          data-te-modal-dismiss
+          aria-label="Close">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-6 w-6">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="relative p-4 min-[0px]:overflow-y-auto">
+        <div class="px-10 text-center leading-[2rem] fill-skin-base text-l">
+          
+
+
+<p>在数字化的时代，博客已成为展现思想、分享见解的重要平台。然而，随着众多博客平台风格的多样化，我却选择了一条与众不同的路——坚守黑色主题。本文将深入探讨我对这一选择的理由以及黑色主题在我的博客中所扮演的角色。</p>
+
+<h2>黑色的哲学意蕴</h2>
+<p>黑色并非简单的颜色选择，而是一种哲学和审美的表达。它象征着深度、神秘和内省，与我所追求的思想深度和独立性不谋而合。在这个充斥着五光十色的网络世界中，黑色主题为我提供了一个专注、沉思的空间，让读者更加集中注意力，深入思考。</p>
+
+<h2>黑色的视觉冲击</h2>
+<p>黑色背景的设计为内容提供了强烈的对比，使文字和图像更加突出。这种高对比度的设计不仅增强了可读性，还赋予了博客更加强烈的视觉冲击力。在这个视觉化日益重要的时代，黑色主题让我的博客在众多平台中脱颖而出，成为一个不可忽视的存在。</p>
+
+<h2>黑色的情感共鸣</h2>
+<p>黑色不仅仅是一种视觉效果，更是一种情感的表达。它能够唤起人们的情感共鸣，引导他们进入一个沉思、内省的状态。在我博客的每一个角落，黑色都如同一位悠扬的诗人，与读者建立起深厚的情感联系，使他们在阅读的过程中得到心灵的触动。</p>
+
+<h2>结语</h2>
+<p>总的来说，我的博客选择黑色主题并非出于简单的个人偏好，而是基于对深度、独立性和情感共鸣的追求。在这个信息爆炸的时代，黑色主题为我的博客赋予了独特的魅力和意义，成为我思想和情感表达的重要载体。通过与读者分享我的博客，我希望能够与他们建立起更加深厚、真挚的情感联系，共同探索人生的意义和价值。</p>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div
+        class="mt-auto flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50 min-[0px]:rounded-none">
+        <button
+          type="button"
+          class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+          data-te-modal-dismiss>
+          ok
+        </button>
+        <button
+          type="button"
+          id="theme-btn-kk"
+          class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+          data-te-modal-dismiss>
+          not ok
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
   <div class="nav-container">
     <div class="top-nav-wrap">
       <a href=`${import.meta.env.BASE_URL}/` class="logo">{SITE.title}</a>
@@ -81,6 +166,10 @@ const { activeNav } = Astro.props;
                   title="Toggles light & dark"
                   aria-label="auto"
                   aria-live="polite"
+                  data-te-toggle="modal"
+                  data-te-target="#exampleModalFullscreen"
+                  data-te-ripple-init
+                  data-te-ripple-color="dark"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" id="moon-svg">
                     <path d="M20.742 13.045a8.088 8.088 0 0 1-2.077.271c-2.135 0-4.14-.83-5.646-2.336a8.025 8.025 0 0 1-2.064-7.723A1 1 0 0 0 9.73 2.034a10.014 10.014 0 0 0-4.489 2.582c-3.898 3.898-3.898 10.243 0 14.143a9.937 9.937 0 0 0 7.072 2.93 9.93 9.93 0 0 0 7.07-2.929 10.007 10.007 0 0 0 2.583-4.491 1.001 1.001 0 0 0-1.224-1.224zm-2.772 4.301a7.947 7.947 0 0 1-5.656 2.343 7.953 7.953 0 0 1-5.658-2.344c-3.118-3.119-3.118-8.195 0-11.314a7.923 7.923 0 0 1 2.06-1.483 10.027 10.027 0 0 0 2.89 7.848 9.972 9.972 0 0 0 7.848 2.891 8.036 8.036 0 0 1-1.484 2.059z" />

@@ -19,11 +19,8 @@ description: dom操作
 ### Select a given line in a text area
 
 import Textarea from "@components/astro/dom/textarea.astro";
-import Pre from "@components/react/custom-element/custom-pre.tsx";
 
 <Textarea />
-
-<Pre client:load>
 
 ```js
 document.addEventListener('DOMContentLoaded', () => {
@@ -44,62 +41,56 @@ document.addEventListener('DOMContentLoaded', () => {
 )
 ```
 
-</Pre>
-
 ### set css property
 
-<Pre client:load>
-
 ```js
+document.addEventListener("DOMContentLoaded", () => {
+  const changeButton = document.getElementById("change-css");
+  if (changeButton)
+    changeButton.addEventListener("click", () => {
+      const root = document.documentElement;
+      const primaryColor =
+        getComputedStyle(root).getPropertyValue("--color-text-base");
+      console.log(primaryColor);
+      let r = Math.ceil(Math.random() * 255);
+      let g = Math.ceil(Math.random() * 255);
+      let b = Math.ceil(Math.random() * 255);
 
- document.addEventListener('DOMContentLoaded', () => {
-    const changeButton = document.getElementById('change-css');
-    if(changeButton)
-    changeButton.addEventListener('click', () => {
-        const root = document.documentElement;
-        const primaryColor = getComputedStyle(root).getPropertyValue('--color-text-base');
-        console.log(primaryColor);
-        let r = Math.ceil(Math.random()*255);
-        let g = Math.ceil(Math.random()*255);
-        let b = Math.ceil(Math.random()*255);
-
-        root.style.setProperty('--color-text-base', `${r},${g},${b}`);
+      root.style.setProperty("--color-text-base", `${r},${g},${b}`);
     });
- })
-
-```
-</Pre>
-
-### inserNode on the select posion
-
-<Pre>
-
-```js
-  document.addEventListener('DOMContentLoaded', () => {
-    const insertButton = document.getElementById('insert-button');
-    if(!insertButton) return
-    const handleInsert = () => {
-        // Get the current selection
-        const selection = window.getSelection();
-        // document.execCommand('bold', false, null);  
-        // document.execCommand('createLink', false, 'https://www.bilibili.com/');
-        if(!selection||selection.rangeCount===0||!selection.focusNode?.parentElement?.classList.contains('target-p')) return
-
-        // Get the range of the current selection
-        const range = selection.getRangeAt(0);
-        // Create a new element to insert
-        const newElement = document.createElement('span');
-        newElement.innerHTML = '海子';
-        // Insert the new element at the current position
-        range.insertNode(newElement);
-    };
-
-
-    insertButton.addEventListener('click', handleInsert);
 });
 ```
 
-</Pre>
+### inserNode on the select posion
+
+```js
+document.addEventListener("DOMContentLoaded", () => {
+  const insertButton = document.getElementById("insert-button");
+  if (!insertButton) return;
+  const handleInsert = () => {
+    // Get the current selection
+    const selection = window.getSelection();
+    // document.execCommand('bold', false, null);
+    // document.execCommand('createLink', false, 'https://www.bilibili.com/');
+    if (
+      !selection ||
+      selection.rangeCount === 0 ||
+      !selection.focusNode?.parentElement?.classList.contains("target-p")
+    )
+      return;
+
+    // Get the range of the current selection
+    const range = selection.getRangeAt(0);
+    // Create a new element to insert
+    const newElement = document.createElement("span");
+    newElement.innerHTML = "海子";
+    // Insert the new element at the current position
+    range.insertNode(newElement);
+  };
+
+  insertButton.addEventListener("click", handleInsert);
+});
+```
 
 ## css animations
 

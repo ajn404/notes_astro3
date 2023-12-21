@@ -85,9 +85,10 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
 import {
   Ripple,
   initTE,
+    Modal,
 } from "tw-elements";
 
-initTE({ Ripple });
+initTE({ Ripple,Modal });
 
 // Get the button
 const mybutton = document.getElementById("btn-back-to-top");

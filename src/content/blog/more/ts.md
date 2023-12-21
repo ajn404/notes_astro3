@@ -24,8 +24,8 @@ type FunctionAlias = (input: string) => number;
 interface CallSignature {
   (input: string): number;
 }
-const typedFunctionAlias: FunctionAlias = (input) => input.length;
-const typedCallSignature: CallSignature = (input) => input.length;
+const typedFunctionAlias: FunctionAlias = input => input.length;
+const typedCallSignature: CallSignature = input => input.length;
 ```
 
 我们想描述一个带有属性的函数，我们可以在一个对象类型中写一个调用签名（call signature）
@@ -138,11 +138,37 @@ interface MergedMethods {
 }
 
 const a: MergedMethods = {
-  different: (a) => {
+  different: a => {
     return a.toString();
     //(parameter) a: string | number
   },
 };
+```
+
+### interfaces callable types
+
+```ts
+interface Callable {
+  (x: number, y: number): number;
+}
+
+const add: Callable = (a, b) => a + b;
+
+console.log(add(1, 2)); // 输出 3
+```
+
+在这个示例中，我们定义了一个 Callable 接口，该接口的函数签名要求接收两个数字参数并返回一个数字。然后，我们创建了一个名为 add 的函数，并将其类型设置为 Callable，因此 add 函数必须满足该接口的函数签名。
+
+> 拓展:使用类定义 callable types
+
+```ts
+class Adder {
+  adderInstance(x: number, y: number): number {
+    return x + y;
+  }
+}
+const { adderInstance } = new Adder();
+console.log(adderInstance(1, 2)); // 输出 3
 ```
 
 ## [npm monorepo with ts](https://www.yieldcode.blog/post/npm-workspaces/)
@@ -188,7 +214,7 @@ const a: MergedMethods = {
 
 > 符号链接主要用于在不同目录之间共享文件、目录以及避免重复文件名等场景。在某些情况下，符号链接也被用于实现文件系统的动态链接，例如动态库、共享库等。
 
-### 配置 npm workspace
+### npm workspace config
 
 package.json
 
@@ -260,7 +286,7 @@ package.json 中添加打包命令
 
 更多细节参考[npm docs - workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces)
 
-## ts 工具类
+## ts tool types
 
 ### Partial
 
@@ -299,6 +325,30 @@ Specifies an array of filenames or patterns that should be skipped when resolvin
 ```json
 exclude: ["node_modules/**/*"]
 ```
+
+## ts tips
+
+### [number] vs number[]
+
+[nuber] 表示的是一个数字类型，而 number[] 表示的是一个数字类型的数组。
+
+### function return void vs function return undefined
+
+```ts
+const foo: () => void = () => [1].push(2);
+
+const res = foo();
+
+console.log(res);
+
+function bar(): undefined {
+  return undefined;
+}
+```
+
+**
+function return void 表示函数没有返回值，function return undefined 表示函数返回一个 undefined 值。同时
+function return void 不关心函数是返回什么类型，function return undefined 只能返回 undefined**
 
 ## 链接
 

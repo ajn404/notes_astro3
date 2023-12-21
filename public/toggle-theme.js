@@ -11,9 +11,10 @@ function getPreferTheme() {
   if (primaryColorScheme) return primaryColorScheme;
 
   // return user device's prefer color scheme
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+  //   return window.matchMedia("(prefers-color-scheme: dark)").matches
+  //     ? "dark"
+  //     : "light";
+  return "dark";
 }
 
 let themeValue = getPreferTheme();
@@ -37,9 +38,10 @@ window.onload = () => {
   reflectPreference();
 
   // now this script can find and listen for clicks on the control
-  document.querySelector("#theme-btn")?.addEventListener("click", () => {
+  document.querySelector("#theme-btn-kk")?.addEventListener("click", () => {
     themeValue = themeValue === "light" ? "dark" : "light";
     setPreference();
+    //   alert("light css is ugly")
   });
 };
 
