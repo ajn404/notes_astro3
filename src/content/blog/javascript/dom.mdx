@@ -20,7 +20,6 @@ description: dom操作
 
 import Textarea from "@components/astro/dom/textarea.astro";
 import Pre from "@components/react/custom-element/custom-pre.tsx";
-import ChangeCss from "@components/astro/dom/changeCssVar.astro";
 
 <Textarea />
 
@@ -41,14 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
         textarea.focus();
         textarea.setSelectionRange(start, end);
     });
-
+}
+)
 ```
 
 </Pre>
 
 ### set css property
-
-<ChangeCss client:load></ChangeCss>
 
 <Pre client:load>
 
@@ -73,10 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </Pre>
 
 ### inserNode on the select posion
-
-import InsertNode from "@components/astro/dom/insertNode.astro";
-
-<InsertNode client:load></InsertNode>
 
 <Pre>
 
@@ -110,10 +104,6 @@ import InsertNode from "@components/astro/dom/insertNode.astro";
 ## css animations
 
 ### sync scroll
-
-import SyncScroll from "@components/astro/dom/SyncScroll.astro";
-
-<SyncScroll client:load></SyncScroll>
 
 ## collections
 
