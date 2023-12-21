@@ -36,7 +36,12 @@ export default defineConfig({
     site: "https://ajn404.github.io/notes_astro3/", // replace this with your deployed domain
     integrations: [
         mdx({
-            
+            drafts: true,
+            syntaxHighlight: 'shiki',
+            shikiConfig: {
+                theme: 'material-theme-palenight',
+                wrap: true
+            },
         }),
         sitemap(),
         react({
@@ -74,9 +79,10 @@ export default defineConfig({
         ],
         rehypePlugins: [rehypeKatex, rehypeAutolinkHeadings],
         shikiConfig: {
-            theme: "one-dark-pro",
-            wrap: true,
+            theme: 'material-theme-palenight',
+            wrap: true
         },
+        drafts: true,
         extendDefaultPlugins: true,
     },
     vite: {
