@@ -10,6 +10,11 @@
     width: 0;
 }
 
+body:has(footer.active) #目录+ul {
+    height: calc(100vh - 5rem);
+}
+
+
 #目录.active+ul {
     @apply sm:top-[7rem];
     max-height: calc(100vh - 7rem);

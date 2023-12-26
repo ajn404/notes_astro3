@@ -46,9 +46,9 @@ counts.banana =2;
 
 ```
 
-#### Index signature vs Record<Keys, Type>
+#### Index signature vs Record\<Keys, Type\>
 
-- Record<Keys, Type>
+- Record\<Keys, Type>
 
 > Constructs an object type whose property keys are Keys and whose property values are Type. This utility can be used to map the properties of a type to another type.
 
@@ -68,7 +68,7 @@ const cats: Record<CatName, CatInfo> = {
 ```
 
 index signature 仅接受 string,number 或 symbol 作为键类型。如果您想尝试使用字符串文字类型的联合作为索引签名中的键，则会出现错误
-_建议使用 index signature 来注解通用的对象，例如键是 string 类型。但是当您事先知道键时，应当使用 Record<Keys, Type>注解特定对象_
+_建议使用 index signature 来注解通用的对象，例如键是 string 类型。但是当您事先知道键时，应当使用 Record\<Keys, Type>注解特定对象_
 
 ### interface extensions
 
@@ -328,7 +328,7 @@ exclude: ["node_modules/**/*"]
 
 ## ts tips
 
-### [number] vs number[]
+### [number\] vs number[]
 
 [nuber] 表示的是一个数字类型，而 number[] 表示的是一个数字类型的数组。
 
@@ -349,6 +349,31 @@ function bar(): undefined {
 **
 function return void 表示函数没有返回值，function return undefined 表示函数返回一个 undefined 值。同时
 function return void 不关心函数是返回什么类型，function return undefined 只能返回 undefined**
+
+### this type
+
+import { MyButton } from "@components/lit/typescript/typeOfThis.ts";
+
+<MyButton client:load>type of this 's demo</MyButton>
+
+> also the first lit demo
+
+> all right all right , i don't know how to use lit
+
+import AstroMyButton from "@components/astro/more/typeOfThis.astro";
+
+<AstroMyButton></AstroMyButton>
+
+```html
+<button onClick="MyClickHandler">Click Me!</button>
+```
+
+```ts
+function MyClickHandler() {
+  this.disabled = true;
+  console.log("Button Clicked!");
+}
+```
 
 ## 链接
 
