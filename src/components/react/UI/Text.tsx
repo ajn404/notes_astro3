@@ -8,13 +8,11 @@ export default function Text({ children }: Props) {
   if (value && value.length > 0) {
     return (
       <div className="text-container">
-        <div className="container">
-          <span className="txt anim-text-flow ">
-            {value.split("").map((str: string) => (
-              <span key={str}>{str}</span>
-            ))}
-          </span>
-        </div>
+        <span className="txt anim-text-flow ">
+          {value.split("").map((str: string, index: number) => (
+            <span key={str + index}>{str}</span>
+          ))}
+        </span>
       </div>
     );
   }
