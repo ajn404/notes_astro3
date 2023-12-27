@@ -1,5 +1,6 @@
 import Datetime from "./Datetime";
 import type { BlogFrontmatter } from "@content/_schemas";
+import Text from "@components/react/UI/Text.tsx";
 
 export interface Props {
   href?: string;
@@ -27,8 +28,9 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
       </a>
       <Datetime datetime={pubDatetime} />
       {upDateTime && <Datetime datetime={upDateTime} />}
-
-      <p>{description}</p>
+      <Text>
+        <p>{description}</p>
+      </Text>
     </li>
   );
 }

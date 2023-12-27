@@ -8,7 +8,9 @@ function removeHtmlTags(text) {
 }
 
 export default function Text({ children }: Props) {
-  let value = (children as ReactElement).props.value;
+  let value =
+    (children as ReactElement).props.value ||
+    (children as ReactElement).props.children;
   if (value && value.length > 0) {
     value = removeHtmlTags(value);
     return (
