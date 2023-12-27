@@ -49,7 +49,7 @@ body:has(.contentbox):has(#目录+ul) footer {
 }
 
 body:has(.contentbox):has(#目录+ul) article {
-    padding-bottom: 10rem;
+    padding-bottom: 0rem;
 }
 
 #目录+ul a:not(.active) {

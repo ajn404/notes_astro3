@@ -229,3 +229,12 @@ details::-webkit-scrollbar {
     font-family: "Xingcao","DM Sans", sans-serif;
 }
 
+@media print{
+    header{
+        display: none;
+    }
+
+    #btn-back-to-top{
+        display: none;
+    }
+}
