@@ -442,4 +442,105 @@ const {
 </template>
 ```
 
-#### todo:[大写](https://cn-vuejs-challenges.netlify.app/questions/305-capitalize/README.zh-CN.html)
+#### 8.[大写](https://cn-vuejs-challenges.netlify.app/questions/305-capitalize/README.zh-CN.html)
+
+```vue
+<script setup>
+import { ref, vModelText } from "vue";
+
+const value = ref("");
+vModelText.beforeUpdate = (el, binding) => {
+  if (el.value && binding.modifiers.capitalize) {
+    el.value = el.value.charAt(0).toUpperCase() + el.value.slice(1);
+  }
+};
+</script>
+
+<template>
+  <input type="text" v-model.capitalize="value" />
+</template>
+```
+
+import ToUpper from "@components/vue/challenge/toUpperCase.vue";
+
+<ToUpper client:load />
+
+#### 9.可写的计算属性 computed=>writable
+
+```vue
+<script setup lang="ts">
+import { ref, computed } from "vue";
+
+const count = ref(1);
+const plusOne = computed(() => count.value + 1);
+
+/**
+ * Make the `plusOne` writable.
+ * So that we can get the result `plusOne` to be 3, and `count` to be 2.
+ */
+
+plusOne.value++;
+</script>
+
+<template>
+  <div>
+    <p>{{ count }}</p>
+    <p>{{ plusOne }}</p>
+  </div>
+</template>
+```
+
+import MakePlusWritable from "@components/vue/challenge/makePlusWritable.vue";
+
+<MakePlusWritable client:load />
+
+<details class="pt-10">
+
+<summary>查看vue代码答案</summary>
+```vue
+<script setup lang="ts">
+import { ref,  computed, onUnmounted } from "vue"
+
+const count = ref(1)
+
+/\*\*
+
+- Make the `plusOne` writable.
+- So that we can get the result `plusOne` to be 3, and `count` to be 2.
+  \*/
+  const plusOne = computed({
+  get: () => count.value + 1,
+  set: (val) => {
+  count.value = val - 1;
+  },
+  });
+
+let timer = setInterval(()=>{
+plusOne.value++
+},2000)
+
+const stop = ()=>{
+clearInterval(timer)
+}
+
+onUnmounted(()=>{
+clearInterval(timer)
+})
+
+</script>
+
+<template>
+    <div>
+        <p>count:{{ count }}</p>
+        <p>plusOne{{ plusOne }}</p>
+        <button @click="stop">stop</button>
+    </div>
+</template>
+
+```
+</details>
+
+
+#### 10.watch全家桶
+
+```

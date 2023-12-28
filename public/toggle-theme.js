@@ -26,7 +26,6 @@ function setPreference() {
 
 function reflectPreference() {
   document.firstElementChild.setAttribute("data-theme", themeValue);
-
   document.querySelector("#theme-btn")?.setAttribute("aria-label", themeValue);
 }
 
@@ -39,6 +38,11 @@ window.onload = () => {
 
   // now this script can find and listen for clicks on the control
   document.querySelector("#theme-btn-kk")?.addEventListener("click", () => {
+    themeValue = themeValue === "light" ? "dark" : "light";
+    setPreference();
+    //   alert("light css is ugly")
+  });
+  document.querySelector("#theme-btn")?.addEventListener("click", () => {
     themeValue = themeValue === "light" ? "dark" : "light";
     setPreference();
     //   alert("light css is ugly")
