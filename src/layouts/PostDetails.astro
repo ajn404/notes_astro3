@@ -22,7 +22,7 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
 ---
 
 <Layout activeNav="posts" title={title} author={author} description={description} ogImage={ogUrl} canonicalURL={canonicalURL}>
-  <div class="mx-auto flex w-full max-w-[100vw] justify-start px-2">
+  <div class=" flex w-full max-w-[100vw] justify-start px-2">
     <button
       class="focus-outline mb-2 mt-8 flex hover:opacity-75"
       onclick="
@@ -118,7 +118,6 @@ const scrollFunction = () => {
 const obs = new IntersectionObserver((bottomItem) =>{
     if(bottomItem[0]?.intersectionRatio>0){
     bottomButton.classList.add("hidden");
-console.log(1);
     }
     else 
     bottomButton.classList.remove("hidden");
@@ -140,7 +139,7 @@ window.addEventListener("scroll", scrollFunction);
   </script>
 <style>
   main {
-    @apply mx-auto w-full max-w-[100vw] px-4;
+    @apply w-full max-w-[100vw] px-4;
   }
   .post-title {
     @apply text-2xl font-semibold text-skin-accent;

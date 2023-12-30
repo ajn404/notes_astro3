@@ -297,10 +297,10 @@ console.log(fooRef.value === 3);
 
 关于[事件修饰符](https://vuejs.org/guide/essentials/event-handling.html#event-modifiers)
 
- <blockquote>
 <details>
 <summary>ai总结</summary>
 <article>
+ <blockquote>
 
 在 Vue 3 中，事件修饰符是一种可以用来调整或增强事件监听行为的特殊标记。这些修饰符通常使用.前缀来应用于 v-on 指令。以下是一些常用的事件修饰符及其用途：
 
@@ -341,10 +341,10 @@ console.log(fooRef.value === 3);
 示例：\<my-component @hook:mounted.native="handleNativeMounted">组件的挂载\</my-component>
 这些事件修饰符可以组合使用，例如：\<div @click.stop.prevent="handleClick">。在某些情况下，修饰符的顺序可能会影响行为，因此请确保正确地使用它们以实现所需的事件监听行为
 
+ </blockquote>
+
 </article>
 </details>
-
- </blockquote>
 
 ```vue
 <script setup lang="ts">
@@ -537,10 +537,17 @@ clearInterval(timer)
     </div>
 </template>
 
-```
+````
 </details>
 
 
 #### 10.watch全家桶
 
-```
+```vue
+
+
+````
+
+import Watchfamily from "@components/vue/challenge/watchfamily.vue";
+
+<Watchfamily client:load />
