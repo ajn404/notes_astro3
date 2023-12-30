@@ -7,7 +7,7 @@
 
     @media screen and (min-width: 640px) {
         width: calc(80vw - 48rem - 0.75rem);
-        min-width: 400px;
+        min-width: 300px;
         padding-left: 2em;
         overflow-y: auto;
         max-height: 100vh;
@@ -36,9 +36,9 @@ body:has(footer.active) #目录+ul {
 
 body:has(.contentbox):has(#目录+ul) {
     @apply mr-0;
-
     @media screen and (min-width: 640px) {
-        margin-right: calc(80% - 48rem - 1.5rem);
+        margin-right: 300px;
+        max-width: calc(100% - 80vw + 48rem + 0.75rem);
     }
 }
 
