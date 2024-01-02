@@ -6,7 +6,6 @@
     font-family: 'Xingcao';
     src:url('/notes_astro3/assets/Xingcao.ttf') format('truetype');
 }
-
 @layer base {
   :root,
   html[data-theme="light"] {
@@ -61,14 +60,11 @@
     sm:scale-110;
   }
   .prose {
-
     @apply  prose-headings:!mb-3 prose-headings:!text-skin-base 
     prose-h3:italic prose-p:!text-skin-base 
     prose-a:!text-skin-base prose-a:!decoration-dashed prose-a:underline-offset-8
     hover:prose-a:text-skin-accent prose-blockquote:!border-l-skin-accent
     prose-blockquote:border-opacity-50 prose-blockquote:opacity-80 prose-blockquote:!text-skin-base prose-figcaption:!text-skin-base prose-figcaption:opacity-70 prose-strong:!text-skin-base
-
-    
     prose-code:rounded prose-code:!text-skin-inverted prose-code:bg-skin-card 
     prose-code:bg-opacity-75 prose-code:p-1 
     prose-code:before:!content-[''] prose-code:after:!content-['']
@@ -79,14 +75,12 @@
     prose-td:border-skin-line prose-img:mx-auto break-all
     prose-img:!mt-2 prose-img:border-2 
     prose-img:border-skin-line prose-hr:!border-skin-line;
-
-   
   }
 
 
-    .prose  code{
-                color: #28a2b7 !important;
-                background-color: transparent !important;
+   .prose  code{
+        color: #28a2b7 !important;
+        background-color: transparent !important;
         }
         
   .prose a {
