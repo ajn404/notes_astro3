@@ -49,8 +49,6 @@ const startPost = lastPost - SITE.postPerPage;
 const paginatedPosts = sortedPosts.slice(startPost, lastPost);
 ---
 
-
-
 {
   post ? (
     <PostDetails post={post} />
@@ -64,4 +62,5 @@ const paginatedPosts = sortedPosts.slice(startPost, lastPost);
 }
 
 <MotionScroll client:load></MotionScroll>
+<!-- 没用的 -->
 <CustomText client:load></CustomText>

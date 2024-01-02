@@ -7,10 +7,9 @@ const count = ref(0)
  * Challenge 1: Watch once
  * Make sure the watch callback only triggers once
 */
-watch(count, () => {
+const unWatch =watch(count, () => {
     console.log("Only triggered once")
-},{
-    immediate:true
+    unWatch()
 })
 
 count.value = 1
@@ -26,7 +25,7 @@ const state = ref({
 
 watch(state, () => {
     console.log("The state.count updated")
-})
+},{deep:true})
 
 state.value.count = 2
 

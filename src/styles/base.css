@@ -62,7 +62,7 @@
   }
   .prose {
 
-    @apply prose-headings:!mb-3 prose-headings:!text-skin-base 
+    @apply  prose-headings:!mb-3 prose-headings:!text-skin-base 
     prose-h3:italic prose-p:!text-skin-base 
     prose-a:!text-skin-base prose-a:!decoration-dashed prose-a:underline-offset-8
     hover:prose-a:text-skin-accent prose-blockquote:!border-l-skin-accent
@@ -165,8 +165,16 @@
   .Ripe-Malinka{
     background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
   }
+
+  .Midnight-Bloom{
+    background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+  }
 }
 
+
+details{
+    @apply dark:Midnight-Bloom p-4;
+}
 
 
 

@@ -19,6 +19,14 @@ body:has(footer.active) #目录+ul {
     height: calc(100vh - 5rem);
 }
 
+header #theme-btn{
+    @apply sm:fixed sm:top-5 sm:right-5 sm:shadow-md sm:rounded-full; 
+}
+
+header.active #theme-btn{
+    @apply sm:static
+}
+
 
 #目录.active+ul {
     @apply sm:top-[8rem];

@@ -26,7 +26,17 @@ function addIntersectionObserver() {
     //   }
       });
     updatePath();
-document.querySelector('#目录+ul li:has(a.active)+li:not(:has(a.active))')&&document.querySelector('#目录+ul li:has(a.active)+li:not(:has(a.active))').scrollIntoView({behavior: "smooth"})
+  document.getElementById("目录")&&(new IntersectionObserver((target)=>{
+    if(target[0].isIntersecting){
+      target[0].target.classList.add("active")
+    }
+     else{
+        target[0].target.classList.remove("active")
+      }
+  })).observe(document.getElementById("目录"));
+  
+    document.querySelector('#目录+ul li:has(a.active)+li:not(:has(a.active))')&&
+  document.querySelector('#目录+ul li:has(a.active)+li:not(:has(a.active))').scrollIntoView({behavior: "smooth"})
   });
   document.querySelectorAll("h2, h3, h4, h5 ").forEach((section) => {
     observer.observe(section);
@@ -39,8 +49,15 @@ document.querySelector('#目录+ul li:has(a.active)+li:not(:has(a.active))')&&do
      else{
         target[0].target.classList.remove("active")
       }
-  })).observe(document.getElementById("目录"))
+  })).observe(document.getElementById("目录"));
 
+
+  document.querySelector("body>header")&&(new IntersectionObserver((tar)=>{
+    if(tar[0].isIntersecting)tar[0].target.classList.add("active")
+     else
+        tar[0].target.classList.remove("active")
+      
+  }).observe(document.querySelector("body>header")));
 
   document.querySelector("footer.mt-auto")&&(new IntersectionObserver((target)=>{
     if(target[0].isIntersecting){

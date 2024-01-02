@@ -43,10 +43,10 @@ onUnmounted(()=>{
 </script>
 
 <template>
-    <div class="flex justify-around">
-        <span>count:{{ count }}</span>
+    <div class="flex justify-around ">
+        <span >count:{{ count }}</span>
         &amp;
-        <span>plusOne:{{ plusOne }}</span>
+        <span >plusOne:{{ plusOne }}</span>
         <button @click="stop" :class="[plusOne >= 10 && 'hidden', 'inline']" class=" bg-skin-purple text-skin-orange px-5">stop</button>
         <button @click="reset" :class="[plusOne < 10 && 'hidden']" class=" bg-skin-purple text-skin-orange px-5">reset</button>
     </div>
