@@ -330,7 +330,7 @@ exclude: ["node_modules/**/*"]
 
 ### [number\] vs number[]
 
-[nuber] 表示的是一个数字类型，而 number[] 表示的是一个数字类型的数组。
+\[number] 表示的是一个数字类型，而 number[] 表示的是一个数字类型的数组。
 
 ### function return void vs function return undefined
 
@@ -374,6 +374,72 @@ function MyClickHandler() {
   console.log("Button Clicked!");
 }
 ```
+
+<details>
+
+<summary>回顾一遍call,apply,bind</summary>
+
+`call`, `apply`, 和 `bind` 都是 JavaScript 中用于改变函数上下文的方法。它们的主要目的是改变函数被调用时的 `this` 值，同时也可以用于传递参数。
+
+1. **call**:
+
+   - `call` 方法允许你调用一个函数，并指定该函数的 `this` 值。
+   - 接受一个上下文对象作为第一个参数，后面是任意数量的参数，这些参数将作为函数的参数传递。
+
+   **示例**:
+
+   ```javascript
+   function greet(greeting, punctuation) {
+     console.log(greeting + " " + this.name + punctuation);
+   }
+
+   const person = { name: "Alice" };
+
+   greet.call(person, "Hello", "!"); // 输出: Hello Alice!
+   ```
+
+2. **apply**:
+
+   - `apply` 方法与 `call` 类似，但是它接受一个参数数组，而不是一系列参数。
+
+   **示例**:
+
+   ```javascript
+   function greet(greeting, punctuation) {
+     console.log(greeting + " " + this.name + punctuation);
+   }
+
+   const person = { name: "Alice" };
+   const args = ["Hello", "!"];
+
+   greet.apply(person, args); // 输出: Hello Alice!
+   ```
+
+3. **bind**:
+
+   - `bind` 方法返回一个新函数，该函数的 `this` 值被绑定到提供的对象。
+   - `bind` 方法不会立即执行函数。返回的函数可以稍后被调用。
+
+   **示例**:
+
+   ```javascript
+   function greet(greeting, punctuation) {
+     console.log(greeting + " " + this.name + punctuation);
+   }
+
+   const person = { name: "Alice" };
+   const boundGreet = greet.bind(person, "Hello");
+
+   boundGreet("!"); // 输出: Hello Alice!
+   ```
+
+**区别**:
+
+- `call` 和 `apply` 都是立即执行函数并返回结果，而 `bind` 则返回一个新函数，该函数稍后可以被调用。
+- `call` 和 `apply` 的区别在于参数的传递方式：`call` 是逐个传递参数，而 `apply` 是通过一个数组传递。
+- 由于 `bind` 返回一个新函数，你可以多次调用它，而每次都会在不同的上下文中调用原始函数。
+
+</details>
 
 ## 链接
 

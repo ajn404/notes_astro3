@@ -45,7 +45,8 @@ export default defineConfig({
         }),
         sitemap(),
         react({
-            include: ["**/react/*"]
+            include: ["**/react/*",
+        ]
         }),
         lit({
             include: ["**/lit/*"]

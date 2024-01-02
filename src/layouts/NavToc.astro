@@ -18,10 +18,12 @@ function addIntersectionObserver() {
       if (!link) return;
       const addRemove = heading.intersectionRatio > 0 ? "add" : "remove";
       link.classList[addRemove]("active");
-      if(addRemove==="add") {
-      link.scrollIntoView({block:"center"})
+    //   if(addRemove==="add") {
+    //     setTimeout(()=>{
+    //         link.scrollIntoView({block:"center"})
+    //     },5000)
       
-      }
+    //   }
       });
     updatePath();
 document.querySelector('#目录+ul li:has(a.active)+li:not(:has(a.active))')&&document.querySelector('#目录+ul li:has(a.active)+li:not(:has(a.active))').scrollIntoView({behavior: "smooth"})
@@ -145,6 +147,7 @@ function drawPath() {
 
 function updatePath() {
   const path:SVGPathElement = document.querySelector("path.toc-marker");
+  if(!path) return
   const pathLength = path.getTotalLength();
   const activeLinks = document.querySelectorAll("#目录+ul a.active");
   let linkStart = pathLength;

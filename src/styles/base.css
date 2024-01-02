@@ -61,6 +61,7 @@
     sm:scale-110;
   }
   .prose {
+
     @apply prose-headings:!mb-3 prose-headings:!text-skin-base 
     prose-h3:italic prose-p:!text-skin-base 
     prose-a:!text-skin-base prose-a:!decoration-dashed prose-a:underline-offset-8
@@ -78,9 +79,16 @@
     prose-td:border-skin-line prose-img:mx-auto break-all
     prose-img:!mt-2 prose-img:border-2 
     prose-img:border-skin-line prose-hr:!border-skin-line;
+
+   
   }
 
 
+    .prose  code{
+                color: #28a2b7 !important;
+                background-color: transparent !important;
+        }
+        
   .prose a {
     @apply hover:!text-skin-accent;
   }
@@ -152,6 +160,10 @@
 
   .burning-spring{
   background-image: linear-gradient(to top, #4fb576 0%, #44c489 30%, #28a9ae 46%, #28a2b7 59%, #4c7788 71%, #6c4f63 86%, #432c39 100%);
+  }
+
+  .Ripe-Malinka{
+    background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
   }
 }
 
