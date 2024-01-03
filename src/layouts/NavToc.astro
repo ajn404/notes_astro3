@@ -53,6 +53,7 @@ function addIntersectionObserver() {
     observer.observe(section);
   });
 
+
   document.getElementById("目录")&&(new IntersectionObserver((target)=>{
     if(target[0].isIntersecting){
       target[0].target.classList.add("active")

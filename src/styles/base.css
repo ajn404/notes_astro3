@@ -208,7 +208,7 @@ blockquote footer cite::before {
 
 /* 顶部framer */
 .progress-bar{
-    @apply top-0 backdrop-blur-3xl bg-gradient-to-r from-purple-500 to-pink-500 ;
+    @apply  backdrop-blur-3xl bg-gradient-to-r from-purple-500 to-pink-500 ;
   }
 
   /* 折叠 */

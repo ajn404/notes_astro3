@@ -11,8 +11,6 @@ tags:
 description: "所有的kateX 语法"
 ---
 
-## 目录
-
 ## Symbols
 
 $\gdef\VERT{|}$

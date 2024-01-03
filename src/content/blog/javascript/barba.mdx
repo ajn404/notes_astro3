@@ -52,7 +52,7 @@ barba.init({
   transitions: [
     {
       name: "opacity-transition",
-      leave: (data) => {
+      leave: data => {
         gsap.to(data.current.container, {
           opacity: 0,
         });

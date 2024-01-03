@@ -19,14 +19,22 @@ body:has(footer.active) #目录+ul {
     max-height: calc(100vh - 5rem);
 }
 
-header #theme-btn{
-    @apply sm:fixed sm:top-5 sm:right-5 sm:shadow-md sm:rounded-full; 
+
+body:has(#目录+ul) header #theme-btn{
+    @apply fixed top-5 right-5 shadow-md rounded-full; 
 }
 
-header.active #theme-btn{
-    @apply sm:static
+body:has(#目录+ul) header.active #theme-btn{
+    @apply static
+}
+#btn-back-to-bottom,#btn-back-to-top{
+    @apply right-5;
 }
 
+
+body:has(#目录+ul) #btn-back-to-bottom,body:has(#目录+ul) #btn-back-to-top{
+   @apply sm:right-[350px];
+}
 
 #目录.active+ul {
     @apply sm:top-[8rem];

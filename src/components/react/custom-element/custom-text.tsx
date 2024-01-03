@@ -10,11 +10,6 @@ const CustomTextWrapper: React.FC = () => {
       constructor() {
         super();
         //..
-        console.log(
-          this,
-          this?.attachShadow,
-          this.attachShadow({ mode: "open" })
-        );
       }
       connectedCallback() {
         const component = (

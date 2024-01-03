@@ -125,7 +125,186 @@ Load balancers（负载均衡器）使用不同的算法来确定如何分配传
 
 ### 3. API Gateway
 
+<blockquote>
+  <details>
+    <summary>2024/01/03 什么是API Gateway</summary>
+    API Gateway（应用程序编程接口网关）是一个服务，它充当应用程序和后端服务之间的中间层，负责处理API请求、路由、协议转换、增强安全性以及其他相关功能。API
+    Gateway 提供了一个集中式的入口点，使得开发者可以更容易地管理和监控多个微服务或后端服务。
+    <br />
+    以下是 API Gateway 的一些关键特点和功能：
+    <br />
+    1. **请求路由**：根据请求的路径、方法或其他标准将请求路由到相应的后端服务。
+    <br />
+    2. **协议转换**：转换客户端请求和后端服务之间的协议，例如将 HTTP 请求转换为 gRPC
+    请求。
+    <br />
+    3. **安全性**：提供身份验证、授权、数据加密等安全功能，确保只有授权的客户端可以访问特定的API。
+    <br />
+    4. **负载均衡**：在多个后端服务之间分发请求，以提高性能和可用性。
+    <br />
+    5. **限流和速率限制**：限制客户端的请求速率，防止过度使用或滥用API。
+    <br />
+    6. **请求和响应转换**：在请求和响应之间转换数据格式，例如从 JSON 到 XML 或反之。
+    <br />
+    7. **监控和日志记录**：收集API的使用情况、错误信息和其他关键指标，以便进行监控、分析和故障排除。
+    <br />
+    8. **版本管理**：支持多个API版本，使得开发者可以在不中断现有客户端的情况下进行API的更新和修改。
+    <br />
+    API Gateway 在现代的分布式系统和微服务架构中扮演着重要的角色，它简化了API管理、提高了安全性，并提供了一致的接入点，使得开发者和客户端可以更容易地与后端服务进行交互。
+  </details>
+</blockquote>
+
 ### 4. CDN
+
+<blockquote>
+<details>
+<summary>2024/01/03 什么是CDN</summary>
+CDN（内容分发网络，Content Delivery Network）是一个系统或网络，用于将内容（如文档、图像、视频和其他文件）从源服务器缓存到多个地理位置的边缘节点，以便更快、更可靠地向全球用户提供内容。CDN的目的是减少网络延迟、提高内容传输的效率并降低原始服务器的负载。
+
+以下是 CDN 的一些主要特点和优势：
+
+1. **内容缓存**：CDN 将内容存储在离用户更近的位置，这些位置通常是位于不同地理区域的边缘服务器或数据中心。
+
+2. **高性能**：由于内容被缓存到离用户更近的位置，因此可以大大减少内容传输的延迟和时间。
+
+3. **高可用性和冗余**：CDN 网络通常具有高度冗余的结构，以确保即使在某些服务器或数据中心发生故障时，用户仍然可以访问内容。
+
+4. **负载均衡**：CDN 可以分发流量到多个服务器，从而减少单一服务器的负载，提高整体的性能和可用性。
+
+5. **安全性**：某些 CDN 提供了安全功能，如 DDoS 保护、SSL/TLS 加密和安全认证，以确保内容和用户数据的安全。
+
+6. **节省成本**：通过减少原始服务器的负载和网络带宽的使用，CDN 可以帮助组织节省网络运营和维护的成本。
+
+CDN 通常由多个组件和层次结构组成，包括源服务器、边缘节点、负载均衡器、缓存策略和管理工具。当用户请求内容时，CDN 会自动选择最佳的边缘节点来提供内容，从而确保最佳的性能和用户体验。
+
+许多大型的互联网公司和服务提供商都使用 CDN 来加速和优化其内容传输，从而满足全球用户的需求。
+
+</details>
+</blockquote>
+
+CDN（内容分发网络）的工作原理：
+
+<ul
+  class="relative m-0 w-full list-none overflow-hidden p-0 transition-[height] duration-200 ease-in-out"
+  data-te-stepper-init
+  data-te-stepper-type="vertical"
+>
+  <li
+    data-te-stepper-step-ref
+    class="dark:after:bg-neutral-600 relative h-fit after:absolute after:left-[2.45rem] after:top-[3.6rem] after:mt-px after:h-[calc(100%-2.45rem)] after:w-px after:bg-[#e0e0e0] after:content-['']"
+  >
+    <div
+      data-te-stepper-head-ref
+      class="dark:after:bg-neutral-600 flex cursor-pointer items-center p-6 leading-[1.3rem] no-underline after:bg-[#e0e0e0] after:content-[''] hover:bg-[#f9f9f9] focus:outline-none dark:hover:bg-[#3b3b3b]"
+    >
+      <span
+        data-te-stepper-head-icon-ref
+        class="mr-3 flex h-[1.938rem] w-[1.938rem] items-center justify-center rounded-full bg-skin-card text-sm font-medium text-skin-base"
+      >
+        1
+      </span>
+      <span
+        data-te-stepper-head-text-ref
+        class="text-neutral-500 dark:text-neutral-300 after:absolute after:flex after:text-[0.8rem] after:content-[data-content]"
+      >
+        step1
+      </span>
+    </div>
+    <div
+      data-te-stepper-content-ref
+      class="transition-[height, margin-bottom, padding-top, padding-bottom] 6 left-0 overflow-hidden pl-[3.75rem] pr-6 duration-300 ease-in-out"
+    >
+      当用户从一个网站或应用请求内容时，这个请求会被发送到最近的CDN服务器，也被称为边缘服务器。
+      <img src="/notes_astro3/assets/CDN.webp" />
+    </div>
+  </li>
+  <li
+    data-te-stepper-step-ref
+    class="dark:after:bg-neutral-600 relative h-fit after:absolute after:left-[2.45rem] after:top-[3.6rem] after:mt-px after:h-[calc(100%-2.45rem)] after:w-px after:bg-[#e0e0e0] after:content-['']"
+  >
+    <div
+      data-te-stepper-head-ref
+      class="dark:after:bg-neutral-600 flex cursor-pointer items-center p-6 leading-[1.3rem] no-underline after:bg-[#e0e0e0] after:content-[''] hover:bg-[#f9f9f9] focus:outline-none dark:hover:bg-[#3b3b3b]"
+    >
+      <span
+        data-te-stepper-head-icon-ref
+        class="mr-3 flex h-[1.938rem] w-[1.938rem] items-center justify-center rounded-full bg-skin-card text-sm font-medium text-[#40464f]"
+      >
+        2
+      </span>
+      <span
+        data-te-stepper-head-text-ref
+        class="text-neutral-500 dark:text-neutral-300 after:absolute after:flex after:text-[0.8rem] after:content-[data-content]"
+      >
+        step2
+      </span>
+    </div>
+    <div
+      data-te-stepper-content-ref
+      class="transition-[height, margin-bottom, padding-top, padding-bottom] 6 left-0 overflow-hidden pl-[3.75rem] pr-6 duration-300 ease-in-out"
+    >
+      如果这个边缘服务器已经缓存了所请求的内容，它会直接将内容提供给用户。这样做可以减少延迟并提高用户体验，因为内容需要传输的距离更短。
+    </div>
+  </li>
+  <li
+    data-te-stepper-step-ref
+    class="dark:after:bg-neutral-600 relative h-fit after:absolute after:left-[2.45rem] after:top-[3.6rem] after:mt-px after:h-[calc(100%-2.45rem)] after:w-px after:bg-[#e0e0e0] after:content-['']"
+  >
+    <div
+      data-te-stepper-head-ref
+      class="dark:after:bg-neutral-600 flex cursor-pointer items-center p-6 leading-[1.3rem] no-underline after:bg-[#e0e0e0] after:content-[''] hover:bg-[#f9f9f9] focus:outline-none dark:hover:bg-[#3b3b3b]"
+    >
+      <span
+        data-te-stepper-head-icon-ref
+        class="mr-3 flex h-[1.938rem] w-[1.938rem] items-center justify-center rounded-full bg-skin-card text-sm font-medium text-[#40464f]"
+      >
+        3
+      </span>
+      <span
+        data-te-stepper-head-text-ref
+        class="text-neutral-500 dark:text-neutral-300 after:absolute after:flex after:text-[0.8rem] after:content-[data-content]"
+      >
+        step3
+      </span>
+    </div>
+    <div
+      data-te-stepper-content-ref
+      class="transition-[height, margin-bottom, padding-top, padding-bottom] 6 left-0 overflow-hidden pl-[3.75rem] pr-6 duration-300 ease-in-out"
+    >
+      如果边缘服务器上没有缓存所请求的内容，CDN会从源服务器或其他附近的CDN服务器中获取它。一旦内容被获取，它会被缓存到边缘服务器上并提供给用户。
+    </div>
+  </li>
+  <li
+    data-te-stepper-step-ref
+    class="dark:after:bg-neutral-600 relative h-fit after:absolute after:left-[2.45rem] after:top-[3.6rem] after:mt-px after:h-[calc(100%-2.45rem)] after:w-px after:bg-[#e0e0e0] after:content-['']"
+  >
+    <div
+      data-te-stepper-head-ref
+      class="dark:after:bg-neutral-600 flex cursor-pointer items-center p-6 leading-[1.3rem] no-underline after:bg-[#e0e0e0] after:content-[''] hover:bg-[#f9f9f9] focus:outline-none dark:hover:bg-[#3b3b3b]"
+    >
+      <span
+        data-te-stepper-head-icon-ref
+        class="mr-3 flex h-[1.938rem] w-[1.938rem] items-center justify-center rounded-full bg-skin-card text-sm font-medium text-[#40464f]"
+      >
+        4
+      </span>
+      <span
+        data-te-stepper-head-text-ref
+        class="text-neutral-500 dark:text-neutral-300 after:absolute after:flex after:text-[0.8rem] after:content-[data-content]"
+      >
+        step3
+      </span>
+    </div>
+    <div
+      data-te-stepper-content-ref
+      class="transition-[height, margin-bottom, padding-top, padding-bottom] 6 left-0 overflow-hidden pl-[3.75rem] pr-6 duration-300 ease-in-out"
+    >
+      为了确保内容保持最新，CDN会定期检查源服务器以获取变更，并相应地更新其缓存。
+    </div>
+  </li>
+</ul>
+
+> 简而言之，CDN 通过将内容缓存到多个位置的边缘服务器上，加速了内容的传输，从而提供更快速、更可靠的内容访问体验。
 
 ### 5. Forward Proxy vs. Reverse Proxy
 
