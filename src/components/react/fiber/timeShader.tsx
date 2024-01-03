@@ -48,7 +48,7 @@ function FadingImage() {
 export default function App() {
   return (
     <Canvas
-      className="max-w-[100vw]"
+      className="max-w-[100%]"
       style={{ width: "500px", height: "416px", margin: "auto" }}
       camera={{ position: [0, 0, 2], fov: 50 }}
     >

@@ -3,8 +3,25 @@ import '@styles/navbar.css'
 ---
 
 <script>
+const mediaQuery = window.matchMedia("(max-width: 640px)");
 const linkStarts = new WeakMap();
 const linkEnds = new WeakMap();
+
+let isMobile = false;
+function handleMediaChange(e) {
+    if (e.matches) {
+        isMobile = false;
+    } else {
+        isMobile = true;
+    }
+}
+
+mediaQuery.onchange=handleMediaChange;
+
+// 初始化时也可能需要调用一次
+handleMediaChange(mediaQuery);
+
+
 if(document.getElementById("目录")){
 addIntersectionObserver()
 addResizeObserver()
@@ -18,12 +35,6 @@ function addIntersectionObserver() {
       if (!link) return;
       const addRemove = heading.intersectionRatio > 0 ? "add" : "remove";
       link.classList[addRemove]("active");
-    //   if(addRemove==="add") {
-    //     setTimeout(()=>{
-    //         link.scrollIntoView({block:"center"})
-    //     },5000)
-      
-    //   }
       });
     updatePath();
   document.getElementById("目录")&&(new IntersectionObserver((target)=>{
@@ -35,8 +46,8 @@ function addIntersectionObserver() {
       }
   })).observe(document.getElementById("目录"));
   
-    document.querySelector('#目录+ul li:has(a.active)+li:not(:has(a.active))')&&
-  document.querySelector('#目录+ul li:has(a.active)+li:not(:has(a.active))').scrollIntoView({behavior: "smooth"})
+//     document.querySelector('#目录+ul li:has(a.active)+li:not(:has(a.active))')&&
+//   document.querySelector('#目录+ul li:has(a.active)+li:not(:has(a.active))').scrollIntoView({behavior: "smooth"});
   });
   document.querySelectorAll("h2, h3, h4, h5 ").forEach((section) => {
     observer.observe(section);
@@ -95,9 +106,10 @@ function addResizeObserver() {
    initSvg()
     if (!document.querySelector("#目录+ul")) return;
     const observer = new ResizeObserver(() => {
-        console.log("resizing");
-        drawPath();
-    updatePath();
+        if(isMobile){
+            drawPath();
+            updatePath();
+        }
     });
     observer.observe(document.querySelector("#目录+ul"));
 }

@@ -76,13 +76,10 @@
     prose-img:!mt-2 prose-img:border-2 
     prose-img:border-skin-line prose-hr:!border-skin-line;
   }
-
-
-   .prose  code{
-        color: #28a2b7 !important;
-        background-color: transparent !important;
-        }
-        
+  .prose  code{
+    color: #28a2b7 !important;
+    background-color: transparent !important;
+    }
   .prose a {
     @apply hover:!text-skin-accent;
   }

@@ -1,5 +1,5 @@
 ---
-title: es6补漏
+title: ECMAScript补漏
 author: ajn404
 pubDatetime: 2023-08-30T02:36:27Z
 postSlug: es6-plus
@@ -14,7 +14,7 @@ description: "more details about es"
 
 ## 目录
 
-## Array.prototype.reduce ( `callbackfn` [ , initialValue ] )
+## Array reduce
 
 ### 基本语法
 
@@ -61,7 +61,7 @@ console.log(b);
 > of the array are changed, their value as passed to `callbackfn` will be the value at the time reduce visits
 > them; elements that are deleted after the call to reduce begins and before being visited are not visited.
 
-### [String.prototype.localeCompare](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare)
+## [String.prototype.localeCompare](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare)
 
 localeCompare 方法是 JavaScript 字符串对象的一个方法，用于比较两个字符串的大小。它主要用于比较字符串的 Unicode 值，以便在某些语言环境下进行排序。
 
@@ -99,7 +99,7 @@ if (result > 0) {
 
 需要注意的是，localeCompare 方法比较的是字符串的 Unicode 值，而不是它们在屏幕上的显示顺序。因此，它可能会受到字符串的字体和显示设置的影响。
 
-### [Array.prototype.flatMap()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap)
+## [Array.prototype.flatMap()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap)
 
 flatMap 方法接受一个回调函数作为参数，该回调函数用于处理数组中的每个元素，并返回一个新的数组。flatMap 方法会遍历数组中的每个元素，并将回调函数返回的数组中的所有元素合并为一个新数组。
 
@@ -110,7 +110,7 @@ flatMap 方法返回的新数组中的元素顺序与原始数组中的元素顺
 ```js
 const numbers = [1, 2, 3, 4, 5];
 
-const doubledNumbers = numbers.flatMap((number) => [number * 2, number * 3]);
+const doubledNumbers = numbers.flatMap(number => [number * 2, number * 3]);
 
 console.log(doubledNumbers); // [2, 4, 6, 8, 10, 3, 6, 9, 12, 15]
 ```
@@ -121,4 +121,82 @@ console.log(doubledNumbers); // [2, 4, 6, 8, 10, 3, 6, 9, 12, 15]
 
 **flatMap() 方法是一个迭代方法。有关回调函数的详细说明，请参见 Array.prototype.map()。flatMap() 方法等同于调用 map(callbackFn, thisArg) 后再调用 flat(1)——对于每个元素，它都会生成一个新元素数组，并将生成的数组连接起来形成一个新数组。**
 
+## ecma2023
+
+### 1.findLast and findLastIndex
+
+```js
+const array1 = [5, 12, 50, 130, 44];
+const found = array1.findLast(element => element > 45);
+console.log(found);
+```
+
+### 2.new Array methods
+
+- [toReversed()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed)
+
+```js
+const months = ["January", "February", "March", "April", "May"];
+//using toReversed()
+const reversedMonths = months.toReversed();
+console.log(months); // ['January', 'February', 'March', 'April', 'May']; // Original array remains unchanged
+console.log(reversedMonths); // ['May', 'April', 'March', 'February', 'January'];
+```
+
+- toSorted()
+
+- [toSpliced()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/toSpliced)
+
+```js
+const months = ["Jan", "Mar", "Apr", "May"];
+
+// 在索引 1 处添加一个元素
+const months2 = months.toSpliced(1, 0, "Feb");
+console.log(months2); // ["Jan", "Feb", "Mar", "Apr", "May"]
+
+// 从第 2 个索引开始删除两个元素
+const months3 = months2.toSpliced(2, 2);
+console.log(months3); // ["Jan", "Feb", "May"]
+
+// 在索引 1 处用两个新元素替换一个元素
+const months4 = months3.toSpliced(1, 1, "Feb", "Mar");
+console.log(months4); // ["Jan", "Feb", "Mar", "May"]
+
+// 原数组不会被修改
+console.log(months); // ["Jan", "Mar", "Apr", "May"]
+```
+
+- [width](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/with)
+
+> with() 通过返回一个指定索引处的值被新值替换的新数组，来改变数组中指定索引处的值。原数组不会被修改。这使得你可以以链式调用数组方法的方式来对数组进行操作
+
+```js
+const arr = [1, 2, 3, 4, 5];
+console.log(arr.with(2, 6)); // [1, 2, 6, 4, 5]
+console.log(arr); // [1, 2, 3, 4, 5]
+```
+
+### 3.[hashbang grammer](https://github.com/tc39/proposal-hashbang)
+
+[mdn hashbang_comments](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#hashbang_comments)
+
+<details>
+<summary>2023/1/3 什么是hashbang_comments</summary>
+<blockquote>
+`hashbang`（也称为 "shebang"）在编程中指的是 `#!`，它出现在脚本文件的第一行，用于指定脚本的解释器。
+
+在 Web 开发中，特别是在早期，`hashbang`被广泛用于指定前端框架或工具，如 JavaScript 库或框架，来处理单页面应用（SPA）的路由。当用户在浏览器中访问一个带有 `hashbang` 的 URL 时（如 `http://example.com/#!/path/to/resource`），浏览器会忽略 `#!` 之后的内容，并且只请求 `http://example.com/`。然后，JavaScript 会解析 `#!/path/to/resource` 并相应地更新页面内容，而不刷新整个页面。
+
+例如，使用这样的 URL 可以使得 JavaScript 应用在浏览器中更加平滑地进行导航，而不需要整个页面的重新加载。
+
+然而，随着时间的推移和 Web 标准的发展，`hashbang` 的使用逐渐减少，并被 HTML5 的`pushState`和`replaceState`方法以及新的路由管理库（如 React Router 或 Vue Router）所取代。
+
+至于 `hashbang_comments`，这可能是一个特定的标记或指示符，但在标准的 Web 开发文献或实践中并不常见。如果你遇到了这个术语，最好参考具体的上下文或来源来了解其具体含义。
+
+</blockquote>
+
+</details>
+
 ## 链接
+
+- [findLast](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast)
