@@ -308,7 +308,173 @@ CDN（内容分发网络）的工作原理：
 
 ### 5. Forward Proxy vs. Reverse Proxy
 
+<blockquote>
+<details>
+<summary>2024/01/03 正向代理和反向代理</summary>
+
+`vue-cli` 和 `nginx` 都可以用作代理服务器，但它们在实现和使用上有一些主要的区别。以下是它们之间的对比：
+
+### vue-cli 的代理：
+
+1. **目的**：vue-cli 的代理主要用于开发环境中，帮助前端开发者在本地开发时绕过 CORS（跨域资源共享）限制和进行开发调试。
+
+2. **配置**：在 `vue.config.js` 文件中，你可以为开发服务器设置代理配置，例如将某些 API 请求代理到另一个地址。
+
+3. **环境限制**：vue-cli 的代理仅在开发环境中有效，当你将应用部署到生产环境时，这些代理配置不会被应用。
+
+4. **用途**：主要用于开发时的调试和解决 CORS 问题，不适用于生产环境的反向代理或负载均衡。
+
+### nginx 的代理：
+
+1. **功能丰富**：nginx 是一个高性能的 Web 服务器和反向代理服务器，具有强大的负载均衡、缓存、SSL 终止、HTTP/2 支持等功能。
+
+2. **环境**：nginx 通常用于生产环境，作为反向代理、负载均衡器或静态资源服务器。
+
+3. **配置灵活**：nginx 的配置文件提供了丰富的选项和指令，允许进行复杂的路由、重定向、缓存策略等设置。
+
+4. **性能**：nginx 是为高并发和高性能设计的，能够有效地处理大量的并发请求。
+
+5. **用途**：除了代理功能，nginx 还可以用作静态文件服务器、负载均衡器、SSL 终止器、缓存服务器等，适用于多种生产环境的需求。
+
+总结：`vue-cli` 的代理主要用于开发环境中的调试和 CORS 问题解决，而 `nginx` 提供了一个功能丰富、高性能的生产环境代理和服务器解决方案。根据具体的需求和场景，你可以选择合适的代理工具或组合使用它们。
+
+Forward Proxy 和 Reverse Proxy 都是代理服务器的类型，但它们在功能和使用场景上有所不同。以下是它们之间的主要区别：
+
+### Forward Proxy（正向代理）：
+
+1. **客户端代理**：正向代理代表客户端发送请求到目标服务器，并从目标服务器接收响应。客户端必须配置以使用正向代理。
+
+2. **隐私和安全**：正向代理可以用于隐藏客户端的真实 IP 地址和身份，提供匿名性和隐私保护。
+
+3. **访问控制**：正向代理可以用于控制客户端的访问，例如，限制对特定网站的访问或阻止某些内容。
+
+4. **缓存**：正向代理可以缓存经常请求的内容，从而提高访问速度并减少网络带宽使用。
+
+5. **典型应用场景**：用于访问受限或被审查的内容，绕过防火墙限制，提供内容过滤和控制等。
+
+### Reverse Proxy（反向代理）：
+
+1. **服务器代理**：反向代理代表服务器接收客户端的请求，并将请求转发到目标服务器。客户端直接与反向代理通信，而不直接与目标服务器通信。
+
+2. **负载均衡**：反向代理可以将流量分发到多个后端服务器，实现负载均衡和高可用性。
+
+3. **安全性**：反向代理可以为后端服务器提供额外的安全层，如 SSL 终止、请求过滤和认证。
+
+4. **简化架构**：反向代理可以隐藏后端服务器的实际结构和配置，使得更容易管理和扩展应用。
+
+5. **典型应用场景**：用于 Web 应用程序的负载均衡、SSL 终止、内容缓存、安全防护、请求路由和请求转发等。
+
+总结：正向代理和反向代理都充当中间层，但它们在功能、位置和使用方式上有所不同。正向代理主要与客户端相关，而反向代理主要与服务器相关。根据具体的需求和应用场景，可以选择合适的代理类型。
+
+</details>
+</blockquote>
+
 ### 6. Caching
+
+[mdn Cache](https://developer.mozilla.org/zh-CN/docs/Web/API/Cache)
+
+```js
+var CACHE_VERSION = 1;
+
+// 简写标识符映射到特定版本的缓存。
+var CURRENT_CACHES = {
+  font: "font-cache-v" + CACHE_VERSION,
+};
+
+self.addEventListener("activate", function (event) {
+  var expectedCacheNames = Object.keys(CURRENT_CACHES).map(function (key) {
+    return CURRENT_CACHES[key];
+  });
+
+  // 在 promise 成功完成之前，活跃的 worker 不会被视作已激活。
+  event.waitUntil(
+    caches.keys().then(function (cacheNames) {
+      return Promise.all(
+        cacheNames.map(function (cacheName) {
+          if (expectedCacheNames.indexOf(cacheName) == -1) {
+            console.log("Deleting out of date cache:", cacheName);
+
+            return caches.delete(cacheName);
+          }
+        }),
+      );
+    }),
+  );
+});
+
+self.addEventListener("fetch", function (event) {
+  console.log("Handling fetch event for", event.request.url);
+
+  event.respondWith(
+    // 打开以'font'开头的 Cache 对象。
+    caches.open(CURRENT_CACHES["font"]).then(function (·cache) {
+      return cache
+        .match(event.request)
+        .then(function (response) {
+          if (response) {
+            console.log(" Found response in cache:", response);
+
+            return response;
+          }
+        })
+        .catch(function (error) {
+          // 处理 match() 或 fetch() 引起的异常。
+          console.error("  Error in fetch handler:", error);
+
+          throw error;
+        });
+    }),
+  );
+});
+
+```
+
+import Demo from "@components/react/driver/demo.tsx";
+
+<blockquote>
+<details open>
+<summary>2023/01/03 代码解释</summary>
+
+这段代码是一个 Service Worker 的脚本，用于缓存特定版本的字体资源，并在激活时清理旧的缓存。以下是对代码的逐行解释：
+
+<div class="step-1">```javascript var CACHE_VERSION = 1; ```</div>
+
+<div class="step-2">
+     ```javascript
+   var CURRENT_CACHES = {
+     font: "font-cache-v" + CACHE_VERSION,
+   };
+   ```
+</div>
+
+<div class="step-3">
+   ```javascript
+   self.addEventListener("activate", function (event) {
+     ...
+   });
+   ```
+</div>
+
+<div class="step-4">
+   ```javascript
+   self.addEventListener("fetch", function (event) {
+     ...
+   });
+   ```
+</div>
+
+<Demo
+  client:load
+  elements='[
+    {"element":".step-1","popover":{"showProgress":false,"title":"定义缓存版本","description":"这里定义了一个缓存版本，用于创建特定版本的缓存。","align":"center"}},
+    {"element":".step-2","popover":{"showProgress":false,"title":"定义当前缓存的映射","description":"CURRENT_CACHES 对象包含一个简写标识符 font，它映射到一个特定版本的缓存名，格式为 font-cache-v1"}},
+    {"element":".step-3","popover":{"showProgress":false,"side":"over","title":"处理ServiceWorker激活事件","description":"当 Service Worker 被激活时，它会检查所有缓存，删除不匹配当前版本的缓存,在此事件监听器中，它会列出所有预期的缓存名，然后比较实际的缓存名，并删除那些不匹配的旧缓存。"}},
+    {"element":".step-4","popover":{"showProgress":false,"title":"处理网络请求的 fetch 事件","description":"当浏览器尝试获取资源时，该事件监听器会查找缓存中是否有匹配的响应,在此事件监听器中，它会打开名为 font-cache-v1 的缓存，并尝试匹配请求。如果找到缓存的响应，它会返回缓存的响应；否则，它会继续获取资源。"}},
+    { "popover": { "title": "总结", "description": "总之，这段代码实现了一个 Service Worker，用于缓存字体资源，并在激活时清理旧的缓存。这有助于提高应用程序的性能和用户体验，特别是在网络连接不稳定或离线时。"}}    ]'
+/>
+
+</details>
+</blockquote>
 
 ### 7. Data Partitioning
 

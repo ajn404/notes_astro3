@@ -34,6 +34,7 @@ body:has(#目录+ul) header.active #theme-btn{
 
 body:has(#目录+ul) #btn-back-to-bottom,body:has(#目录+ul) #btn-back-to-top{
    @apply sm:right-[350px];
+   background-color: rgb(234 88 12);
 }
 
 #目录.active+ul {

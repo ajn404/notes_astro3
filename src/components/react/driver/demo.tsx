@@ -45,9 +45,9 @@ export default ({ elements }: Pros) => {
   return (
     <div
       onClick={click}
-      className=" text-red cursor-pointer rounded-md p-3 hover:underline"
+      className=" cursor-pointer rounded-md p-3 text-skin-base hover:text-skin-purple hover:underline"
     >
-      点击这里触发小demo
+      点击查看引导
     </div>
   );
 };
