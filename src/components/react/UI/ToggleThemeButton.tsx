@@ -12,7 +12,7 @@ export default () => {
       {theme ? (
         <button
           id="theme-btn"
-          className="focus-outline"
+          className="focus-outline z-[2000]"
           title="Toggles light & dark"
           aria-label="auto"
           aria-live="polite"
@@ -31,7 +31,7 @@ export default () => {
       ) : (
         <button
           id="theme-btn"
-          className="focus-outline"
+          className="focus-outline z-[2000]"
           title="Toggles light & dark"
           aria-label="auto"
           aria-live="polite"
