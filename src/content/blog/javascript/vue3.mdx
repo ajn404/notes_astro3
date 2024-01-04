@@ -156,7 +156,7 @@ const p = new Proxy(obj, {
 
 p 访问 bar 时，这里的 receiver 指向 p，返回 Reflect.get(target,key,receiver)时触发 get 中的 this 也就指向 p
 
-### [vuejs 挑战...](https://cn-vuejs-challenges.netlify.app/questions/10-lifecycle/README.zh-CN.html)
+### [vuejs 挑战... 简单](https://cn-vuejs-challenges.netlify.app/questions/10-lifecycle/README.zh-CN.html)
 
 #### 1.生命周期
 
@@ -612,6 +612,61 @@ age.value = 18;
 import Watchfamily from "@components/vue/challenge/watchfamily.vue";
 
 <Watchfamily client:load />
+
+#### 10.shallowRef 响应式 浅层 ref
+
+```vue
+<script setup lang="ts">
+import { shallowRef, watch } from "vue";
+
+const state = shallowRef({ count: 1 });
+
+// Does NOT trigger
+watch(
+  state,
+  () => {
+    console.log("State.count Updated");
+  },
+  { deep: true }
+);
+
+/**
+ * Modify the code so that we can make the watch callback trigger.
+ */
+state.value = {
+  count: 2,
+};
+</script>
+<template>
+  <div>
+    <p>
+      {{ state.count }}
+    </p>
+  </div>
+</template>
+```
+
+#### 11.依赖注入
+
+```vue
+// Child.vue
+
+<script setup lang="ts">
+// 添加代码,使`count`值注入子组件
+</script>
+
+<template>
+  {{ count }}
+</template>
+```
+
+import InjectChallenge from "@components/vue/challenge/provide.vue";
+
+<InjectChallenge client:load />
+
+### 中等
+
+#### 1.优化性能的指令
 
 ## 链接
 

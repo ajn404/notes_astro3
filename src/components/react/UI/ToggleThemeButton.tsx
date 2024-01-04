@@ -3,15 +3,6 @@ import { watchEffect } from "vue";
 //todo:bug
 export default () => {
   const [theme, setTheme] = useState(false);
-
-  watchEffect(() => {
-    console.log(theme);
-  });
-
-  const change = e => {
-    setTheme(document.querySelector("html")?.dataset.theme === "dark");
-  };
-
   useEffect(() => {
     setTheme(document.querySelector("html")?.dataset.theme === "dark");
   });

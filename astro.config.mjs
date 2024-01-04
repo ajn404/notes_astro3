@@ -51,7 +51,9 @@ export default defineConfig({
         lit({
             include: ["**/lit/*"]
         }),
-        vue({}),
+        vue({
+            appEntrypoint:"/src/components/vue/_app"
+        }),
         tailwind({
             config: {
                 applyBaseStyles: false,
