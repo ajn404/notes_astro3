@@ -45,7 +45,7 @@ export default ({ elements }: Pros) => {
   return (
     <div
       onClick={click}
-      className=" cursor-pointer rounded-md p-3 text-skin-base hover:text-skin-purple hover:underline"
+      className=" cursor-pointer rounded-md p-3 text-skin-orange  hover:text-skin-purple hover:underline"
     >
       点击查看引导
     </div>

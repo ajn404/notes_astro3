@@ -38,7 +38,8 @@ const eleRef = ref()
 const age = ref(2)
 watch(age, () => {
     console.log(eleRef.value)
-})
+},{flush: 'post'})
+//设置 flush: 'post' 将会使侦听器延迟到组件渲染之后再执行。
 age.value = 18
 
 </script>

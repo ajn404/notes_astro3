@@ -429,7 +429,7 @@ self.addEventListener("fetch", function (event) {
 
 ```
 
-import Demo from "@components/react/driver/demo.tsx";
+import DriverDemo from "@components/react/driver/demo.tsx";
 
 <blockquote>
 <details open>
@@ -440,7 +440,7 @@ import Demo from "@components/react/driver/demo.tsx";
 <div class="step-1">```javascript var CACHE_VERSION = 1; ```</div>
 
 <div class="step-2">
-     ```javascript
+    ```javascript
    var CURRENT_CACHES = {
      font: "font-cache-v" + CACHE_VERSION,
    };
@@ -463,7 +463,7 @@ import Demo from "@components/react/driver/demo.tsx";
    ```
 </div>
 
-<Demo
+<DriverDemo
   client:load
   elements='[
     {"element":".step-1","popover":{"showProgress":false,"title":"定义缓存版本","description":"这里定义了一个缓存版本，用于创建特定版本的缓存。","align":"center"}},
@@ -477,6 +477,47 @@ import Demo from "@components/react/driver/demo.tsx";
 </blockquote>
 
 ### 7. Data Partitioning
+
+<blockquote>
+<details>
+<summary>2023/01/04 什么是数据分区（Data Partitioning），具体怎么做</summary>
+
+**数据分区（Data Partitioning）** 是将大型数据集分割成更小、更易管理的部分或分区的过程。这种技术有助于提高查询性能、简化数据管理、实现更好的可扩展性和灵活性，以及增强数据安全性。
+
+数据分区的实现方式取决于所使用的数据库系统和具体的需求，但以下是一些常见的数据分区策略和实施步骤：
+
+1. **范围分区（Range Partitioning）**：根据数据的某个范围（如时间、数字范围等）将数据分区。
+
+   - **实施**：选择一个或多个分区键（例如日期列），并定义每个分区的范围。在创建表时，为每个分区指定一个名称和条件。
+
+2. **列表分区（List Partitioning）**：根据数据的固定列表值进行分区。
+
+   - **实施**：为每个分区定义一个列表值集合，并将数据映射到相应的分区。
+
+3. **哈希分区（Hash Partitioning）**：使用哈希函数将数据均匀地分散到多个分区中。
+
+   - **实施**：选择一个或多个分区键，并为表指定分区数。数据库系统将根据分区键值自动将数据哈希到相应的分区。
+
+4. **轮换分区（Round-robin Partitioning）**：按照轮换方式将数据均匀分配到各个分区中。
+
+   - **实施**：简单地将数据循环地分配到每个分区，无需基于任何特定的分区键。
+
+5. **联合分区（Composite Partitioning）**：结合上述的多种分区策略。
+   - **实施**：例如，可以先使用范围分区按日期划分，然后在每个日期分区内再应用哈希分区。
+
+实施数据分区时，还需要考虑以下关键因素：
+
+- **存储和性能**：分区可以提高查询性能，但可能增加存储需求和复杂性。
+- **数据维护**：如分区切分、合并或迁移。
+- **数据一致性和完整性**：确保数据在分区间的一致性和完整性。
+- **备份和恢复**：处理分区数据的备份和恢复策略。
+
+要成功地实施数据分区，建议深入了解所使用数据库系统的文档和最佳实践，并根据具体需求进行合理的规划和设计。
+
+</details>
+</blockquote>
+
+- todo: [learn postgresql](https://www.postgresqltutorial.com/postgresql-getting-started/load-postgresql-sample-database/)
 
 ### 8. Database Replication
 
