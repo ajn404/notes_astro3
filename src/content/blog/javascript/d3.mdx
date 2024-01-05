@@ -399,17 +399,57 @@ return (
 
 <svg ref={ref}></svg>) } export default Template;
 
-```
+````
 </details>
 
 
+### [Learn to Create D3.js Data Visualizations by Exampl](https://www.sitepoint.com/d3-js-data-visualizations/)
 
+#### bar chart
+
+import BarChart from "@components/react/d3/barChart.tsx";
+
+<BarChart client:load/>
+
+```js
+divElement.selectAll('div')
+            .data([4, 8, 15, 16, 23, 42])
+            .enter()
+            .append('div')
+            .style('height', d => `${d}px`)
+````
+
+#### contribution chart
+
+import ContributionChart from "@components/react/d3/ContributionChart.tsx";
+
+<ContributionChart client:load />
+
+```jsx
+const colorMap = d3.interpolateRgb(d3.rgb("#d6e685"), d3.rgb("#1e6823"));
+
+divElement
+  .selectAll("div")
+  .data([0.2, 0.4, 0, 0, 0.13, 0.92])
+  .enter()
+  .append("div")
+  .style("background-color", d => {
+    return d == 0 ? "#eee" : colorMap(d);
+  });
+```
+
+- [interpolateRgb](https://d3js.org/d3-interpolate/color#interpolateRgb)
+
+> Interpolation is a key tool in graphics programming and animation
 
 ## 链接
 
-- [d3.js官网](https://d3js.org/what-is-d3)
+- [d3.js 官网](https://d3js.org/what-is-d3)
 - [d3 in react](https://2019.wattenberger.com/blog/react-and-d3)
-- [探索d3](https://observablehq.com/explore)
+- [探索 d3](https://observablehq.com/explore)
 - [d3 api index](https://d3js.org/api)
 - [webgl](https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API)
+
+```
+
 ```

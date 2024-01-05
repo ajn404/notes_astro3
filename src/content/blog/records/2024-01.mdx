@@ -521,6 +521,74 @@ import DriverDemo from "@components/react/driver/demo.tsx";
 
 ### 8. Database Replication
 
+数据库复制
+
+<blockquote>
+<details>
+<summary>2023/01/05 什么是Database Replication，postgrsql怎么做Database Replication</summary>
+
+数据库复制（Database Replication）是指将一个数据库的数据和结构复制到另一个或多个数据库的过程。其主要目的是提高数据的可用性、提供备份解决方案、分散读取负载或提供故障切换。
+
+PostgreSQL 支持多种复制方式，其中最常用的是流复制（Streaming Replication）。
+
+以下是如何在 PostgreSQL 中设置流复制的简要步骤：
+
+1. **设置主数据库**：
+
+   - 在 `postgresql.conf` 文件中，确保以下参数已设置或确认正确：
+     ```conf
+     listen_addresses = 'your_primary_server_ip'
+     wal_level = replica
+     max_wal_senders = 10
+     ```
+   - 在 `pg_hba.conf` 文件中，允许从备用服务器连接。例如：
+     ```conf
+     host    replication     replicator      your_secondary_server_ip/32        md5
+     ```
+   - 重新启动 PostgreSQL 以使更改生效。
+
+2. **创建备用服务器**：
+
+   - 安装 PostgreSQL 并设置与主服务器相同的版本。
+   - 创建一个空的数据目录。
+   - 设置 `postgresql.conf` 文件以连接到主服务器：
+     ```conf
+     primary_conninfo = 'host=your_primary_server_ip port=5432 user=replicator password=your_password'
+     standby_mode = on
+     ```
+   - 启动备用服务器。
+
+3. **初始化流复制**：
+
+   - 在备用服务器上，执行以下 SQL 命令：
+     ```sql
+     SELECT pg_start_backup('base_backup');
+     ```
+
+4. **从主服务器复制数据**：
+
+   - 在备用服务器上，使用 `pg_basebackup` 工具从主服务器获取基础备份：
+     ```bash
+     pg_basebackup -h your_primary_server_ip -D /path/to/standby/data -U replicator -v -P
+     ```
+
+5. **启动流复制**：
+   - 在备用服务器上，创建一个名为 `recovery.conf` 的文件，并设置以下内容：
+     ```conf
+     standby_mode = 'on'
+     primary_conninfo = 'host=your_primary_server_ip port=5432 user=replicator password=your_password'
+     ```
+   - 重新启动备用服务器。
+
+完成上述步骤后，您应该已经设置了 PostgreSQL 的流复制。在主服务器上进行的更改会自动复制到备用服务器，确保数据的冗余和可用性。
+
+请注意，此指南提供了一个基础的流复制设置。在生产环境中，您可能需要考虑更多的配置和最佳实践。
+
+</details>
+</blockquote>
+
+- [postgresql streaming-replication app-pgbasebackup](https://www.postgresql.org/docs/current/app-pgbasebackup.html)
+
 ### 9. Distributed Messaging Systems
 
 ### 10. Microservices
