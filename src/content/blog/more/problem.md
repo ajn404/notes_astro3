@@ -10,6 +10,8 @@ tags:
 description: "遇到的问题记录"
 ---
 
+## 目录
+
 ## echarts graph 关系图报错
 
 <div class="red">
@@ -88,3 +90,5 @@ autoreconf 是一个用于自动配置 GNU 软件包的工具，通常在安装�
 😭
 
 不，并没好
+
+**结果把 astro2 升级到 3 就好了**
