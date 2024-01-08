@@ -16,7 +16,7 @@ import Text from "@components/react/UI/Text.tsx";
 
 ## 目录
 
-## 非原始值的响应式方案
+## Response scheme of non -original value
 
 ### proxy & reflect
 
@@ -81,9 +81,9 @@ Reflect.get(a, 1, ["one", "one"]); //one
 a; // ["zero","zero"]
 ```
 
-#### [js 中的访问器 getter](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/get)
+#### [The interviewer Getter in JS](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/get)
 
-#### 第四节实现的响应式数据代码
+#### Section 4 The responsive data code implemented
 
 ```js
 const obj = {foo:1}
@@ -156,9 +156,9 @@ const p = new Proxy(obj, {
 
 p 访问 bar 时，这里的 receiver 指向 p，返回 Reflect.get(target,key,receiver)时触发 get 中的 this 也就指向 p
 
-### [vuejs 挑战... 简单](https://cn-vuejs-challenges.netlify.app/questions/10-lifecycle/README.zh-CN.html)
+### [vuejs Challenge ... simple](https://cn-vuejs-challenges.netlify.app/questions/10-lifecycle/README.zh-CN.html)
 
-#### 1.生命周期
+#### 1.life cycle
 
 onMounted()
 onUpdated()
@@ -173,11 +173,11 @@ onActivated()
 onDeactivated()
 onServerPrefetch()
 
-#### 2.下一次 DOM 更新
+#### 2.Next DOM update
 
 nextTick()
 
-#### 3.DOM 传送门
+#### 3.DOM Portal
 
 [\<Teleport>](https://vuejs.org/api/built-in-components.html#teleport)
 
@@ -196,7 +196,7 @@ const msg = "Hello World";
 </template>
 ```
 
-#### 4.动态 css
+#### 4.dynamic css
 
 [v-bind in css](https://vuejs.org/api/sfc-css-features.html#v-bind-in-css)
 
@@ -224,7 +224,7 @@ p {
 </style>
 ```
 
-#### 5.ref 全家桶
+#### 5.ref Family bucket
 
 [reactivity utilities](https://vuejs.org/api/reactivity-utilities.html#isref)
 
@@ -291,7 +291,7 @@ console.log(fooRef.value === 3);
 </template>
 ```
 
-#### 6.阻止事件冒泡
+#### 6.Prevent incident bubbling
 
 使用.stop
 
@@ -364,7 +364,7 @@ const click2 = () => {
 </template>
 ```
 
-#### 7.响应性丟失(使用 toRefs)
+#### 7.Response loss (using ToreFS)
 
 [toRefs](https://cn.vuejs.org/api/reactivity-utilities.html#torefs)
 
@@ -442,7 +442,7 @@ const {
 </template>
 ```
 
-#### 8.[大写](https://cn-vuejs-challenges.netlify.app/questions/305-capitalize/README.zh-CN.html)
+#### 8.[capital](https://cn-vuejs-challenges.netlify.app/questions/305-capitalize/README.zh-CN.html)
 
 ```vue
 <script setup>
@@ -465,7 +465,7 @@ import ToUpper from "@components/vue/challenge/toUpperCase.vue";
 
 <ToUpper client:load />
 
-#### 9.可写的计算属性 computed=>writable
+#### 9.Writable calculation attribute computed=>writable
 
 ```vue
 <script setup lang="ts">
@@ -541,7 +541,7 @@ clearInterval(timer)
 </details>
 
 
-#### 10.watch全家桶
+#### 10.watch Family bucket
 
 ```vue
 <script setup lang="ts">
@@ -613,7 +613,7 @@ import Watchfamily from "@components/vue/challenge/watchfamily.vue";
 
 <Watchfamily client:load />
 
-#### 10.shallowRef 响应式 浅层 ref
+#### 10.shallowRef Residential shallow layerref
 
 ```vue
 <script setup lang="ts">
@@ -646,7 +646,7 @@ state.value = {
 </template>
 ```
 
-#### 11.依赖注入
+#### 11.Dependence
 
 ```vue
 // Child.vue
@@ -664,9 +664,9 @@ import InjectChallenge from "@components/vue/challenge/provide.vue";
 
 <InjectChallenge client:load />
 
-### 中等
+### medium
 
-#### 1.优化性能的指令
+#### 1.Optimized instructions
 
 [v-once](https://cn.vuejs.org/api/built-in-directives.html#v-once)
 
@@ -674,12 +674,86 @@ import Once from "@components/vue/challenge/once.vue";
 
 <Once client:load />
 
-#### 2.切换器
+#### 2.Switch
 
 import Toggle from "@components/vue/challenge/toggle.vue";
 
 <Toggle client:load />
 
-## 链接
+#### 3.util
+
+import Util from "@components/vue/challenge/util.vue";
+
+<Util client:load />
+
+#### 4.counter
+
+import Counter from "@components/vue/challenge/counter.vue";
+
+<Counter client:load />
+
+#### 5.localstorage
+
+**实现本地存储**
+
+import Storage from "@components/vue/challenge/storage.vue";
+
+<Storage client:load client:only="vue" />
+
+<blockquote>
+<details>
+<summary>2024/01/08 vue3中的customRef</summary>
+
+在 Vue 3 中，`customRef` 是一个新的响应式引用工具，它允许你自定义依赖跟踪。但要注意的是，`customRef` 主要用于特定的高级场景，大多数情况下，你不需要使用它。
+
+如果你想使用 `customRef` 和 `watch` 结合起来，首先你需要理解 `customRef` 的工作方式。`customRef` 接受一个函数作为其唯一参数，这个函数会在每次访问引用时被调用，它应该返回一个值和一个依赖数组。
+
+以下是一个简单的例子，使用 `customRef` 创建一个计数器，并使用 `watch` 监听其值：
+
+```javascript
+import { customRef, watch } from "vue";
+
+function useCustomCounter(initialValue) {
+  let count = initialValue;
+
+  return customRef((track, trigger) => {
+    return {
+      get() {
+        track(); // 声明依赖
+        return count;
+      },
+      set(newValue) {
+        if (newValue !== count) {
+          count = newValue;
+          trigger(); // 触发更新
+        }
+      },
+    };
+  });
+}
+
+export default {
+  setup() {
+    const counter = useCustomCounter(0);
+
+    watch(counter, (newValue, oldValue) => {
+      console.log(`Counter changed from ${oldValue} to ${newValue}`);
+    });
+
+    return {
+      counter,
+    };
+  },
+};
+```
+
+在上述代码中，我们创建了一个自定义的响应式引用 `counter`，然后使用 `watch` 监听其变化。
+
+总结一下，`customRef` 让你有更多的灵活性来定义自己的响应式逻辑，但在实际开发中，通常只有在特定的高级场景下才需要使用它。
+
+</details>
+</blockquote>
+
+## Link
 
 - [vuejs 挑战](https://cn-vuejs-challenges.netlify.app/)
