@@ -49,6 +49,9 @@ window.onload = () => {
     setPreference();
     //   alert("light css is ugly")
   });
+
+  // Runs on view transitions navigation
+  document.addEventListener("astro:after-swap", setPreference);
 };
 
 // sync with system changes
