@@ -21,7 +21,6 @@ import { fileURLToPath } from "url";
 
 const __filenameNew = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filenameNew);
-console.log("dir name", __dirname);
 // https://astro.build/config
 export default defineConfig({
   server: {
@@ -36,7 +35,6 @@ export default defineConfig({
   site: "https://ajn404.github.io/notes_astro3/", // replace this with your deployed domain
   integrations: [
     mdx({
-      drafts: true,
       syntaxHighlight: "shiki",
       shikiConfig: {
         theme: "material-theme-palenight",
@@ -84,7 +82,6 @@ export default defineConfig({
       theme: "material-theme-palenight",
       wrap: true,
     },
-    drafts: true,
     extendDefaultPlugins: true,
   },
   vite: {

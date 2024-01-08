@@ -2,10 +2,12 @@
   "extends": "astro/tsconfigs/base",
   "exclude": ["snippets/**/*"],
   "include": ["**/*.ts", "**/*.tsx", "**/*.vue", "**/*.astro"],
+
   "compilerOptions": {
     "baseUrl": "src",
     "jsx": "react-jsx",
     "allowJs": true,
+    "skipLibCheck": true,
     "paths": {
       "@assets/*": ["assets/*"],
       "@config": ["config.ts"],
