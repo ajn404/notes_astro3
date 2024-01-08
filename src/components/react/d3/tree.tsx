@@ -1,8 +1,15 @@
 import * as d3 from "d3";
 import type { SimulationNodeDatum, SimulationLinkDatum } from "d3";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import data from "./tree.json";
-const Circle = () => {
+
+interface Props {
+  children: ReactNode;
+  float?: Boolean;
+}
+
+const Circle: React.FunctionComponent<Props> = props => {
+  console.log(props);
   const ref = useRef<SVGSVGElement | null>(null);
   useEffect(() => {
     const svgElement = d3.select(ref.current);
@@ -43,12 +50,13 @@ const Circle = () => {
       .force("charge", d3.forceManyBody().strength(-50))
       .force("x", d3.forceX())
       .force("y", d3.forceY());
-    svgElement
-      .attr("viewBox", [-width / 2, -height / 2, width, height])
-      .attr(
-        "style",
-        `width:${100}vw;max-width: 100%; height: calc( 100vh - 100px);position:absolute;left:0;top:100px;pointer-events:none;`
-      );
+    svgElement.attr("viewBox", [-width / 2, -height / 2, width, height]).attr(
+      "style",
+      `width:${100}vw;max-width: 100%; height: calc( 100vh - 100px);
+        position:${
+          props?.float ? "absolute" : "static"
+        };left:0;top:100px;pointer-events:none;`
+    );
     const link = svgElement
       .append("g")
       .attr("stroke", "#999")

@@ -17,20 +17,20 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
 <script>
 
-import { registerMicroApps, 
-    // start
- } from 'qiankun';
+// import { registerMicroApps, 
+//     // start
+//  } from 'qiankun';
 
-registerMicroApps([
-  {
-    name: 'reactApp',
-    entry: {
-        scripts:["http://localhost:5173/apps/default/main.ts"]
-    },
-    container: '#editor-container',
-    activeRule: '/notes_astro3',
-  }
-]);
+// registerMicroApps([
+//   {
+//     name: 'reactApp',
+//     entry: {
+//         scripts:["http://localhost:5173/apps/default/main.ts"]
+//     },
+//     container: '#editor-container',
+//     activeRule: '/notes_astro3',
+//   }
+// ]);
 // 启动 qiankun
 // start();
 </script>
