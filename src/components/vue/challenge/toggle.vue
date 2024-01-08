@@ -18,7 +18,7 @@ const [state, toggle] = useToggle(false)
 
 <template>
     <p>State: {{ state ? 'ON' : 'OFF' }}</p>
-    <p @click="toggle" class="tw-button">
+    <p @click="toggle" class="tw-button select-none">
         Toggle state
     </p>
 </template>

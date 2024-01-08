@@ -84,6 +84,8 @@ function addIntersectionObserver() {
 
 function initSvg (){
     const appElement = document.querySelector("#目录+ul");
+    if (!appElement) return;
+
 const svgElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 const pathElement = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 

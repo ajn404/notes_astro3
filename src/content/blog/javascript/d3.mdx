@@ -22,9 +22,7 @@ import Common from "@components/react/doodle/common.tsx";
 
 ## 简介
 
-<fieldset>
-
-{" "}
+<fieldset class="max-w-full hidden">
 
 <legend>什么是D3</legend>
 
@@ -90,7 +88,7 @@ npm install d3
 
 ## demo
 
-### tree 组件
+### tree component
 
 ```mdx
 import Tree from "@components/react/d3/tree";
@@ -98,7 +96,7 @@ import Tree from "@components/react/d3/tree";
 <Tree client:load />
 ```
 
-### [齿轮组件](https://observablehq.com/d/f4715544ebbb94fd)
+### [Gear](https://observablehq.com/d/f4715544ebbb94fd)
 
 import Gear from "@components/react/d3/gear";
 
@@ -272,7 +270,7 @@ export default Gear;
 
 </details>
 
-## 数据可视化
+## Visualizations
 
 ### html + css
 
@@ -326,9 +324,11 @@ import Common from "@components/react/doodle/common.tsx";
 
 - [svg basic](/notes_astro3/posts/svg)
 
-### d3 基础
+### d3 basic
 
-#### d3.arc() 弧
+#### d3.arc()
+
+弧
 
 import PracticeArc from "@components/react/d3/practice-arc.tsx";
 
@@ -369,7 +369,9 @@ export default () => {
 
 </details>
 
-#### d3.axisBottom() 底部坐标轴
+#### d3.axisBottom()
+
+底部坐标轴
 
 import PracticeAxisBottom from "@components/react/d3/practice-axis-bottom.tsx";
 
@@ -442,6 +444,10 @@ divElement
 
 > Interpolation is a key tool in graphics programming and animation
 
+import Interpolation from "@components/react/d3/interpolateRgb.tsx";
+
+<Interpolation client:load />
+
 ## 链接
 
 - [d3.js 官网](https://d3js.org/what-is-d3)
@@ -449,7 +455,3 @@ divElement
 - [探索 d3](https://observablehq.com/explore)
 - [d3 api index](https://d3js.org/api)
 - [webgl](https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API)
-
-```
-
-```
