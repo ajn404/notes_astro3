@@ -77,7 +77,7 @@ const Circle = () => {
       .data(nodes)
       .enter()
       .append("text")
-      .text((d) => d.data.name)
+      .text(d => d.data.name)
       .attr("style", "font-size:0.5em");
     simulation.on("tick", () => {
       link

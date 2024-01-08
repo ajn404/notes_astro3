@@ -108,14 +108,14 @@ export const useParticle = (
           }
         }
         draw(context: CanvasRenderingContext2D) {
-          this.particles.forEach((item) => item.draw(context));
+          this.particles.forEach(item => item.draw(context));
         }
         update() {
-          this.particles.forEach((item) => item.update());
+          this.particles.forEach(item => item.update());
         }
 
         wrap() {
-          this.particles.forEach((item) => item.wrap());
+          this.particles.forEach(item => item.wrap());
         }
       }
 

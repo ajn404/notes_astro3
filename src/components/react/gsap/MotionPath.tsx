@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 const App = () => {
   useEffect(() => {
-    import("gsap/MotionPathPlugin").then((res) => {
+    import("gsap/MotionPathPlugin").then(res => {
       const MotionPathPlugin = res.default;
       gsap.registerPlugin(MotionPathPlugin);
       gsap.set(".astronaut", { scale: 0.5, autoAlpha: 1 });
@@ -19,7 +19,7 @@ const App = () => {
         },
       });
 
-      import("gsap/ScrollTrigger").then((res) => {
+      import("gsap/ScrollTrigger").then(res => {
         const ScrollTrigger = res.default;
         ScrollTrigger.create({
           trigger: `.astronaut`,

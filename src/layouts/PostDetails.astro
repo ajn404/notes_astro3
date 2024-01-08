@@ -25,9 +25,7 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
   <div class=" flex w-full max-w-[100vw] justify-start px-2">
     <button
       class="focus-outline mb-2 mt-8 flex hover:opacity-75"
-      onclick="
-      location.replace(location.origin+'/notes_astro3/posts')
-      "
+      onclick="history.back()"
     >
       <svg xmlns="http://www.w3.org/2000/svg"
         ><path
@@ -37,7 +35,7 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
     </button>
   </div>
   <main id="main-content">
-    <h1 class="post-title">{title}</h1>
+    <h1 class="post-title" transition:name={slugifyStr(title)}>{title}</h1>
     <Datetime datetime={pubDatetime} size="lg" className="my-2" />
      <div class="flex flex-wrap gap-4 text-sm justify-end">
         <span>

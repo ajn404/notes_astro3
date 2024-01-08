@@ -1,6 +1,6 @@
 ---
 title: 重装mac
-author: ajn404
+
 pubDatetime: 2023-09-19T08:52:10Z
 postSlug: remac
 featured: false

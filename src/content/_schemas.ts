@@ -1,9 +1,11 @@
 import { z } from "astro:content";
+import { SITE } from "@config";
 
 export const blogSchema = z
   .object({
-    author: z.string().optional(),
+    author: z.string().optional().default(SITE.author),
     pubDatetime: z.date(),
+    modDatetime: z.date().optional().nullable(),
     upDateTime: z.date().optional(),
     title: z.string(),
     postSlug: z.string().optional(),

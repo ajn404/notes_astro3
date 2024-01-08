@@ -114,14 +114,14 @@ const Gear = () => {
         },
       ])
       .join("path")
-      .attr("fill", (d) => d.fill)
-      .attr("d", (d) => gear({ ...d, toothRadius: 0.008, holeRadius: 0.02 }));
+      .attr("fill", d => d.fill)
+      .attr("d", d => gear({ ...d, toothRadius: 0.008, holeRadius: 0.02 }));
 
     Object.assign(svg.node() as SVGSVGElement, {
       update({ angle, frameAngle }: { angle: number; frameAngle: number }) {
         path.attr(
           "transform",
-          (d) => `translate(${d.origin}) rotate(${(angle / d.radius) % 360})`
+          d => `translate(${d.origin}) rotate(${(angle / d.radius) % 360})`
         );
         frame.attr("transform", `rotate(${frameAngle % 360})`);
       },

@@ -36,7 +36,7 @@ function formatTime(value: string) {
   return time;
 }
 
-export const Audio: React.FC<any> = (props) => {
+export const Audio: React.FC<any> = props => {
   const { src, width = "80%", height = "30px" } = props;
 
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -64,19 +64,19 @@ export const Audio: React.FC<any> = (props) => {
         });
       });
 
-      audioRef.current.addEventListener("loadedmetadata", (e) => {
+      audioRef.current.addEventListener("loadedmetadata", e => {
         const duration = transTime(
           (e.target as HTMLAudioElement).duration as number
         );
         setDuration(duration);
       });
-      audioRef.current.addEventListener("play", (_res) => {
+      audioRef.current.addEventListener("play", _res => {
         setToggle(false);
       });
       audioRef.current.addEventListener("pause", () => {
         setToggle(true);
       });
-      audioRef.current.addEventListener("timeupdate", (e) => {
+      audioRef.current.addEventListener("timeupdate", e => {
         let value =
           (e.target as HTMLAudioElement).currentTime /
           (audioRef.current as HTMLAudioElement).duration;

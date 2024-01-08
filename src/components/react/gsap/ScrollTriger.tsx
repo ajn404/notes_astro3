@@ -4,7 +4,7 @@ import { useEffect } from "react";
 const App = () => {
   const items = ["color-warm-frame", "color-spring-warmth", "color-night-fade"];
   useEffect(() => {
-    import("gsap/ScrollTrigger").then((res) => {
+    import("gsap/ScrollTrigger").then(res => {
       const ScrollTrigger = res.default;
       gsap.registerPlugin(ScrollTrigger);
       gsap.to(`.${items[items.length - 1]}`, {

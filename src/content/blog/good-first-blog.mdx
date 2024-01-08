@@ -1,6 +1,6 @@
 ---
 title: 第一篇博客
-author: ajn404
+
 pubDatetime: 2023-08-28 02:49:58
 postSlug: 第一篇博客
 featured: true
@@ -97,7 +97,7 @@ const Doodle: React.FunctionComponent<Props> = ({ children, download }) => {
   let doodle = useRef<any>(null);
   let [show, setShow] = useState(false);
   const click = () => {
-    setShow((show) => !show);
+    setShow(show => !show);
   };
   useEffect(() => {
     setShow(true);
@@ -186,7 +186,7 @@ pnpm i @studio-freight/lenis
 
 ```ts
 const lenis = new Lenis();
-lenis.on("scroll", (e) => {
+lenis.on("scroll", e => {
   console.log(e);
 });
 function raf(time) {

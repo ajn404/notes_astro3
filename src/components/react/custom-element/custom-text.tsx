@@ -20,10 +20,11 @@ const CustomTextWrapper: React.FC = () => {
         root.render(component);
       }
     }
-    customElements.define("custom-text", MyWebComponent);
+    if (!customElements.get("custom-text"))
+      customElements.define("custom-text", MyWebComponent);
 
     return () => {
-      root.unmount();
+      console.log(root);
     };
   }, []);
 

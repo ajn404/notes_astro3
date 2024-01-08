@@ -30,7 +30,7 @@ const Basic = ({ sketch }: Props) => {
   let collection: p5[] = [];
 
   const start = () => {
-    import("p5").then((p5) => {
+    import("p5").then(p5 => {
       if (container.current) {
         p = new p5.default(sketch || defaultSketch, container.current);
         collection.push(p);

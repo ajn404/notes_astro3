@@ -21,7 +21,7 @@ export default ({ type }: Props) => {
         type="range"
         id="volume"
         value={x1}
-        onChange={(e) => {
+        onChange={e => {
           setx1(e.target.value);
         }}
         name="volume"
@@ -33,7 +33,7 @@ export default ({ type }: Props) => {
         type="range"
         id="volume"
         value={x2}
-        onChange={(e) => {
+        onChange={e => {
           setx2(e.target.value);
         }}
         name="volume"
@@ -45,7 +45,7 @@ export default ({ type }: Props) => {
         type="range"
         id="volume"
         value={y1}
-        onChange={(e) => {
+        onChange={e => {
           sety1(e.target.value);
         }}
         name="volume"
@@ -57,7 +57,7 @@ export default ({ type }: Props) => {
         type="range"
         id="volume"
         value={y2}
-        onChange={(e) => {
+        onChange={e => {
           sety2(e.target.value);
         }}
         name="volume"
@@ -71,7 +71,7 @@ export default ({ type }: Props) => {
         id="head"
         name="head"
         value={color1}
-        onChange={(e) => {
+        onChange={e => {
           setColor1(e.target.value);
         }}
       />
@@ -81,7 +81,7 @@ export default ({ type }: Props) => {
         id="head"
         name="head"
         value={color2}
-        onChange={(e) => {
+        onChange={e => {
           setColor2(e.target.value);
         }}
       />

@@ -1,6 +1,6 @@
 ---
 title: 10月gpt问答
-author: ajn404
+
 pubDatetime: 2023-10-18 22:13:00
 postSlug: gpt-2023-10
 featured: false
@@ -188,14 +188,14 @@ function loadData() {
     index++;
 
     fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => {
+      .then(response => response.json())
+      .then(data => {
         // 处理数据
         if (index < apiList.length) {
           setTimeout(fetchData, 100);
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.error("请求失败:", error);
       });
   }

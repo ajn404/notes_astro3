@@ -168,7 +168,7 @@ export default () => {
         <input
           type="range"
           value={width.toString()}
-          onChange={(e) => {
+          onChange={e => {
             setWidth(Number(e.target.value));
             if (started) restart();
             else click();
@@ -190,7 +190,7 @@ export default () => {
         <input
           type="range"
           value={height.toString()}
-          onChange={(e) => {
+          onChange={e => {
             setHeight(Number(e.target.value));
             if (started) restart();
             else click();

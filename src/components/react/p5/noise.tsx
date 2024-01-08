@@ -24,7 +24,7 @@ const Noise = () => {
   let p: p5;
 
   const start = () => {
-    import("p5").then((p5) => {
+    import("p5").then(p5 => {
       if (container.current) {
         p = new p5.default(sketch, container.current);
         arr.push(p);

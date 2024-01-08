@@ -18,9 +18,9 @@ function Box(props: JSX.IntrinsicElements["mesh"]) {
       {...props}
       ref={ref}
       scale={clicked ? 3 : 1}
-      onClick={(event) => click(!clicked)}
-      onPointerOver={(event) => hover(true)}
-      onPointerOut={(event) => hover(false)}
+      onClick={event => click(!clicked)}
+      onPointerOver={event => hover(true)}
+      onPointerOut={event => hover(false)}
     >
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />

@@ -1,6 +1,6 @@
 ---
 title: kateX math table,公式对照表
-author: ajn404
+
 pubDatetime: 2023-09-06T16:03:08Z
 postSlug: math-table
 featured: false

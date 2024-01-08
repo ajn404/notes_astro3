@@ -5,6 +5,7 @@ import "driver.js/dist/driver.css";
 import "@styles/components.scss";
 // import "@code-hike/mdx/dist/index.css"
 import Header from "@components/UI/Header.astro";
+import { ViewTransitions } from "astro:transitions";
 
 import "./KeySearch.astro"
 
@@ -83,7 +84,7 @@ const socialImageURL = new URL(
         />
       )
     }
-
+    <ViewTransitions />
     <script is:inline src=`${import.meta.env.BASE_URL}/toggle-theme.js`></script>
     
   </head>

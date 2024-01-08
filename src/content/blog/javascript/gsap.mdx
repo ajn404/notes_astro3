@@ -1,6 +1,6 @@
 ---
 title: 玩转gsap
-author: ajn404
+
 pubDatetime: 2023-08-31T06:44:27Z
 postSlug: gsap
 featured: false
@@ -34,7 +34,7 @@ import { useEffect } from "react";
 const App = () => {
   const items = ["color-warm-frame", "color-spring-warmth", "color-night-fade"];
   useEffect(() => {
-    import("gsap/ScrollTrigger").then((res) => {
+    import("gsap/ScrollTrigger").then(res => {
       const ScrollTrigger = res.default;
       gsap.registerPlugin(ScrollTrigger);
       gsap.to(`.${items[items.length - 1]}`, {
@@ -92,7 +92,7 @@ import MotionPath from "@components/react/gsap/MotionPath";
 
 ```tsx
 useEffect(() => {
-  import("gsap/MotionPathPlugin").then((res) => {
+  import("gsap/MotionPathPlugin").then(res => {
     const MotionPathPlugin = res.default;
     gsap.registerPlugin(MotionPathPlugin);
     gsap.set(".astronaut", { scale: 0.5, autoAlpha: 1 });
@@ -108,7 +108,7 @@ useEffect(() => {
       },
     });
 
-    import("gsap/ScrollTrigger").then((res) => {
+    import("gsap/ScrollTrigger").then(res => {
       const ScrollTrigger = res.default;
       ScrollTrigger.create({
         trigger: `.astronaut`,

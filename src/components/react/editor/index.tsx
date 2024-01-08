@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 export default () => {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    import("@blocksuite/editor").then((res) => {
+    import("@blocksuite/editor").then(res => {
       const editor = new res.SimpleAffineEditor();
       console.log(res);
 
