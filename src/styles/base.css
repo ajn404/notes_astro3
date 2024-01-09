@@ -80,6 +80,14 @@
     color: #28a2b7 !important;
     background-color: transparent !important;
   }
+  .prose pre{
+    padding-right:1em;
+  }
+
+  .prose pre::-webkit-scrollbar{
+    display: none;
+    height:0;
+  }
   .prose a {
     @apply hover:!text-skin-accent;
   }
@@ -256,6 +264,10 @@ details::-webkit-scrollbar {
   }
 
   #btn-back-to-top {
+    display: none;
+  }
+
+  #目录 + ul{
     display: none;
   }
 }
