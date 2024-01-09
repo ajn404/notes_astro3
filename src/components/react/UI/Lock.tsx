@@ -1,7 +1,6 @@
 import React from "react";
 import { type FC, useState, useEffect, useRef, useContext } from "react";
 import classNames from "classnames";
-import "./lock.scss";
 
 enum UserStatus {
   LoggedIn = "Logged In",
