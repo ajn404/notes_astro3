@@ -1,4 +1,5 @@
 import React from "react";
+import { type FC, useState, useEffect, useRef, useContext } from "react";
 import classNames from "classnames";
 import "./lock.scss";
 
@@ -87,9 +88,9 @@ const LogInUtility: ILogInUtility = {
 };
 
 const useCurrentDateEffect = (): Date => {
-  const [date, setDate] = React.useState<Date>(new Date());
+  const [date, setDate] = useState<Date>(new Date());
 
-  React.useEffect(() => {
+  useEffect(() => {
     const interval: NodeJS.Timeout = setInterval(() => {
       const update: Date = new Date();
 
@@ -115,13 +116,13 @@ interface IScrollableComponentProps {
   id?: string;
 }
 
-const ScrollableComponent: React.FC<IScrollableComponentProps> = (
+const ScrollableComponent: FC<IScrollableComponentProps> = (
   props: IScrollableComponentProps
 ) => {
   const ref: React.MutableRefObject<HTMLDivElement> =
-    React.useRef<HTMLDivElement>(null);
+    useRef<HTMLDivElement>(null);
 
-  const [state, setStateTo] = React.useState<IScrollableComponentState>({
+  const [state, setStateTo] = useState<IScrollableComponentState>({
     grabbing: false,
     position: defaultPosition(),
   });
@@ -169,8 +170,8 @@ const ScrollableComponent: React.FC<IScrollableComponentProps> = (
   );
 };
 
-const WeatherSnap: React.FC = () => {
-  const [temperature] = React.useState<number>(N.rand(65, 85));
+const WeatherSnap: FC = () => {
+  const [temperature] = useState<number>(N.rand(65, 85));
 
   return (
     <span className="weather">
@@ -181,7 +182,7 @@ const WeatherSnap: React.FC = () => {
   );
 };
 
-const Reminder: React.FC = () => {
+const Reminder: FC = () => {
   return (
     <div className="reminder">
       <div className="reminder-icon">
@@ -195,7 +196,7 @@ const Reminder: React.FC = () => {
   );
 };
 
-const Time: React.FC = () => {
+const Time: FC = () => {
   const date: Date = useCurrentDateEffect();
 
   return <span className="time">{T.format(date)}</span>;
@@ -205,7 +206,7 @@ interface IInfoProps {
   id?: string;
 }
 
-const Info: React.FC<IInfoProps> = (props: IInfoProps) => {
+const Info: FC<IInfoProps> = (props: IInfoProps) => {
   return (
     <div id={props.id} className="info">
       <Time />
@@ -219,10 +220,10 @@ interface IPinDigitProps {
   value: string;
 }
 
-const PinDigit: React.FC<IPinDigitProps> = (props: IPinDigitProps) => {
-  const [hidden, setHiddenTo] = React.useState<boolean>(false);
+const PinDigit: FC<IPinDigitProps> = (props: IPinDigitProps) => {
+  const [hidden, setHiddenTo] = useState<boolean>(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (props.value) {
       const timeout: NodeJS.Timeout = setTimeout(() => {
         setHiddenTo(true);
@@ -248,15 +249,15 @@ const PinDigit: React.FC<IPinDigitProps> = (props: IPinDigitProps) => {
   );
 };
 
-const Pin: React.FC = () => {
-  const { userStatus, setUserStatusTo } = React.useContext(AppContext);
+const Pin: FC = () => {
+  const { userStatus, setUserStatusTo } = useContext(AppContext);
 
-  const [pin, setPinTo] = React.useState<string>("");
+  const [pin, setPinTo] = useState<string>("");
 
   const ref: React.MutableRefObject<HTMLInputElement> =
-    React.useRef<HTMLInputElement>(null);
+    useRef<HTMLInputElement>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (
       userStatus === UserStatus.LoggingIn ||
       userStatus === UserStatus.LogInError
@@ -267,7 +268,7 @@ const Pin: React.FC = () => {
     }
   }, [userStatus]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (pin.length === 4) {
       const verify = async (): Promise<void> => {
         try {
@@ -354,7 +355,7 @@ interface IMenuSectionProps {
   title: string;
 }
 
-const MenuSection: React.FC<IMenuSectionProps> = (props: IMenuSectionProps) => {
+const MenuSection: FC<IMenuSectionProps> = (props: IMenuSectionProps) => {
   const getContent = (): JSX.Element => {
     if (props.scrollable) {
       return (
@@ -378,7 +379,7 @@ const MenuSection: React.FC<IMenuSectionProps> = (props: IMenuSectionProps) => {
   );
 };
 
-const QuickNav: React.FC = () => {
+const QuickNav: FC = () => {
   const getItems = (): JSX.Element[] => {
     return [
       {
@@ -409,7 +410,7 @@ const QuickNav: React.FC = () => {
   return <ScrollableComponent id="quick-nav">{getItems()}</ScrollableComponent>;
 };
 
-const Weather: React.FC = () => {
+const Weather: FC = () => {
   const getDays = (): JSX.Element[] => {
     return [
       {
@@ -500,7 +501,7 @@ const Weather: React.FC = () => {
   );
 };
 
-const Tools: React.FC = () => {
+const Tools: FC = () => {
   const getTools = (): JSX.Element[] => {
     return [
       {
@@ -585,7 +586,7 @@ const Tools: React.FC = () => {
   );
 };
 
-const Restaurants: React.FC = () => {
+const Restaurants: FC = () => {
   const getRestaurants = (): JSX.Element[] => {
     return [
       {
@@ -648,7 +649,7 @@ const Restaurants: React.FC = () => {
   );
 };
 
-const Movies: React.FC = () => {
+const Movies: FC = () => {
   const getMovies = (): JSX.Element[] => {
     return [
       {
@@ -726,10 +727,8 @@ interface IUserStatusButton {
   userStatus: UserStatus;
 }
 
-const UserStatusButton: React.FC<IUserStatusButton> = (
-  props: IUserStatusButton
-) => {
-  const { userStatus, setUserStatusTo } = React.useContext(AppContext);
+const UserStatusButton: FC<IUserStatusButton> = (props: IUserStatusButton) => {
+  const { userStatus, setUserStatusTo } = useContext(AppContext);
 
   const handleOnClick = (): void => {
     setUserStatusTo(props.userStatus);
@@ -748,7 +747,7 @@ const UserStatusButton: React.FC<IUserStatusButton> = (
   );
 };
 
-const Menu: React.FC = () => {
+const Menu: FC = () => {
   return (
     <div id="app-menu">
       <div id="app-menu-content-wrapper">
@@ -786,8 +785,8 @@ const Menu: React.FC = () => {
   );
 };
 
-const Background: React.FC = () => {
-  const { userStatus, setUserStatusTo } = React.useContext(AppContext);
+const Background: FC = () => {
+  const { userStatus, setUserStatusTo } = useContext(AppContext);
 
   const handleOnClick = (): void => {
     if (userStatus === UserStatus.LoggedOut) {
@@ -802,7 +801,7 @@ const Background: React.FC = () => {
   );
 };
 
-const Loading: React.FC = () => {
+const Loading: FC = () => {
   return (
     <div id="app-loading-icon">
       <i className="fa-solid fa-spinner-third" />
@@ -817,8 +816,8 @@ interface IAppContext {
 
 const AppContext = React.createContext<IAppContext>(null);
 
-const App: React.FC = () => {
-  const [userStatus, setUserStatusTo] = React.useState<UserStatus>(
+const App: FC = () => {
+  const [userStatus, setUserStatusTo] = useState<UserStatus>(
     UserStatus.LoggedOut
   );
 
