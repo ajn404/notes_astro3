@@ -361,14 +361,28 @@ JavaScript 的 `class` 语法是 ES6 (ECMAScript 2015) 新增的，它为 JavaSc
 - EventTarget
 
 ```js
+class Timer extends EventTarget {}
 
+const mytimer = new Timer();
 
+// Now these are all available:
+mytimer.addEventListener();
+mytimer.dispatchEvent();
+mytimer.removeEventListener();
 
-
+// This will call `console.log` whenever the
+// `start` event type is dispatched
+mytimer.addEventListener("start", event => {
+  console.log("something started!");
+});
+```
 
 ## links
 
 - [web component learn](https://webcomponents.guide/learn/)
 - [community](https://mastodon.online/tags/WebComponents)
 - [codepen tram-lite](https://codepen.io/JRJurman/pen/BaboYKM?editors=1000)
+
+```
+
 ```

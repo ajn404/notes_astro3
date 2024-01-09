@@ -81,7 +81,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
               <section class="hero-section">
         <div class="card-grid">
               {featuredPosts.map(({ data }) => (
-                <Card
+                <Card client:load client:only="react"
                   href={`${import.meta.env.BASE_URL}/posts/${slugify(data)}`}
                   frontmatter={data}
                   secHeading={false}
@@ -103,7 +103,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           sortedPosts.map(
             ({ data }, index) =>
               index < 4 && (
-                <Card
+                <Card client:load client:only="react"
                   href={`${import.meta.env.BASE_URL}/posts/${slugify(data)}`}
                   frontmatter={data}
                   secHeading={false}
