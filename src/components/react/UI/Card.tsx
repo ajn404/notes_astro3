@@ -24,16 +24,27 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
     });
     obs.observe(ref.current!);
   }, []);
+  let image;
 
-  const image = new Image();
-  image.src = `https://picsum.photos/282/423?random=${Math.floor(
+  let src = `https://picsum.photos/282/423?random=${Math.floor(
     Math.random() * 20
   )}.webp`;
-  const backgroundImageStyle = isVisible
+
+  let backgroundImageStyle = isVisible
     ? {
-        backgroundImage: `url(${image.src})`,
+        backgroundImage: `url(${src})`,
       }
     : {};
+
+  useEffect(() => {
+    image = new Image();
+    image.src = src;
+    backgroundImageStyle = isVisible
+      ? {
+          backgroundImage: `url(${image.src})`,
+        }
+      : {};
+  });
 
   const headerProps = {
     style: { viewTransitionName: slugifyStr(title) },
