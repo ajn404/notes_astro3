@@ -107,16 +107,18 @@ export default function SearchBar({ searchList }: Props) {
         </div>
       )}
 
-      <ul>
-        {searchResults &&
-          searchResults.map(({ item, refIndex }) => (
-            <Card
-              href={`${import.meta.env.BASE_URL}/posts/${slugify(item.data)}`}
-              frontmatter={item.data}
-              key={`${refIndex}-${slugify(item.data)}`}
-            />
-          ))}
-      </ul>
+      <section className="hero-section">
+        <div className="card-grid">
+          {searchResults &&
+            searchResults.map(({ item, refIndex }) => (
+              <Card
+                href={`${import.meta.env.BASE_URL}/posts/${slugify(item.data)}`}
+                frontmatter={item.data}
+                key={`${refIndex}-${slugify(item.data)}`}
+              />
+            ))}
+        </div>
+      </section>
     </>
   );
 }

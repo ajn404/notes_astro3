@@ -22,13 +22,16 @@ const next = pageNum < totalPages ? "" : "disabled";
 
 <Layout activeNav="posts" title={`博客 | ${SITE.title}`}>
   <Main pageTitle="博客" pageDesc="所有的博客文章都在这里">
-    <ul>
+    <section class="hero-section">
+        <div class="card-grid">
       {
         posts.map(({ data }) => (
           <Card href={`${import.meta.env.BASE_URL}/posts/${slugify(data)}`} frontmatter={data} />
         ))
       }
-    </ul>
+    </div>
+    </section>
+    
   </Main>
 
   {
