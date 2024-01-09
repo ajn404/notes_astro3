@@ -12,9 +12,9 @@
   .anim-text-flow,
   .anim-text-flow-hover:hover {
     $animationSteps: 20;
-    $animationDuration: 5;
+    $animationDuration: 10;
     $animationElement: span;
-    $animationElementsCount: 20;
+    $animationElementsCount: 100;
     $delayBetweenLetters: 0.2;
 
     #{$animationElement} {
