@@ -18,16 +18,16 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
     className: "text-lg font-medium decoration-dashed hover:underline",
   };
 
-  //800是图片像素的最大值，可以做成可配置项，但是。。。
+  //数字是图片像素的最大值，可以做成可配置项，但是。。。
 
   return (
     <a className="card" href={href}>
       <div
         className="card__background"
         style={{
-          backgroundImage: `url(https://picsum.photos/${Math.floor(
-            Math.random() * 80
-          )})`,
+          backgroundImage: `url(https://picsum.photos/282/423?random=${Math.floor(
+            Math.random() * 10
+          )}.webp)`,
         }}
       ></div>
       <div className="card__content pt-4">

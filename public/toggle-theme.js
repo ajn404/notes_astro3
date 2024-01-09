@@ -35,23 +35,27 @@ function reflectPreference() {
 reflectPreference();
 
 window.onload = () => {
-  // set on load so screen readers can get the latest value on the button
-  reflectPreference();
+  const themeInit = () => {
+    // set on load so screen readers can get the latest value on the button
+    reflectPreference();
 
-  // now this script can find and listen for clicks on the control
-  document.querySelector("#theme-btn-kk")?.addEventListener("click", () => {
-    themeValue = themeValue === "light" ? "dark" : "light";
-    setPreference();
-    //   alert("light css is ugly")
-  });
-  document.querySelector("#theme-btn")?.addEventListener("click", () => {
-    themeValue = themeValue === "light" ? "dark" : "light";
-    setPreference();
-    //   alert("light css is ugly")
-  });
+    // now this script can find and listen for clicks on the control
+    document.querySelector("#theme-btn-kk")?.addEventListener("click", () => {
+      themeValue = themeValue === "light" ? "dark" : "light";
+      setPreference();
+      //   alert("light css is ugly")
+    });
+    document.querySelector("#theme-btn")?.addEventListener("click", () => {
+      themeValue = themeValue === "light" ? "dark" : "light";
+      setPreference();
+      //   alert("light css is ugly")
+    });
+  };
+
+  themeInit();
 
   // Runs on view transitions navigation
-  document.addEventListener("astro:after-swap", setPreference);
+  document.addEventListener("astro:after-swap", themeInit);
 };
 
 // sync with system changes
