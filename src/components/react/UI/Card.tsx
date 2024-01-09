@@ -30,21 +30,25 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
     Math.random() * 20
   )}.webp`;
 
-  let backgroundImageStyle = isVisible
-    ? {
-        backgroundImage: `url(${src})`,
-      }
-    : {};
+  let [backgroundImageStyle, setStyle] = useState({
+    backgroundImage: `radial-gradient(ellipse at top, rgb(${Math.floor(
+      Math.random() * 155
+    )},${Math.floor(Math.random() * 355) - 100},${
+      Math.floor(Math.random() * 255) % 250
+    }), transparent),
+            radial-gradient(ellipse at bottom, #4d9f0c, transparent)`,
+  });
 
   useEffect(() => {
     image = new Image();
     image.src = src;
-    backgroundImageStyle = isVisible
-      ? {
+    image.onload = () => {
+      if (isVisible)
+        setStyle({
           backgroundImage: `url(${image.src})`,
-        }
-      : {};
-  });
+        });
+    };
+  }, [isVisible]);
 
   const headerProps = {
     style: { viewTransitionName: slugifyStr(title) },
