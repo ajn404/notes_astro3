@@ -26,9 +26,7 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
   }, []);
   let image;
 
-  let src = `https://picsum.photos/564/846?random=${Math.floor(
-    Math.random() * 20
-  )}.webp`;
+  let src = `/notes_astro3/assets/bg/${Math.floor(Math.random() * 6)}.png`;
 
   let [backgroundImageStyle, setStyle] = useState({
     backgroundImage: `radial-gradient(ellipse at top, rgb(${Math.floor(
