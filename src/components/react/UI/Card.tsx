@@ -28,7 +28,7 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
 
   //564*846
   let src = `/notes_astro3/assets/bg/${Math.floor(Math.random() * 6) + 1}.${
-    (Math.random() * 10) % 2 === 1 ? "jpg" : "png"
+    Math.floor(Math.random() * 10) % 2 === 1 ? "jpg" : "png"
   }`;
 
   let [backgroundImageStyle, setStyle] = useState({
