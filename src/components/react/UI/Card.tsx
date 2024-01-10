@@ -26,7 +26,10 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
   }, []);
   let image;
 
-  let src = `/notes_astro3/assets/bg/${Math.floor(Math.random() * 6)}.png`;
+  //564*846
+  let src = `/notes_astro3/assets/bg/${Math.floor(Math.random() * 6) + 1}.${
+    (Math.random() * 10) % 2 === 1 ? "jpg" : "png"
+  }`;
 
   let [backgroundImageStyle, setStyle] = useState({
     backgroundImage: `radial-gradient(ellipse at top, rgb(${Math.floor(
