@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
-import lit from "@astrojs/lit";
+// import lit from "@astrojs/lit";
 import vue from "@astrojs/vue";
 // import vue  from "@vitejs/plugin-vue";
 import remarkToc from "remark-toc";
@@ -45,9 +45,9 @@ export default defineConfig({
     react({
       include: ["**/react/*"],
     }),
-    lit({
-      include: ["**/lit/*"],
-    }),
+    // lit({
+    //   include: ["**/lit/*"],
+    // }),
     vue({
       appEntrypoint: "/src/components/vue/_app",
     }),
