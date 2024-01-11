@@ -51,6 +51,18 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
     };
   }, [isVisible]);
 
+  useEffect(() => {
+    let element = ref.current!;
+
+    element.addEventListener("touchstart", function () {
+      this.classList.add("hover-effect");
+    });
+
+    element.addEventListener("touchend", function () {
+      this.classList.remove("hover-effect");
+    });
+  });
+
   const headerProps = {
     style: { viewTransitionName: slugifyStr(title) },
     className: "text-lg card__heading pt-4 font-medium",

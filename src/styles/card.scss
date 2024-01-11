@@ -74,7 +74,7 @@
       transform 200ms linear;
   }
 
-  .card:hover {
+  .card:hover , .card.hover-effect{
     .card__background {
       transform: scale(1.05) translateZ(0);
     }
