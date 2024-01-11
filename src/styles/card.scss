@@ -62,7 +62,7 @@
     background-position: center;
     border-radius: var(--spacing-l);
     bottom: 0;
-    filter: brightness(0.75) saturate(1.2) contrast(0.85);
+    filter: brightness(0.5) saturate(2) contrast(0.85);
     left: 0;
     position: absolute;
     right: 0;
@@ -78,13 +78,13 @@
     .card__background {
       transform: scale(1.05) translateZ(0);
     }
-    .card__heading{
-        text-decoration: rgb(255, 255, 255) wavy underline;
+    .card__heading {
+      text-decoration: rgb(255, 255, 255) wavy underline;
     }
   }
 
-  .card-grid:hover > .card:not(:hover) .card__background {
-    filter: brightness(0.5) saturate(0) contrast(1.2) blur(20px);
+  .card-grid:hover  .card:not(:hover) .card__background {
+    filter: brightness(0.9) saturate(0.4) contrast(1.1) blur(20px);
   }
 
   .card__content {
