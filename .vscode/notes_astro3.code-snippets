@@ -1,6 +1,6 @@
 {
   "Frontmatter": {
-    "scope": "markdown",
+    "scope": "mdx",
     "prefix": "frontmatter",
     "body": [
       "---",
@@ -18,17 +18,28 @@
     "description": "Adds the frontmatter block for the AstroPaper Blog post"
   },
   "Blog Template": {
-    "scope": "markdown",
+    "scope": "mdx",
     "prefix": "template",
     "body": [
       "${1:frontmatter}",
       "",
       "${2: Introductory Sentence}",
       "",
-      "## Table of contents",
+      "## 目录",
       "",
       "## ${3: heading 1}",
     ],
     "description": "Adds the template for the AstroPaper Blog post. You will need to trigger the snippet modal on the 'frontmatter' line to insert the other snipper."
+  },
+  "details":{
+    "scope": "mdx",    
+    "prefix": "details",
+    "body": [
+      "<details>",
+      "<summary>${1:Click to expand}</summary>",
+      "$2",
+      "</details>"
+    ],
+    "description": "博客内添加details标签
   }
 }

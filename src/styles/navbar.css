@@ -77,9 +77,12 @@ body:has(.contentbox):has(#目录 + ul) article {
   padding-bottom: 0rem;
 }
 
+#目录 + ul a.active{
+    filter: brightness(1.5) saturate(2) blur(1px);
+}
+
 #目录 + ul a:not(.active) {
   @media screen and (min-width: 640px) {
-    color: #899 !important;
     cursor: pointer;
   }
 }

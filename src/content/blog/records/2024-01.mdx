@@ -834,6 +834,58 @@ NoSQL（Not Only SQL）是一种非关系型数据库，旨在处理大量的非
 
 ### 12. Database Index
 
+<details>
+<summary>2024/01/11 什么是数据库索引</summary>
+数据库索引是一种用于提高数据库查询性能的数据结构。它是数据库表中一个或多个列的排序结构，可以加速对数据库表中数据的检索操作。索引类似于书籍的目录，它提供了一种快速查找特定数据的方式，而不需要扫描整个表。
+
+以下是数据库索引的一些关键概念：
+
+1. **目的**：
+
+   - 提高查询性能：通过减少需要扫描的数据量，加速检索过程。
+   - 加速排序：在使用ORDER BY语句进行排序时，索引可以减少排序的时间。
+
+2. **工作原理**：
+
+   - 索引是一个数据结构，通常使用树（如B树、B+树）或哈希表等算法来组织。
+   - 索引包含索引键和对应的指向实际数据的指针或位置。
+
+3. **创建索引**：
+
+   - 索引可以在表的一个或多个列上创建。
+   - 常见的索引类型包括普通索引、唯一索引、主键索引等。
+
+4. **适用场景**：
+
+   - 频繁用于WHERE子句的列，用于加速检索。
+   - 经常用于连接的列，提高连接操作的速度。
+   - 一些常用于排序和分组的列，优化ORDER BY和GROUP BY操作。
+
+5. **影响**：
+
+   - 索引提高了读取速度，但可能降低写入速度。因为在插入、更新和删除时，数据库系统需要维护索引结构。
+   - 占用存储空间：索引本身需要额外的存储空间。
+
+6. **选择合适的列进行索引**：
+   - 需要根据查询的模式和业务需求来选择合适的列创建索引。
+   - 过多的索引可能导致性能下降，因此需要权衡。
+
+总体而言，数据库索引是数据库性能优化的关键工具，但在使用时需要根据实际情况谨慎选择和设计。
+
+</details>
+
+- 在 "users" 表的 "username" 列上创建一个唯一索引
+
+```sql
+CREATE UNIQUE INDEX idx_username ON users(username);
+```
+
+- 在 "users" 表的 "first_name" 和 "last_name" 列上创建一个联合索引
+
+```sql
+CREATE INDEX idx_full_name ON users(first_name, last_name);
+```
+
 ### 13. Distributed File Systems
 
 ### 14. Notification System
@@ -857,7 +909,7 @@ bunx create-next-app@latest
 - [qiankun](https://qiankun.umijs.org/zh/guide/getting-started)
 - [single-spa](https://single-spa.js.org/docs/getting-started-overview/)
 
-### daily
+## daily
 
 > 博客
 
@@ -884,3 +936,5 @@ bunx create-next-app@latest
 - [16 System Design Concepts I Wish I Knew Before the Interview](https://levelup.gitconnected.com/16-system-design-concepts-i-wish-i-knew-before-the-interview-b8586e40a73b)
 
 - [github代码搜索除了github1s 还有sourcegraph](https://sourcegraph.com/github.com/ajn404/notes_astro3/-/blob/astro.config.mjs)
+
+- [patterns](https://www.patterns.dev/)
