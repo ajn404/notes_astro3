@@ -7,7 +7,7 @@ featured: false
 draft: false
 tags:
   - web-components
-description: 关于web component的一些学习笔记
+description: Web Components 是一种用于在Web应用中创建可复用的自定义元素的技术
 ---
 
 ## 目录
@@ -362,6 +362,8 @@ JavaScript 的 `class` 语法是 ES6 (ECMAScript 2015) 新增的，它为 JavaSc
 
 - EventTarget
 
+<details>
+<summary>Click to expand</summary>
 ```js
 class Timer extends EventTarget {}
 
@@ -375,8 +377,178 @@ mytimer.removeEventListener();
 // This will call `console.log` whenever the
 // `start` event type is dispatched
 mytimer.addEventListener("start", event => {
-  console.log("something started!");
+console.log("something started!");
 });
+
+````
+
+</details>
+
+
+- dispatchEvent
+
+<details>
+<summary>Click to expand</summary>
+```js
+class Timer extends EventTarget {
+  start() {
+    this.dispatchEvent(new Event("start"))
+  }
+
+  pause() {
+    this.dispatchEvent(new Event("paused"))
+  }
+
+  unpause() {
+    this.dispatchEvent(new Event("unpaused"))
+  }
+
+  stop() {
+    this.dispatchEvent(new Event("stop"))
+  }
+}
+
+const mytimer = new Timer()
+
+mytimer.addEventListener("start", () => console.log("timer started!"))
+mytimer.addEventListener("stop", () => console.log("timer stopped!"))
+
+mytimer.start()
+// logs: "timer started!"
+
+mytimer.pause()
+// nothing is logged because there are no 'paused' listeners
+
+mytimer.stop()
+// logs "timer stopped!"
+
+````
+
+</details>
+
+- extends Event
+
+<details>
+<summary>Click to expand</summary>
+
+```js
+class TickEvent extends Event {
+  // Our TickEvent class only takes a count,
+  // we hard code the .type
+  constructor(count = 0) {
+    // hardcode the .type of the element to 'tick'.
+    super("tick");
+
+    this.count = count;
+  }
+}
+
+class Timer extends EventTarget {
+  start() {
+    // Call #tick(1) after one second
+    setTimeout(() => this.#tick(1), 1000);
+  }
+
+  #tick(times) {
+    this.dispatchEvent(new TickEvent(times));
+
+    // Call #tick(n + 1) after one second
+    setTimeout(() => this.#tick(times + 1), 1000);
+  }
+}
+
+const mytimer = new Timer();
+
+mytimer.addEventListener("tick", event => {
+  console.log(`timer has ticked ${event.count} times!`);
+});
+
+mytimer.start();
+```
+
+</details>
+
+### 4.Events in more detail
+
+- removeEventListener
+
+<details>
+<summary>Click to expand</summary>
+
+```js
+const target = new EventTarget()
+
+const logger = {
+  log() { ... }
+}
+
+target.addEventListener('start', logger.log.bind(logger))
+
+// this wont do anything because `.bind` copies the function
+target.removeEventListener('start', logger.log.bind(logger))
+```
+
+</details>
+
+- AbortController
+
+<details>
+<summary>Click to expand</summary>
+```js
+const controller = new AbortController();
+const signal = controller.signal;
+
+// 设置 fetch 请求的 signal 选项
+fetch('https://www.google.com', { signal })
+.then(response => response)
+.then(data => console.log(data))
+.catch(error => {
+if (error.name === 'AbortError') {
+console.log('Fetch aborted');
+} else {
+console.error('Error during fetch:', error);
+}
+});
+
+// 在需要的时候中断请求
+setTimeout(() => controller.abort(), 100);
+
+````
+```js
+const target = new EventTarget()
+
+const controller = new AbortController()
+
+const logger = { log() { ... } }
+
+
+target.addEventListener(
+  'start',
+  logger.log.bind(logger),
+
+  // Pass the "signal" using the third options argument
+  { signal: controller.signal }
+)
+
+target.addEventListener(
+  'start',
+  (event) => { console.log('Timer started!') },
+
+  // Pass the "signal" using the third options argument
+  { signal: controller.signal }
+)
+
+// Remove all events that were given `controller.signal`:
+
+controller.abort()
+````
+
+</details>
+
+- lose This
+
+```js
+
 ```
 
 ## links
@@ -384,7 +556,3 @@ mytimer.addEventListener("start", event => {
 - [web component learn](https://webcomponents.guide/learn/)
 - [community](https://mastodon.online/tags/WebComponents)
 - [codepen tram-lite](https://codepen.io/JRJurman/pen/BaboYKM?editors=1000)
-
-```
-
-```

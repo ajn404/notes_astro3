@@ -254,9 +254,10 @@ details::-webkit-scrollbar {
   }
 }
 
-.xing-cao {
+.xing-cao,.xing-cao * {
   font-family: "Xingcao", "DM Sans", sans-serif;
 }
+
 
 @media print {
   header {

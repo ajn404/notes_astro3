@@ -1,3 +1,3 @@
-import { Ripple, initTE, Carousel, Modal, Stepper } from "tw-elements";
+import { Ripple, initTE, Carousel, Modal, Stepper, Tooltip } from "tw-elements";
 
-initTE({ Ripple, Modal, Carousel, Stepper });
+initTE({ Ripple, Modal, Carousel, Stepper, Tooltip });

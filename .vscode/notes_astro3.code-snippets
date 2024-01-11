@@ -35,7 +35,7 @@
     "scope": "mdx",    
     "prefix": "details",
     "body": [
-      "<details>",
+      "<details open>",
       "<summary>${1:Click to expand}</summary>",
       "$2",
       "</details>"

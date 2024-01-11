@@ -36,7 +36,7 @@ body:has(#目录 + ul) #btn-back-to-top {
   background-color: rgb(234 88 12);
 }
 
-#目录.active + ul {
+body:has(header.active) #目录 + ul {
   @apply sm:top-[8rem];
   @media screen and (min-width: 640px) {
     max-height: calc(100vh - 7rem);
@@ -77,8 +77,12 @@ body:has(.contentbox):has(#目录 + ul) article {
   padding-bottom: 0rem;
 }
 
-#目录 + ul a.active{
-    filter: brightness(1.5) saturate(2) blur(1px);
+ html[data-theme="dark"] #目录 + ul a.active{
+  background-image: linear-gradient(to right, #555 0%, #111 100%);
+}
+
+#目录 + ul a.active:hover{
+    filter:none;
 }
 
 #目录 + ul a:not(.active) {

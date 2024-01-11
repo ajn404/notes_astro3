@@ -909,6 +909,171 @@ bunx create-next-app@latest
 - [qiankun](https://qiankun.umijs.org/zh/guide/getting-started)
 - [single-spa](https://single-spa.js.org/docs/getting-started-overview/)
 
+### sso
+
+<details>
+<summary>2024/01/11 如何实现单点登录</summary>
+实现多域名的单点登录（Single Sign-On，SSO）可以通过不同的方式，具体的方法取决于你的应用架构和需求。以下是一些可能的方法：
+
+1. **使用统一身份认证协议：**
+
+   - OAuth 2.0 和 OpenID Connect：这是一种常见的单点登录解决方案，允许用户在不同的域名之间共享身份信息。OAuth 2.0 用于授权，而 OpenID Connect 则建立在 OAuth 2.0 的基础上，提供了身份验证的标准化方法。
+   - SAML（Security Assertion Markup Language）：它是一种 XML 格式的标准，用于在不同域之间传递认证和授权数据。
+
+2. **使用共享的用户数据库：**
+
+   - 在多个域之间使用相同的用户数据库，确保用户在一个域中登录后，在其他域中也能够被识别。这通常需要一定程度的用户管理和同步机制。
+
+3. **跨域 Cookie：**
+
+   - 如果你的域名在同一顶级域（例如，example.com 和 sub.example.com），你可以设置域级别的 Cookie，以便在不同子域之间传递身份验证信息。
+
+4. **代理认证：**
+
+   - 在代理层（例如反向代理服务器）处理身份验证，确保用户在一个域名中登录后，代理将身份信息传递给其他域。
+
+5. **集中式身份提供者（IdP）：**
+   - 使用一个集中的身份提供者，所有的域都连接到该提供者。用户在一个域名中登录后，可以通过该身份提供者在其他域名中访问。
+
+无论选择哪种方法，都需要确保在不同域之间共享的身份信息是安全的，并且在传输和存储过程中采取了适当的安全措施。确保你的解决方案符合隐私和安全标准，以防止潜在的安全风险。
+
+</details>
+
+<details>
+<summary>2024/01/11 什么是域级别的cookie</summary>
+
+域级别的 cookie 是指由特定域名下的服务器设置的 cookie。在互联网上，网站通常通过 HTTP 协议与用户的浏览器进行通信，以在用户计算机上存储一些信息，这些信息通常以 cookie 的形式保存。每个 cookie 都与一个特定的域名相关联。
+
+域级别的 cookie 具有以下特征：
+
+1. **限制于特定域名：** Cookie 的域属性定义了可以访问该 cookie 的域名。这样设计的目的是为了防止其他域名的脚本或请求访问该 cookie。例如，如果一个网站设置了一个域为 `example.com` 的 cookie，那么只有在 `example.com` 或其子域下的页面才能访问该 cookie。
+
+2. **共享性：** 域级别的 cookie 在其所属域名及其子域下的所有页面之间共享。这允许用户在同一域名下的不同页面之间保持一致的状态。
+
+3. **安全性：** 当设置了 `Secure` 属性时，cookie 将仅在通过 HTTPS 连接时传输，以增强安全性。这有助于防止敏感信息在传输过程中被窃听。
+
+域级别的 cookie 是 Web 开发中常用的工具，用于跟踪用户会话、存储用户首选项等。开发人员可以使用服务器端脚本语言（如 PHP、Python、Node.js 等）或客户端脚本语言（如 JavaScript）来设置和处理这些 cookie。
+
+</details>
+
+<details>
+<summary>2024/01/11 如何用node实现</summary>
+
+在 Node.js 中，你可以使用 `express` 库来轻松地处理和设置 cookie。以下是一个简单的示例，演示如何在 Node.js 中使用 `express` 设置域级别的 cookie：
+
+首先，确保你已经安装了 `express`：
+
+```bash
+npm install express
+```
+
+然后，创建一个简单的 Node.js 文件，例如 `app.js`，并添加以下代码：
+
+```javascript
+const express = require("express");
+const cookieParser = require("cookie-parser");
+
+const app = express();
+const PORT = 3000;
+
+// 使用 cookie-parser 中间件来解析 cookie
+app.use(cookieParser());
+
+// 设置域级别的 cookie
+app.get("/set-cookie", (req, res) => {
+  // 设置一个名为 "exampleCookie" 的 cookie，域名为 ".example.com"
+  res.cookie("exampleCookie", "Hello, this is a domain-level cookie", {
+    domain: ".example.com",
+    secure: true,
+  });
+
+  res.send("Cookie has been set!");
+});
+
+// 获取 cookie
+app.get("/get-cookie", (req, res) => {
+  const exampleCookie = req.cookies.exampleCookie;
+
+  if (exampleCookie) {
+    res.send(`Value of exampleCookie: ${exampleCookie}`);
+  } else {
+    res.send("exampleCookie not found");
+  }
+});
+
+// 启动服务器
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+```
+
+在这个示例中，我们使用 `cookie-parser` 中间件来解析请求中的 cookie。然后，我们使用 `res.cookie` 方法设置一个名为 "exampleCookie" 的域级别 cookie，其域名为 ".example.com"。接着，我们通过 `/get-cookie` 路由来获取和显示这个 cookie。
+
+请注意，为了在本地测试域级别的 cookie，你需要将 ".example.com" 映射到你的本地环境中。你可以通过修改你的操作系统的 hosts 文件来实现。在生产环境中，确保使用真实的域名和合适的安全设置。
+
+</details>
+
+<details>
+<summary>2024/01/11 什么是共享的数据库</summary>
+
+共享的用户数据库是指多个应用程序、服务或系统之间共用的用户信息存储系统。这种数据库允许不同的应用程序共享相同的用户身份验证、权限和配置信息，以实现一次登录即可访问多个服务的便利性。这样的共享用户数据库有助于提高用户体验、简化管理和维护，并提供更一致的用户身份验证和授权机制。
+
+以下是共享的用户数据库可能涉及的一些关键方面：
+
+1. **用户身份验证：** 用户在一个应用程序中进行身份验证后，其他应用程序可以使用共享的用户数据库来验证用户的身份，而无需用户再次输入凭据。这通常通过单一登录（Single Sign-On，SSO）机制来实现。
+
+2. **权限管理：** 共享的用户数据库可以存储用户的权限和角色信息，确保用户在所有关联的应用程序中都具有一致的权限。这有助于简化对用户权限的管理和更新。
+
+3. **个人资料信息：** 用户数据库通常包含用户的基本个人资料信息，如姓名、电子邮件地址、联系方式等。这些信息在用户注册或更新个人资料时被存储，并在需要时被不同应用程序共享。
+
+4. **跨平台访问：** 不同的应用程序，可能存在于不同的平台或技术栈中，可以通过共享用户数据库来实现用户数据的跨平台访问。这对于企业内部的多个系统或云服务来说尤为有用。
+
+5. **同步更新：** 如果用户更改其个人资料、密码或其他信息，共享的用户数据库能够确保这些更改反映在所有关联的应用程序中，以维持数据的一致性。
+
+实施共享用户数据库需要仔细考虑安全性、隐私保护以及适应不同应用程序需求的灵活性。通常，采用标准的身份验证和授权协议，如OAuth和OpenID Connect，可以帮助实现安全而可扩展的共享用户数据库。
+
+</details>
+
+<details>
+<summary>postgresql</summary>
+
+在 PostgreSQL 中实现共享的数据库，通常会涉及以下几个方面：
+
+1. **创建用户表：** 在数据库中创建一个用于存储用户信息的表。该表应包含至少一个唯一标识符（例如用户ID）、用户名、密码哈希（最好使用安全的哈希算法存储密码）、角色/权限等信息。
+
+   ```sql
+   CREATE TABLE users (
+     user_id SERIAL PRIMARY KEY,
+     username VARCHAR(255) UNIQUE NOT NULL,
+     password_hash VARCHAR(255) NOT NULL,
+     roles VARCHAR(255)[] -- 可以存储用户角色，也可以使用关联表关联角色
+   );
+   ```
+
+2. **实施身份验证：** 使用密码哈希来存储用户的密码，并在用户登录时验证提供的密码是否与数据库中存储的密码哈希匹配。
+
+   ```sql
+   -- 示例查询：验证用户登录
+   SELECT * FROM users WHERE username = 'example_user' AND password_hash = 'hashed_password';
+   ```
+
+3. **授权和角色管理：** 使用 PostgreSQL 的角色和权限系统来管理用户的授权。可以为每个用户定义不同的角色，然后授予或撤销这些角色的权限。
+
+   ```sql
+   -- 示例：授予用户角色
+   GRANT app_user_role TO example_user;
+   ```
+
+4. **单一登录（SSO）机制：** 如果要实现单一登录，可以考虑使用 OAuth、OpenID Connect 等标准协议，或者自行实现一种会话共享机制。
+
+5. **跨数据库访问：** 如果需要在多个数据库之间共享用户信息，可以考虑将用户表存储在一个单独的共享数据库中，并在需要的数据库中设置外部引用或视图。
+
+6. **安全性考虑：** 确保密码存储的安全性，不要存储明文密码。考虑使用加盐哈希等技术提高密码安全性。同时，限制数据库用户的权限，确保他们只能执行其必需的操作。
+
+请注意，实施共享数据库涉及到具体的应用场景和需求，上述示例只是一个基本框架。在生产环境中，请仔细考虑安全性、性能和扩展性等因素，并遵循最佳实践。
+
+</details>
+
 ## daily
 
 > 博客
@@ -937,4 +1102,4 @@ bunx create-next-app@latest
 
 - [github代码搜索除了github1s 还有sourcegraph](https://sourcegraph.com/github.com/ajn404/notes_astro3/-/blob/astro.config.mjs)
 
-- [patterns](https://www.patterns.dev/)
+- [魔塔](https://modelscope.cn/my/overview)
