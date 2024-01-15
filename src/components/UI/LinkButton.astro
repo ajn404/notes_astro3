@@ -8,16 +8,23 @@ export interface Props {
 }
 
 let { href, className, ariaLabel, title, disabled = false } = Astro.props;
-href = href.indexOf('http')!==-1?href:import.meta.env.BASE_URL+href
+href = href.indexOf("http") !== -1 ? href : import.meta.env.BASE_URL + href;
 ---
 
 <a
-  href={disabled ? "#" :href}
+  href={disabled ? "#" : href}
   tabindex={disabled ? "-1" : "0"}
   class={`group inline-block ${className}`}
   aria-label={ariaLabel}
-  title={title}
   aria-disabled={disabled}
+  data-te-toggle="tooltip"
+  data-te-placement="bottom"
+  data-te-ripple-init
+  data-te-ripple-color="dark"
+  data-te-html="true"
+  title={title === "Search"
+    ? "<em>ctrl</em> + <em>k</em>"
+    : title}
 >
   <slot />
 </a>

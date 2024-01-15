@@ -67,11 +67,8 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
     style: { viewTransitionName: slugifyStr(title) },
     className: "text-lg card__heading pt-4 font-medium",
   };
-
-  //数字是图片像素的最大值，可以做成可配置项，但是。。。
-
   return (
-    <a className="card" href={href} ref={ref}>
+    <a className="card" href={href} ref={ref} data-astro-reload>
       <div className="card__background" style={backgroundImageStyle}></div>
       <div className="card__content pt-4">
         {secHeading ? (

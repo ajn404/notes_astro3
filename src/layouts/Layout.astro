@@ -10,6 +10,7 @@ import { ViewTransitions } from "astro:transitions";
 
 import "./KeySearch.astro"
 
+
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 export interface Props {
@@ -75,9 +76,6 @@ const socialImageURL = new URL(
     />
 
     {
-      // If PUBLIC_GOOGLE_SITE_VERIFICATION is set in the environment variable,
-      // include google-site-verification tag in the heading
-      // Learn more: https://support.google.com/webmasters/answer/9008080#meta_tag_verification&zippy=%2Chtml-tag
       googleSiteVerification && (
         <meta
           name="google-site-verification"
@@ -94,6 +92,7 @@ const socialImageURL = new URL(
         <slot  />
   </body>
 </html>
+
 
 <script src="./importTwElement"></script>
 <script src="./defineEvents"></script>

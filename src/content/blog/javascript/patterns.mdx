@@ -27,6 +27,56 @@ function Greeting({ name }) {
 
 ### Components/Props/State
 
+import { Badge } from "@components/react/practice/patternComponents.tsx";
+
+<Badge name="ajn403" client:load />
+
+<details>
+<summary>components</summary>
+
+- function components
+
+```tsx
+export const Badge = props => {
+  return (
+    <>
+      <div className="block m-auto h-[6em] w-[20em] bg-[red] text-center text-[white]">
+        Hello <br />
+        my name is
+        <div className="bg-[white] text-[black] font-bold h-[2em]">
+          {props.name}
+        </div>
+      </div>
+    </>
+  );
+};
+```
+
+- class components
+
+```tsx
+export class BadgeClass extends Component<{ name: string }> {
+  constructor(props: { name: "" }) {
+    super(props);
+  }
+  render() {
+    return (
+      <>
+        <div className="block m-auto h-[6em] w-[20em] mb-4 bg-[red] text-center text-[white]">
+          Hello <br />
+          my name is
+          <div className="bg-[white] text-[black]  font-bold h-[2em]">
+            {this.props.name}
+          </div>
+        </div>
+      </>
+    );
+  }
+}
+```
+
+</details>
+
 ## links
 
 - [patterns](https://www.patterns.dev/)
