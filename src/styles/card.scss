@@ -24,7 +24,7 @@ html[data-theme="dark"] .hero-section .card__background{
   }
 
   html[data-theme="dark"] .hero-section .card-grid:hover  .card:not(:hover) .card__background {
-    filter: brightness(0.9) saturate(0.4) contrast(1.1) blur(20px);
+    filter: brightness(0.7)  contrast(0.7) blur(2px);
   }
 
 .hero-section {
@@ -81,7 +81,6 @@ html[data-theme="dark"] .hero-section .card__background{
     bottom: 0;
     left: 0;
     position: absolute;
-    filter: brightness(0.5);
     right: 0;
     top: 0;
     transform-origin: center;

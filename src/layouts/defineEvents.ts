@@ -7,6 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  const header = document.getElementById("page-header");
+  const headerHeight = header.offsetHeight;
+  document.documentElement.style.setProperty(
+    "--header-height",
+    `${headerHeight}px`
+  );
+
   // window.onblur = function () {
   //     console.log('blur,当前页面不可见');
 

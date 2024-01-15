@@ -4,14 +4,14 @@ import Hr from "./Hr.astro";
 import LinkButton from "./LinkButton.astro";
 
 export interface Props {
-  activeNav?: "posts" | "tags" | "about" | "search";
+  activeNav?: "posts" | "tags" | "about" | "search" |"fantastic";
 }
 
 const { activeNav } = Astro.props;
 import ToggleButton from "@components/react/UI/ToggleThemeButton.tsx";
 ---
 
-<header>
+<header id="page-header">
   <a id="skip-to-content" href="#main-content">Skip to content</a>
   <div class="nav-container">
     <div class="top-nav-wrap">
@@ -38,6 +38,14 @@ import ToggleButton from "@components/react/UI/ToggleThemeButton.tsx";
               class={activeNav === "tags" ? "active" : ""}
             >
               标签
+            </a>
+          </li>
+          <li>
+            <a
+              href=`${import.meta.env.BASE_URL}/fantastic`
+              class={activeNav === "fantastic" ? "active" : ""}
+            >
+              精彩
             </a>
           </li>
           <li>

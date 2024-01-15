@@ -4,12 +4,9 @@ import "@styles/base.css";
 import "driver.js/dist/driver.css";
 import "@styles/components.scss";
 import "@styles/card.scss";
-// import "@code-hike/mdx/dist/index.css"
 import Header from "@components/UI/Header.astro";
 import { ViewTransitions } from "astro:transitions";
-
 import "./KeySearch.astro"
-
 
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
@@ -19,7 +16,7 @@ export interface Props {
   description?: string;
   ogImage?: string;
   canonicalURL?: string;
-  activeNav?: "posts" | "tags" | "about" | "search";
+  activeNav?: "posts" | "tags" | "about" | "search" | "fantastic";
 }
 
 const {
@@ -83,7 +80,7 @@ const socialImageURL = new URL(
         />
       )
     }
-    <ViewTransitions />
+    <!-- <ViewTransitions /> -->
     <script is:inline src=`${import.meta.env.BASE_URL}/toggle-theme.js`></script>
     
   </head>

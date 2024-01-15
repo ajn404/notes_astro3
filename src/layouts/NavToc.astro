@@ -36,7 +36,7 @@ import "@styles/navbar.css";
           const addRemove = heading.intersectionRatio > 0 ? "add" : "remove";
           link.classList[addRemove]("active");
         });
-        
+
         updatePath();
         document.getElementById("目录") &&
           new IntersectionObserver(target => {
@@ -65,8 +65,21 @@ import "@styles/navbar.css";
 
       document.querySelector("body>header") &&
         new IntersectionObserver(tar => {
-          if (tar[0].isIntersecting) tar[0].target.classList.add("active");
-          else tar[0].target.classList.remove("active");
+          if (tar[0].isIntersecting) {
+            tar[0].target.classList.add("active");
+            document.querySelector("#目录+ul")?.classList.remove("top-4")
+
+            document.querySelector("#theme-btn")?.classList.remove("top-5");
+            document.querySelector("#theme-btn")?.classList.remove("fixed");
+
+          } else {
+            document.querySelector("#目录+ul")?.classList.add("top-4");
+            document.querySelector("#theme-btn")?.classList.add("top-5");
+            document.querySelector("#theme-btn")?.classList.add("fixed");
+            
+            
+            tar[0].target.classList.remove("active");
+          }
         }).observe(document.querySelector("body>header"));
 
       document.querySelector("footer.mt-auto") &&
@@ -78,27 +91,27 @@ import "@styles/navbar.css";
           }
         }).observe(document.querySelector("footer.mt-auto"));
 
-    //   if (document.querySelector("#目录+ul")) {
-    //     let obs = new IntersectionObserver(
-    //       entries => {
-    //         if(entries.length===0) return
-    //         for(let i =0;i<entries.length;i++){
-    //             let tar = entries[i].target;
-    //             console.log(tar);
-    //             if(tar.classList.contains("active")){
-    //                 console.log(tar);
-    //                 tar.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
-    //             }
-    //         }
-    //       },
-    //       {
-    //         root: document.querySelector("#目录+ul"),
-    //       }
-    //     );
-    //     document.querySelectorAll("#目录+ul li a").forEach(element => {
-    //       obs.observe(element);
-    //     });
-    //   }
+      //   if (document.querySelector("#目录+ul")) {
+      //     let obs = new IntersectionObserver(
+      //       entries => {
+      //         if(entries.length===0) return
+      //         for(let i =0;i<entries.length;i++){
+      //             let tar = entries[i].target;
+      //             console.log(tar);
+      //             if(tar.classList.contains("active")){
+      //                 console.log(tar);
+      //                 tar.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+      //             }
+      //         }
+      //       },
+      //       {
+      //         root: document.querySelector("#目录+ul"),
+      //       }
+      //     );
+      //     document.querySelectorAll("#目录+ul li a").forEach(element => {
+      //       obs.observe(element);
+      //     });
+      //   }
     }
 
     function initSvg() {
