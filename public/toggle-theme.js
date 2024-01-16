@@ -46,7 +46,8 @@ window.onload = () => {
       //   alert("light css is ugly")
     });
     document.querySelector("#theme-btn")?.addEventListener("click", () => {
-      themeValue = themeValue === "light" ? "dark" : "light";
+      // themeValue = themeValue === "light" ? "dark" : "light";
+      themeValue = "dark";
       setPreference();
       //   alert("light css is ugly")
     });
@@ -62,6 +63,7 @@ window.onload = () => {
 window
   .matchMedia("(prefers-color-scheme: dark)")
   .addEventListener("change", ({ matches: isDark }) => {
-    themeValue = isDark ? "dark" : "light";
+    //   themeValue = isDark ? "dark" : "light";
+    themeValue = "dark";
     setPreference();
   });
