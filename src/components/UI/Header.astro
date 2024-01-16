@@ -6,9 +6,7 @@ import LinkButton from "./LinkButton.astro";
 export interface Props {
   activeNav?: "posts" | "tags" | "about" | "search" |"fantastic";
 }
-
 const { activeNav } = Astro.props;
-import ToggleButton from "@components/react/UI/ToggleThemeButton.tsx";
 ---
 
 <header id="page-header">

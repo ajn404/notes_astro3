@@ -284,3 +284,20 @@ details::-webkit-scrollbar {
     margin: 1em 0; 
     padding: 1em;
 }
+
+@layer demo {
+  .highlighted-text-shadow {
+    background: #000;
+    text-shadow:
+      0 .15ch 15px var(--shadow),
+      0 -2px 0 var(--highlight);
+  }
+}
+
+@layer demo.support {
+  :root {
+    --hue: 320; /* change me */
+    --shadow: oklch(25% .2 var(--hue));
+    --highlight: oklch(98% .05 var(--hue));
+  }
+}

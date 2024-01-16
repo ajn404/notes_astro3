@@ -25,23 +25,11 @@ export default () => {
         p.point(this.x, this.y);
       }
       step() {
-        const choice = p.floor(p.random(4));
-        switch (choice) {
-          case 0:
-            this.x++;
-            break;
-          case 1:
-            this.x--;
-            break;
-          case 2:
-            this.y++;
-            break;
-          case 3:
-            this.y--;
-            break;
-          default:
-            break;
-        }
+        let xStep = p.random(-1, 1);
+        let yStep = p.random(-1, 1);
+
+        this.x += xStep;
+        this.y += yStep;
       }
     }
   };

@@ -13,19 +13,77 @@ description: "代码的本质"
 
 ## nature of code
 
+我与p5的缘分真的蛮深的
+
 ### code template
+
+<details>
+<summary>template</summary>
 
 import Template from "@components/react/p5/index.tsx";
 
 <Template client:visible />
 
+</details>
+
 ### 0. Randomness
 
 `随机性` `柏林噪声` `概率`
 
+<details>
+<summary>RandomnessA</summary>
+```tsx
+step() {
+        const choice = p.floor(p.random(4));
+        switch (choice) {
+          case 0:
+            this.x++;
+            break;
+          case 1:
+            this.x--;
+            break;
+          case 2:
+            this.y++;
+            break;
+          case 3:
+            this.y--;
+            break;
+          default:
+            break;
+        }
+      }
+```
 import RandomnessA from "@components/react/p5/RandomnessA.tsx";
 
 <RandomnessA client:visible />
+</details>
+
+<details class="mt-4">
+<summary>RandomnessB</summary>
+```tsx
+step() {
+          let xStep = p.random(-1, 1);
+          let yStep = p.random(-1, 1);
+
+          this.x += xStep;
+          this.y += yStep;
+
+      }
+
+```
+import RandomnessB from "@components/react/p5/RandomnessB.tsx";
+
+<RandomnessB client:visible />
+</details>
+
+
+
+
+
+
+
+
+
 
 ## links
 
@@ -33,3 +91,4 @@ import RandomnessA from "@components/react/p5/RandomnessA.tsx";
 - https://p5js.org/
 - https://processing.org/
 - https://www.youtube.com/@TheCodingTrain
+```
