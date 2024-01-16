@@ -2,9 +2,7 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
-// import lit from "@astrojs/lit";
 import vue from "@astrojs/vue";
-// import vue  from "@vitejs/plugin-vue";
 import remarkToc from "remark-toc";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
@@ -72,8 +70,6 @@ export default defineConfig({
           summary: str => "展开 " + str,
         },
       ],
-      // [remarkCodeHike, { theme: "dracula", lineNumbers: true }],
-      // [remarkCodeHike, { theme: "material-palenight" }],
       remarkMath,
       remarkReadingTime,
     ],
@@ -95,17 +91,6 @@ export default defineConfig({
     build: {
       rollupOptions: {
         plugins: [
-          // resolve(),
-          // commonjs(),
-          // copy({
-          //     copyOnce: true,
-          //     targets: [
-          //         {
-          //             src: path.resolve(__dirname, 'node_modules/@shoelace-style/shoelace/dist/assets'),
-          //             dest: path.resolve(__dirname, 'dist/shoelace')
-          //         }
-          //     ]
-          // }),
           css({
             output: "bundle.css",
           }),
