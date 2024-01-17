@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const header = document.getElementById("page-header");
-  const headerHeight = header.offsetHeight;
+  const headerHeight = header && header.offsetHeight;
   document.documentElement.style.setProperty(
     "--header-height",
     `${headerHeight}px`
