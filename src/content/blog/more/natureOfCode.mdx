@@ -70,20 +70,42 @@ step() {
 
       }
 
-```
+````
 import RandomnessB from "@components/react/p5/RandomnessB.tsx";
 
 <RandomnessB client:visible />
 </details>
 
+<details class="mt-4">
+<summary>RandomnessC</summary>
 
+import RandomnessC from "@components/react/p5/RandomnessC.tsx";
 
+<RandomnessC client:visible />
+</details>
 
+- Create a random walker that has a greater tendency to move down and to the right. (The solution follows in the next section.)
 
+<details open>
+<summary>Probability and Nonuniform Distributions
+概率和非均匀分布</summary>
+```ts
+let stuff = [1,1,2,4,5,6,7,8,8,8,9,9,9,9,10];
+let value = random(stuff);
+console.log(value);
+````
 
+```ts
+let probability = 0.1;
+let r = random(1);
+if (r < probability) {
+  console.log("success");
+}
+```
 
+</details>
 
-
+s
 
 ## links
 
@@ -91,4 +113,7 @@ import RandomnessB from "@components/react/p5/RandomnessB.tsx";
 - https://p5js.org/
 - https://processing.org/
 - https://www.youtube.com/@TheCodingTrain
+
+```
+
 ```
