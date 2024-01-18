@@ -26,11 +26,14 @@ export default () => {
       }
       step() {
         let r = p.random(1);
-        if (r < 0.35) {
+        let xStep = p.mouseX / p.width;
+        let yStep = p.mouseY / p.height;
+        if (r < xStep) {
           this.x++;
-        } else if (r < 0.6) {
+        } else {
           this.x--;
-        } else if (r < 0.8) {
+        }
+        if (r < yStep) {
           this.y++;
         } else {
           this.y--;
@@ -38,5 +41,5 @@ export default () => {
       }
     }
   };
-  return <Basic sketch={sketch}></Basic>;
+  return <Basic sketch={sketch} showControls></Basic>;
 };

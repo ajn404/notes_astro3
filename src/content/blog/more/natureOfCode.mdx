@@ -122,6 +122,35 @@ import RandomnessE from "@components/react/p5/RandomnessE.tsx";
 <RandomnessE client:visible />
 </details>
 
+<details class="mt-4">
+<summary>A Normal Distributions Of Random Numbers</summary>
+
+import RandomnessF from "@components/react/p5/RandomnessF.tsx";
+
+<RandomnessF client:visible />
+</details>
+
+<details class="mt-4">
+<summary>正态分布与标准差</summary>
+正态分布（也称为高斯分布）是统计学中一种重要的概率分布，其特点是对称、钟形曲线。在正态分布中，标准差是一个关键的参数，它衡量数据集中的值与平均值的离散程度。
+
+标准差用来度量数据的离散程度，它越大表示数据的波动越大，越小表示数据的波动越小。标准差的计算公式如下：
+
+$ \sigma = \sqrt{\frac{\sum\_{i=1}^{N}(x_i - \mu)^2}{N}} $
+
+其中：
+
+- $\sigma$ 是标准差，
+- $N$ 是数据集中的观测值数量，
+- $x_i$ 是每个观测值，
+- $\mu$ 是数据集的平均值。
+
+正态分布的特性之一是，约68%的数据在平均值附近的一个标准差范围内，约95%的数据在两个标准差范围内，约99.7%的数据在三个标准差范围内。
+
+如果你有特定的数据集或问题，可以提供更多信息，我可以帮你更具体地理解和解释。
+
+</details>
+
 ## links
 
 - https://natureofcode.com/

@@ -31,7 +31,7 @@
     ],
     "description": "Adds the template for the AstroPaper Blog post. You will need to trigger the snippet modal on the 'frontmatter' line to insert the other snipper."
   },
-  "details":{
+  "details Template": {
     "scope": "mdx",    
     "prefix": "details",
     "body": [
@@ -40,6 +40,6 @@
       "$2",
       "</details>"
     ],
-    "description": "博客内添加details标签
+    "description": "details tag in mdx"
   }
 }
