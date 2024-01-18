@@ -2,9 +2,8 @@ import type p5 from "p5";
 import Basic from "./index";
 
 export default () => {
-  const sketch = (p: p5) => {
+  const common = (p: p5, sd = 0.41) => {
     const heights = [];
-    let sd = 0.41;
     p.setup = () => {
       p.createCanvas(320, 240);
       p.background(255);
@@ -30,11 +29,14 @@ export default () => {
       p.endShape();
     };
   };
+  const sketchA = (p: p5) => common(p, 0.41);
+  const sketchB = (p: p5) => common(p, 1.5);
+
   return (
     <>
       <div className="flex justify-around">
-        <Basic sketch={sketch}></Basic>
-        <Basic sketch={sketch}></Basic>
+        <Basic sketch={sketchA}></Basic>
+        <Basic sketch={sketchB}></Basic>
       </div>
     </>
   );

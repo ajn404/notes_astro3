@@ -32,7 +32,11 @@ const Basic = ({ sketch, showControls }: Props) => {
   const start = async () => {
     if (container.current) {
       const p5 = await import("p5");
-      p = new p5.default(sketch || defaultSketch, container.current);
+      const P5 = p5.default;
+      p = new P5(
+        (sketch && sketch.bind(this)) || defaultSketch,
+        container.current
+      );
       container.current.style.minHeight = p.height + "px";
     }
   };
