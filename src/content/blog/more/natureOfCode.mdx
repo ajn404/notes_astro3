@@ -56,7 +56,7 @@ step() {
         }
       }
 ```
-import RandomnessA from "@components/react/p5/RandomnessA.tsx";
+import RandomnessA from "@components/react/p5/Randomness/RandomnessA.tsx";
 
 <RandomnessA client:visible />
 </details>
@@ -74,7 +74,7 @@ step() {
       }
 
 ````
-import RandomnessB from "@components/react/p5/RandomnessB.tsx";
+import RandomnessB from "@components/react/p5/Randomness/RandomnessB.tsx";
 
 <RandomnessB client:visible />
 </details>
@@ -82,7 +82,7 @@ import RandomnessB from "@components/react/p5/RandomnessB.tsx";
 <details class="mt-4">
 <summary>RandomnessC</summary>
 
-import RandomnessC from "@components/react/p5/RandomnessC.tsx";
+import RandomnessC from "@components/react/p5/Randomness/RandomnessC.tsx";
 
 <RandomnessC client:visible />
 </details>
@@ -111,7 +111,7 @@ if (r < probability) {
 <details class="mt-4">
 <summary>RandomnessD  Tends to Move to the Right 趋于向右的随机分布</summary>
 
-import RandomnessD from "@components/react/p5/RandomnessD.tsx";
+import RandomnessD from "@components/react/p5/Randomness/RandomnessD.tsx";
 
 <RandomnessD client:visible />
 </details>
@@ -120,7 +120,7 @@ import RandomnessD from "@components/react/p5/RandomnessD.tsx";
 
 <summary>上述例子使用鼠标交互，即使用mouseX,mouseY</summary>
 
-import RandomnessE from "@components/react/p5/RandomnessE.tsx";
+import RandomnessE from "@components/react/p5/Randomness/RandomnessE.tsx";
 
 <RandomnessE client:visible />
 </details>
@@ -128,9 +128,58 @@ import RandomnessE from "@components/react/p5/RandomnessE.tsx";
 <details class="mt-4">
 <summary>A Normal Distributions Of Random Numbers</summary>
 
-import RandomnessF from "@components/react/p5/RandomnessF.tsx";
+import RandomnessF from "@components/react/p5/Randomness/RandomnessF.tsx";
 
 <RandomnessF client:visible />
+
+<details>
+<summary>代码详情</summary>
+
+```tsx
+export default () => {
+  const common = (p: p5, sd = 0.41) => {
+    const heights = [];
+    p.setup = () => {
+      p.createCanvas(320, 240);
+      p.background(255);
+      const e = 2.71828183;
+      let m = 0;
+      for (let i = 0; i < p.width + 1; i++) {
+        let xcoord = p.map(i, 0, p.width, -3, 3);
+        let sq2pi = p.sqrt(2 * p.PI); //square root of 2 * PI
+        let xmsq = -1 * (xcoord - m) * (xcoord - m); //-(x - mu)^2
+        let sdsq = sd * sd; //variance (standard deviation squared)
+        heights[i] = (1 / (sd * sq2pi)) * p.pow(e, xmsq / sdsq); //P(x) function
+      }
+
+      p.stroke(0);
+      p.strokeWeight(2);
+      p.noFill();
+      p.beginShape();
+      for (let i = 0; i < heights.length; i++) {
+        let x = i;
+        let y = p.map(heights[i], 0, 1, p.height - 2, 2);
+        p.vertex(x, y);
+      }
+      p.endShape();
+    };
+  };
+  const sketchA = (p: p5) => common(p, 0.41);
+  const sketchB = (p: p5) => common(p, 1.5);
+
+  return (
+    <>
+      <div className="flex justify-around">
+        <Basic sketch={sketchA}></Basic>
+        <Basic sketch={sketchB}></Basic>
+      </div>
+    </>
+  );
+};
+```
+
+</details>
+
 </details>
 
 <details class="mt-4">

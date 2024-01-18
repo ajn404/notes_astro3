@@ -1,5 +1,5 @@
 import type p5 from "p5";
-import Basic from "./index";
+import Basic from "../index";
 
 export default () => {
   const sketch = (p: p5) => {
@@ -25,21 +25,13 @@ export default () => {
         p.point(this.x, this.y);
       }
       step() {
-        let r = p.random(1);
-        let xStep = p.mouseX / p.width;
-        let yStep = p.mouseY / p.height;
-        if (r < xStep) {
-          this.x++;
-        } else {
-          this.x--;
-        }
-        if (r < yStep) {
-          this.y++;
-        } else {
-          this.y--;
-        }
+        let xStep = p.random(-1, 1);
+        let yStep = p.random(-1, 1);
+
+        this.x += xStep;
+        this.y += yStep;
       }
     }
   };
-  return <Basic sketch={sketch} showControls></Basic>;
+  return <Basic sketch={sketch}></Basic>;
 };

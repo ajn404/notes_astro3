@@ -154,7 +154,7 @@
   }
 
   .color-spring-warmth {
-    background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+    background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%)!important;
   }
 
   .color-night-fade {
@@ -187,9 +187,7 @@
   }
 }
 
-details {
-  @apply dark:Midnight-Bloom p-4;
-}
+
 
 /* 引用 */
 blockquote {
@@ -235,7 +233,11 @@ blockquote footer cite::before {
 
 /* 折叠 */
 details {
-  @apply flex flex-col w-full;
+  @apply flex flex-col w-full px-4 py-2 dark:Midnight-Bloom;
+}
+
+details details{
+ @apply mt-4 xing-cao color-spring-warmth text-skin-inverted brightness-150;
 }
 
 details::-webkit-scrollbar {

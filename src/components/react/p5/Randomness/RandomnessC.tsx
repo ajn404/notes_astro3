@@ -1,5 +1,5 @@
 import type p5 from "p5";
-import Basic from "./index";
+import Basic from "../index";
 
 export default () => {
   const sketch = (p: p5) => {
