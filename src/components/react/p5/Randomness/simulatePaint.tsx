@@ -5,23 +5,26 @@ import { useCallback, useRef, useState } from "react";
 export default () => {
   let [sd, setSd] = useState(60);
   const slider = useRef(null);
-  const sketch = useCallback((p: p5) => {
-    const setup = () => {
-      p.createCanvas(p.windowWidth / 2, 240);
-      p.background("aliceblue");
-    };
-    const draw = () => {
-      let x = p.randomGaussian(p.width / 2, 60);
-      let y = p.randomGaussian(p.height / 2, 60);
-      p.noStroke();
-      p.fill(0, 100);
-      p.circle(x, y, p.random(16));
-    };
-    const resize = () => p.setup();
-    p.setup = setup;
-    p.draw = draw;
-    p.windowResized = resize;
-  }, []);
+  const sketch = useCallback(
+    (p: p5) => {
+      const setup = () => {
+        p.createCanvas(p.windowWidth / 2, 240);
+        p.background("aliceblue");
+      };
+      const draw = () => {
+        let x = p.randomGaussian(p.width / 2, sd);
+        let y = p.randomGaussian(p.height / 2, sd);
+        p.noStroke();
+        p.fill(0, 100);
+        p.circle(x, y, p.random(16));
+      };
+      const resize = () => p.setup();
+      p.setup = setup;
+      p.draw = draw;
+      p.windowResized = resize;
+    },
+    [sd]
+  );
   const handleSliderChange = e => {
     setSd(Number(e.target.value));
   };
