@@ -21,7 +21,7 @@ export default () => {
         p.fill(0, 100);
         p.fill(
           p.randomGaussian(155, 100),
-          p.randomGaussian(125, 120),
+          p.randomGaussian(125, 125),
           p.randomGaussian(125, 120)
         );
 
