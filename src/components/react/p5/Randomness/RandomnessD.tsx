@@ -5,9 +5,12 @@ export default () => {
   const sketch = (p: p5) => {
     let walker;
     p.setup = () => {
-      p.createCanvas(640, 240);
+      p.createCanvas(p.windowWidth / 2, 240);
       walker = new Walker();
       p.background(255);
+    };
+    p.windowResized = () => {
+      p.setup();
     };
     p.draw = () => {
       walker.step();

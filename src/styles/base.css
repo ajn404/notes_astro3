@@ -153,6 +153,10 @@
     );
   }
 
+  .snow-again{
+    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+  }
+
   .color-spring-warmth {
     background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%)!important;
   }

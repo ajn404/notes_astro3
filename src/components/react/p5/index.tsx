@@ -1,5 +1,5 @@
 import type p5 from "p5";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, memo } from "react";
 
 type Sketch = (p: p5) => void;
 
@@ -9,7 +9,6 @@ const defaultSketch: Sketch = (p: p5) => {
     p.createCanvas(100, 100);
     p.frameRate(60);
   };
-
   p.draw = () => {
     let noise = p.noise(xoff) * (p.width - 50);
     p.background(255);
@@ -25,7 +24,7 @@ interface Props {
   showControls?: boolean; // defaults to true
 }
 
-const Basic = ({ sketch, showControls }: Props) => {
+const Basic = memo(({ sketch, showControls }: Props) => {
   const container = useRef(null);
   let p: p5;
 
@@ -33,10 +32,7 @@ const Basic = ({ sketch, showControls }: Props) => {
     if (container.current) {
       const p5 = await import("p5");
       const P5 = p5.default;
-      p = new P5(
-        (sketch && sketch.bind(this)) || defaultSketch,
-        container.current
-      );
+      p = new P5(sketch || defaultSketch, container.current);
       container.current.style.minHeight = p.height + "px";
     }
   };
@@ -46,7 +42,6 @@ const Basic = ({ sketch, showControls }: Props) => {
   const stop = () => {
     p.isLooping() ? p.noLoop() : p.loop();
   };
-
   const reset = () => {
     remove();
     start();
@@ -62,7 +57,10 @@ const Basic = ({ sketch, showControls }: Props) => {
 
   return (
     <>
-      <div ref={container} className={`flex w-full justify-center`}></div>
+      <div
+        ref={container}
+        className={`flex w-full max-w-full justify-center`}
+      ></div>
       {showControls && (
         <div className="flex pt-4 justify-around">
           <button
@@ -83,6 +81,6 @@ const Basic = ({ sketch, showControls }: Props) => {
       )}
     </>
   );
-};
+});
 
 export default Basic;

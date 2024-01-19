@@ -5,7 +5,7 @@ export default () => {
   const common = (p: p5, sd = 0.41) => {
     const heights = [];
     p.setup = () => {
-      p.createCanvas(320, 240);
+      p.createCanvas(p.windowWidth / 4, 100);
       p.background(255);
       const e = 2.71828183;
       let m = 0;
@@ -27,6 +27,9 @@ export default () => {
         p.vertex(x, y);
       }
       p.endShape();
+    };
+    p.windowResized = () => {
+      p.setup();
     };
   };
   const sketchA = (p: p5) => common(p, 0.41);

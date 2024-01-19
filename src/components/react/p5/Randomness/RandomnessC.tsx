@@ -7,8 +7,11 @@ export default () => {
     const speed = 1;
     let list = new Array(len).fill(0);
     p.setup = () => {
-      p.createCanvas(640, 240);
+      p.createCanvas(p.windowWidth / 2, 240);
       p.background(255);
+    };
+    p.windowResized = () => {
+      p.setup();
     };
     p.draw = () => {
       list[p.floor(p.random(len))] += speed;

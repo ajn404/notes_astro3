@@ -36,13 +36,16 @@ export default () => {
     }
     let walker;
     const setup = () => {
-      p.createCanvas(640, 240);
+      p.createCanvas(p.windowWidth / 2, 240);
       walker = new Walker();
       p.background(255);
     };
     const draw = () => {
       walker.step();
       walker.show();
+    };
+    p.windowResized = () => {
+      p.setup();
     };
     p.setup = setup;
     p.draw = draw;
