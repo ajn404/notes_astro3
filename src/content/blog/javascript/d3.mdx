@@ -448,6 +448,61 @@ import Interpolation from "@components/react/d3/interpolateRgb.tsx";
 
 <Interpolation client:load />
 
+### 手写风
+
+<div class="font-xkcd">手写风字体</div>
+
+<div class="flex justify-around gap-8">
+<div>
+
+原图案
+
+<svg style="width:100%" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<g id="noFilter">
+<circle cx="256" cy="256" r="241" fill="white" stroke="black" stroke-width="8"></circle>
+<path d="M88 236C88 252.974 93.6893 269.252 103.816 281.255C113.943 293.257 127.678 300 142 300C156.322 300 170.057 293.257 180.184 281.255C190.311 269.252 196 252.974 196 236H88ZM316 236C316 252.974 321.689 269.252 331.816 281.255C341.943 293.257 355.678 300 370 300C384.322 300 398.057 293.257 408.184 281.255C418.311 269.252 424 252.974 424 236H316Z" fill="black" stroke="black" stroke-width="8"></path>
+<path d="M68 335H444M117 376H396M146 350V402M200 350V430M256 350V436M312 350V430M366 350V402M77 335C92.4263 371.701 117.541 402.875 149.307 424.75C181.074 446.626 218.131 458.268 256 458.268C293.869 458.268 330.926 446.626 362.693 424.75C394.459 402.875 419.574 371.701 435 335H77Z" stroke="black" stroke-width="8"></path>
+</g>
+</defs>
+<g>
+<use href="#noFilter" fill="none" stroke-width="3px"></use>
+</g>
+<g  fill="none" stroke-width="2px">
+<use href="#noFilter"></use>
+</g>
+</svg>
+</div>
+<div>
+
+手写风滤镜
+
+<svg style="width:100%"  viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<filter id="noise3">
+<feTurbulence baseFrequency="0.001"></feTurbulence>
+<feDisplacementMap in="SourceGraphic" scale="10"></feDisplacementMap>
+</filter>
+<filter id="noise4">
+<feTurbulence baseFrequency="0.01"></feTurbulence>
+<feDisplacementMap in="SourceGraphic" scale="13"></feDisplacementMap>
+</filter>
+<g id="chooblarin">
+<circle cx="256" cy="256" r="241" fill="white" stroke="black" stroke-width="8"></circle>
+<path d="M88 236C88 252.974 93.6893 269.252 103.816 281.255C113.943 293.257 127.678 300 142 300C156.322 300 170.057 293.257 180.184 281.255C190.311 269.252 196 252.974 196 236H88ZM316 236C316 252.974 321.689 269.252 331.816 281.255C341.943 293.257 355.678 300 370 300C384.322 300 398.057 293.257 408.184 281.255C418.311 269.252 424 252.974 424 236H316Z" fill="black" stroke="black" stroke-width="8"></path>
+<path d="M68 335H444M117 376H396M146 350V402M200 350V430M256 350V436M312 350V430M366 350V402M77 335C92.4263 371.701 117.541 402.875 149.307 424.75C181.074 446.626 218.131 458.268 256 458.268C293.869 458.268 330.926 446.626 362.693 424.75C394.459 402.875 419.574 371.701 435 335H77Z" stroke="black" stroke-width="8"></path>
+</g>
+</defs>
+<g filter="url(#noise3)">
+<use href="#chooblarin" fill="none" stroke-width="3px"></use>
+</g>
+<g filter="url(#noise4)" fill="none" stroke-width="2px">
+<use href="#chooblarin"></use>
+</g>
+</svg>
+</div>
+</div>
+
 ## 链接
 
 - [d3.js 官网](https://d3js.org/what-is-d3)

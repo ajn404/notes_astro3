@@ -2,7 +2,7 @@
 title: nature of code
 pubDatetime: 2024-01-16T06:22:18Z
 postSlug: nature of code
-featured: false
+featured: true
 draft: false
 tags:
   - 代码的本质
@@ -133,7 +133,7 @@ import RandomnessF from "@components/react/p5/Randomness/RandomnessF.tsx";
 <RandomnessF client:visible />
 
 <details>
-<summary>代码详情</summary>
+<summary>柯里化</summary>
 
 ```tsx
 export default () => {
@@ -203,10 +203,8 @@ $ \sigma = \sqrt{\frac{\sum\_{i=1}^{N}(x_i - \mu)^2}{N}} $
 
 </details>
 
-- [randomGaussian 正态分布p5方法](https://p5js.org/reference/#/p5/randomGaussian)
-
-<details>
-<summary>Click to expand</summary>
+<details >
+<summary>[randomGaussian 正态分布p5方法](https://p5js.org/reference/#/p5/randomGaussian)</summary>
 
 import UseRandomGaussian from "@components/react/p5/Randomness/useRandomGaussian.tsx";
 
@@ -214,14 +212,42 @@ import UseRandomGaussian from "@components/react/p5/Randomness/useRandomGaussian
 
 </details>
 
-- todo:可以实践一个油漆飞溅模拟
-
 <details>
-<summary>Click to expand</summary>
+<summary>实践一个油漆飞溅模拟</summary>
 
 import SimulatePaint from "@components/react/p5/Randomness/simulatePaint.tsx";
 
 <SimulatePaint client:visible />
+
+<details open class="!mt-4 ">
+<summary>'完美'地在type=range的input使用了useDebouce</summary>
+
+```tsx
+import { useDebounce } from "@uidotdev/usehooks";
+...
+const debouncedSd = useDebounce(sd, 300);
+    const sketch = useCallback(
+        (p: p5) => {
+            ...
+        },
+        [debouncedSd]
+    );
+    const handleSliderChange = (val: string) => {
+        setSd(parseFloat(val));
+    };
+
+    return (
+        <>
+            <input
+                type="range"
+                value={sd}
+                onChange={(e) => { handleSliderChange(e.target.value) }}
+            />
+            ...
+        </>
+```
+
+</details>
 
 </details>
 

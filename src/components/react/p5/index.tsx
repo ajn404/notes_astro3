@@ -1,5 +1,5 @@
 import type p5 from "p5";
-import { useEffect, useRef, memo } from "react";
+import { useEffect, useRef, memo, forwardRef } from "react";
 
 type Sketch = (p: p5) => void;
 

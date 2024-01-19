@@ -51,15 +51,17 @@
 }
 
 $gradient-colors: (); // 存储渐变的颜色
-@for $i from 0 through 100 {
-  $hue: random(360);
+@for $i from 0 through 10 {
   $saturation: random(100);
   $lightness: random(50);
-
-
   $gradient-colors: append(
     $gradient-colors,
-    hsl($hue, $saturation * 1%, $lightness * 1%),
+    hsl(random(360), $saturation * 1%, $lightness * 1%),
+    comma
+  );
+  $gradient-colors: append(
+    $gradient-colors,
+    hsl(random(360), $saturation * 1%, $lightness * 1%),
     comma
   );
   $random-gradient: conic-gradient(
