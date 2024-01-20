@@ -260,7 +260,7 @@ blockquote footer cite::before {
 
 /* 折叠 */
 details {
-  @apply flex flex-col w-full px-4 mt-4 py-2 dark:Midnight-Bloom;
+  @apply flex flex-col w-full px-4 mt-4 py-2 Midnight-Bloom;
 }
 
 
