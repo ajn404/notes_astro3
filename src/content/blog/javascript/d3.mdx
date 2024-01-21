@@ -1,6 +1,5 @@
 ---
 title: 玩转d3.js
-
 pubDatetime: 2023-09-04T13:06:33Z
 postSlug: d3
 featured: false
@@ -379,6 +378,7 @@ import PracticeAxisBottom from "@components/react/d3/practice-axis-bottom.tsx";
 
 <details>
   <summary>practice-axis-bottom</summary>
+
 ```tsx
 import * as d3 from "d3";
 import { useEffect, useRef } from "react"
@@ -401,9 +401,9 @@ return (
 
 <svg ref={ref}></svg>) } export default Template;
 
-````
-</details>
+```
 
+</details>
 
 ### [Learn to Create D3.js Data Visualizations by Exampl](https://www.sitepoint.com/d3-js-data-visualizations/)
 
@@ -411,15 +411,16 @@ return (
 
 import BarChart from "@components/react/d3/barChart.tsx";
 
-<BarChart client:load/>
+<BarChart client:load />
 
 ```js
-divElement.selectAll('div')
-            .data([4, 8, 15, 16, 23, 42])
-            .enter()
-            .append('div')
-            .style('height', d => `${d}px`)
-````
+divElement
+  .selectAll("div")
+  .data([4, 8, 15, 16, 23, 42])
+  .enter()
+  .append("div")
+  .style("height", d => `${d}px`);
+```
 
 #### contribution chart
 
@@ -477,7 +478,7 @@ import Interpolation from "@components/react/d3/interpolateRgb.tsx";
 
 手写风滤镜
 
-<svg style="width:100%"  viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg style="width:100%" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <filter id="noise3">
 <feTurbulence baseFrequency="0.001"></feTurbulence>

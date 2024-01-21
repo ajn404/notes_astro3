@@ -24,8 +24,8 @@ export default () => {
 
     p.draw = () => {
       list[p.floor(acceptReject(len))] += speed;
-      p.fill(0);
-      p.stroke(255);
+      p.fill(155, 160, 130);
+      p.stroke(20);
       let w = p.width / len;
       for (let x = 0; x < len; x++) {
         p.rect(x * w, p.height - list[x], w - 2, list[x]);

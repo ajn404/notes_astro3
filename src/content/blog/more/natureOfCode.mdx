@@ -251,12 +251,21 @@ const debouncedSd = useDebounce(sd, 300);
 
 </details>
 
-<details>
+<details >
 <summary>接受拒绝分布</summary>
 
 import ResolveReject from "@components/react/p5/Randomness/ResolveReject.tsx";
 
 <ResolveReject client:visible />
+
+</details>
+
+<details open>
+<summary>柏林噪声</summary>
+
+import PerlinCurve from "@components/react/p5/Randomness/PerlinCurve.tsx";
+
+<PerlinCurve client:visible />
 
 </details>
 
