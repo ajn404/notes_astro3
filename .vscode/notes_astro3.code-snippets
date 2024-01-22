@@ -42,5 +42,15 @@
     ],
     "description": "details tag in mdx"
   },
+  "mdx Import Component": {
+    "scope": "markdown",    
+    "prefix": "import",
+    "body": [
+      "import ${1:ComponentName} from '${2:ComponentPath}';",
+      "",
+      "<${1:ComponentName} client:visible />"
+    ],
+    "description": "details tag in mdx"
+  },
   
 }

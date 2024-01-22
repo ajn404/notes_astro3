@@ -9,7 +9,6 @@ export default () => {
     let time = 0;
     const draw = () => {
       p.background(0);
-      // p.fill(220, 20, 200);
       p.noFill();
       p.strokeWeight(4);
       p.stroke(255);
@@ -18,6 +17,7 @@ export default () => {
       for (let i = 0; i < p.width; i++) {
         let noise_height = p.noise(xoff) * p.height;
         xoff += 0.01;
+        //不同的增量会影响噪声的平滑度
         p.vertex(i, noise_height);
       }
       p.endShape();

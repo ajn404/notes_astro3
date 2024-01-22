@@ -260,12 +260,55 @@ import ResolveReject from "@components/react/p5/Randomness/ResolveReject.tsx";
 
 </details>
 
-<details open>
+<details>
 <summary>柏林噪声</summary>
 
 import PerlinCurve from "@components/react/p5/Randomness/PerlinCurve.tsx";
 
 <PerlinCurve client:visible />
+
+```tsx
+let time = 0;
+const draw = () => {
+  let xoff = time;
+  for (let i = 0; i < p.width; i++) {
+    let noise_height = p.noise(xoff) * p.height;
+    xoff += 0.01;
+    p.vertex(i, noise_height);
+  }
+  p.endShape();
+  time += 0.01;
+};
+```
+
+</details>
+
+<details>
+<summary>noise range</summary>
+
+import NoiseRange from "@components/react/p5/Randomness/NoiseRange.tsx";
+
+<NoiseRange client:visible />
+
+使用map映射noise生成的值
+
+</details>
+
+<details open>
+<summary>two-dimensional noise</summary>
+
+import TwoDimensionalNoise from "@components/react/p5/Randomness/TwoDimensionalNoise.tsx";
+
+<TwoDimensionalNoise client:visible />
+
+</details>
+
+<details>
+<summary>generate marble</summary>
+
+import Marble from "@components/react/p5/Randomness/Marble.tsx";
+
+<Marble client:visible />
 
 </details>
 
