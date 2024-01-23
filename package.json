@@ -60,6 +60,8 @@
     "regl": "^2.1.0",
     "remark-collapse": "^0.1.2",
     "remark-toc": "^9.0.0",
+    "rough-notation": "^0.5.1",
+    "roughjs": "^4.6.6",
     "sass": "^1.69.7",
     "satori": "^0.10.11",
     "tailwind": "^4.0.0",

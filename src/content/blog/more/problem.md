@@ -97,7 +97,7 @@ autoreconf 是一个用于自动配置 GNU 软件包的工具，通常在安装�
 
 `sudo vim /etc/hosts`
 
-```txt
+```plaintext
 140.82.112.4 github.com
 140.82.113.3 gist.github.com
 199.232.69.194 github.global.ssl.fastly.net
