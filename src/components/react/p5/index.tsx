@@ -1,5 +1,5 @@
 import type p5 from "p5";
-import { useEffect, useRef, memo, forwardRef } from "react";
+import { useEffect, useRef, memo } from "react";
 
 type Sketch = (p: p5) => void;
 
@@ -21,10 +21,11 @@ const defaultSketch: Sketch = (p: p5) => {
 
 interface Props {
   sketch: Sketch;
-  showControls?: boolean; // defaults to true
+  showControls?: boolean; // defaults to false
+  showSetBackground?: boolean; // defaults to false
 }
 
-const Basic = memo(({ sketch, showControls }: Props) => {
+export default memo(({ sketch, showControls }: Props) => {
   const container = useRef(null);
   let p: p5;
 
@@ -62,6 +63,7 @@ const Basic = memo(({ sketch, showControls }: Props) => {
           ref={container}
           className={`flex w-full max-w-full justify-center`}
         ></div>
+        {/* 控制按钮 */}
         {showControls && (
           <div className="flex pt-4 justify-around">
             <button
@@ -92,5 +94,3 @@ const Basic = memo(({ sketch, showControls }: Props) => {
     </>
   );
 });
-
-export default Basic;
