@@ -50,6 +50,7 @@ export default memo(({ sketch, showControls }: Props) => {
       await init();
       const obs = new IntersectionObserver(tar => {
         !tar[0].isIntersecting && stop();
+        tar[0].isIntersecting && !showControls && begin(); //没有按钮自动启动
       });
       obs.observe(container.current);
     })();
@@ -58,7 +59,7 @@ export default memo(({ sketch, showControls }: Props) => {
 
   return (
     <>
-      <div className="p5_container">
+      <div className="p5_container mt-4">
         <div
           ref={container}
           className={`flex w-full max-w-full justify-center`}

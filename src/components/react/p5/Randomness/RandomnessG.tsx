@@ -14,6 +14,7 @@ export default () => {
   const editor = useRef<HTMLDivElement>(null);
   const debouncedXoffRate = useDebounce(xoffRate, 300);
   let editorInstance: EditorView | undefined;
+
   const sketch = useCallback(
     (p: p5) => {
       const setup = () => {
