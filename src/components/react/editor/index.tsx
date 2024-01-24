@@ -5,8 +5,6 @@ export default () => {
   useEffect(() => {
     import("@blocksuite/editor").then(res => {
       const editor = new res.SimpleAffineEditor();
-      console.log(res);
-
       ref.current?.appendChild(editor);
     });
   });
