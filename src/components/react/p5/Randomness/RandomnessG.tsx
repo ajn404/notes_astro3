@@ -69,7 +69,7 @@ export default () => {
                     p.set(x, y, [n, n, n, n]);
                     yoff += 0.01;
                 }
-                xoff += ${debouncedXoffRate};
+                xoff += ${debouncedXoffRate}; //配置项
             }
             p.updatePixels();
         };`;
@@ -84,18 +84,19 @@ export default () => {
       ],
       parent: editor.current,
     });
-  }, [xoffRate]);
+  }, [debouncedXoffRate]);
 
   const handleSliderChange = (val: string) => {
     setXoffRate(parseFloat(val));
   };
+
   return (
     <>
       <div className="gap-4 randomG">
         <Basic sketch={sketch} showControls></Basic>
 
         <div className="flex items-center text-nowrap gap-4">
-          <span>xoffRate:</span>
+          <span>xoffRate:{debouncedXoffRate}</span>
           <input
             type="range"
             max={maxRange[0]}
@@ -103,9 +104,7 @@ export default () => {
             value={xoffRate}
             title={`${xoffRate}`}
             step={0.01}
-            onChange={e => {
-              handleSliderChange(e.target.value);
-            }}
+            onChange={e => handleSliderChange(e.target.value)}
           />
         </div>
 
