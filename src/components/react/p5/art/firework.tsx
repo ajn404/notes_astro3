@@ -2,7 +2,7 @@ import type p5 from "p5";
 import Basic from "@components/react/p5/index.tsx";
 
 let centre = [185, 180];
-let colour_orig = "#798e9a",
+let color_orig = "#798e9a",
   circle_radius = 15,
   draw_radius = 100,
   line_distanceIn = 14,
@@ -10,7 +10,7 @@ let colour_orig = "#798e9a",
   centre_dashes_num = 200,
   centre_dashes_radius = 30,
   dashes_num = 600,
-  ytop = 170,
+  yTop = 170,
   y2 = 235,
   y3 = 300,
   golden_ratio = 1.618033988749895,
@@ -23,7 +23,7 @@ export default () => {
       ((p.windowWidth / 4) * 80) / 37
     );
     pg.fill("rgba(166,54,62, 0.8)");
-    pg.ellipse(centre[0], centre[1] + ytop, 30, 30);
+    pg.ellipse(centre[0], centre[1] + yTop, 30, 30);
     pg.fill("rgba(219,186,83, 0.8)");
     pg.ellipse(centre[0], centre[1] + y2, 30, 30);
     pg.fill("rgba(81,132,123, 0.8)");
@@ -34,18 +34,14 @@ export default () => {
       if (p.frameCount % delay == 0) {
         p.createCanvas(400, 600);
         p.fill("rgba(46,50,43,0)");
-
         p.image(pg, 0, 0);
-
         p.stroke("rgb(255,255,255)");
         p.strokeWeight(40);
         p.fill("rgba(46,50,43,0)");
         p.rect(0, 0, centre[0] * 2, 600, 40);
-
         p.stroke("rgb(202,197,169)");
         p.strokeWeight(4);
         p.rect(30, 30, 310, 540, 10);
-
         p.strokeWeight(2);
         p.stroke("rgb(196,105,79)");
         p.fill("rgb(196,105,79)");
@@ -86,13 +82,13 @@ export default () => {
           p.line(x, y, centre[0], centre[1]);
         }
 
-        let colour = colour_orig;
+        let color = color_orig;
 
         let line_ang = Math.PI * 0.004;
         let circles_num = (2 * Math.PI * draw_radius) / (circle_radius * 1.3);
         for (let i = 0; i < circles_num; i++) {
-          p.stroke(colour);
-          p.fill(colour);
+          p.stroke(color);
+          p.fill(color);
           let angle = 2 * Math.PI * (i / circles_num),
             draw_radius_add = p.random(2),
             x = centre[0] + (draw_radius + draw_radius_add) * Math.cos(angle),
@@ -129,8 +125,8 @@ export default () => {
           p.line(xb, yb, x1, y1);
         }
 
-        function drawStarBelow(colour, y_pos) {
-          p.stroke(colour);
+        function drawStarBelow(color, y_pos) {
+          p.stroke(color);
           for (let i = 0; i < 40; i++) {
             let angle = p.random(Math.PI * 2),
               centre_dash_radius = p.random(15, 22);
@@ -149,7 +145,7 @@ export default () => {
           }
         }
 
-        drawStarBelow("rgb(166,54,62)", ytop);
+        drawStarBelow("rgb(166,54,62)", yTop);
         drawStarBelow("rgb(219,186,83)", y2);
         drawStarBelow("rgb(81,132,123)", y3);
       }
