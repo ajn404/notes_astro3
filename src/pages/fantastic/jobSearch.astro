@@ -660,14 +660,14 @@ import '@styles/jobSearch.scss'
  </div>
 </div>
 
-<script>
+<script async>
 
 document.addEventListener("DOMContentLoaded", function(){
 
-const wrapper:HTMLElement = document.querySelector(".wrapper");
+const wrapper = document.querySelector(".wrapper");
 const header = document.querySelector(".header");
 
-wrapper.addEventListener("scroll", (e:any) => {
+wrapper.addEventListener("scroll", (e) => {
  e.target.scrollTop > 30
   ? header.classList.add("header-shadow")
   : header.classList.remove("header-shadow");
@@ -685,7 +685,7 @@ const jobLogos = document.querySelector(".job-logos");
 const jobDetailTitle = document.querySelector(
  ".job-explain-content .job-card-title"
 );
-const jobBg:HTMLImageElement = document.querySelector(".job-bg");
+const jobBg = document.querySelector(".job-bg");
 let bg;
 
 jobCards.forEach((jobCard) => {

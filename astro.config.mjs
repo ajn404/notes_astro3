@@ -31,6 +31,7 @@ export default defineConfig({
     inlineStylesheets: "always",
   },
   site: "https://ajn404.github.io/notes_astro3/", // replace this with your deployed domain
+  prefetch: true,
   integrations: [
     mdx({
       syntaxHighlight: "shiki",
