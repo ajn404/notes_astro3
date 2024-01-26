@@ -17,70 +17,13 @@ module.exports = {
         ],
     prefix: "",
     theme: {
-        screens: {
-            sm: "640px",
-        },
-        textColor: {
-            skin: {
-                base: withOpacity("--color-text-base"),
-                accent: withOpacity("--color-accent"),
-                inverted: withOpacity("--color-fill"),
-                blue: '#1fb6ff',
-                purple: '#7e5bef',
-                pink: '#ff49db',
-                orange: '#ff7849',
-                green: '#13ce66',
-                yellow: '#ffc82c',
-                gray: '#8492a6',
-                'gray-dark': '#273444',
-                'gray-light': '#d3dce6',
-            },
-        },
-        backgroundColor: {
-            skin: {
-                fill: withOpacity("--color-fill"),
-                accent: withOpacity("--color-accent"),
-                inverted: withOpacity("--color-text-base"),
-                card: withOpacity("--color-card"),
-                "card-muted": withOpacity("--color-card-muted"),
-                blue: '#1fb6ff',
-                purple: '#7e5bef',
-                pink: '#ff49db',
-                orange: '#ff7849',
-                green: '#13ce66',
-                yellow: '#ffc82c',
-                gray: '#8492a6',
-                'gray-dark': '#273444',
-                'gray-light': '#d3dce6'
-            },
-        },
-        outlineColor: {
-            skin: {
-                fill: withOpacity("--color-accent"),
-            },
-        },
-        borderColor: {
-            skin: {
-                line: withOpacity("--color-border"),
-                fill: withOpacity("--color-text-base"),
-                accent: withOpacity("--color-accent"),
-            },
-        },
-        fill: {
-            skin: {
-                base: withOpacity("--color-text-base"),
-                accent: withOpacity("--color-accent"),
-            },
-            transparent: "transparent",
-        },
-        fontFamily: {
-            mono: ["IBM Plex Mono", "monospace"],
-        },
+
         container: {
             center: true,
             padding: "2rem",
             screens: {
                 "2xl": "1400px",
+                "sm": "640px",
             },
         },
         extend: {
@@ -138,12 +81,68 @@ module.exports = {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
             },
+            textColor: {
+                skin: {
+                    base: withOpacity("--color-text-base"),
+                    accent: withOpacity("--color-accent"),
+                    inverted: withOpacity("--color-fill"),
+                    blue: '#1fb6ff',
+                    purple: '#7e5bef',
+                    pink: '#ff49db',
+                    orange: '#ff7849',
+                    green: '#13ce66',
+                    yellow: '#ffc82c',
+                    gray: '#8492a6',
+                    'gray-dark': '#273444',
+                    'gray-light': '#d3dce6',
+                },
+            },
+            backgroundColor: {
+                skin: {
+                    fill: withOpacity("--color-fill"),
+                    accent: withOpacity("--color-accent"),
+                    inverted: withOpacity("--color-text-base"),
+                    card: withOpacity("--color-card"),
+                    "card-muted": withOpacity("--color-card-muted"),
+                    blue: '#1fb6ff',
+                    purple: '#7e5bef',
+                    pink: '#ff49db',
+                    orange: '#ff7849',
+                    green: '#13ce66',
+                    yellow: '#ffc82c',
+                    gray: '#8492a6',
+                    'gray-dark': '#273444',
+                    'gray-light': '#d3dce6'
+                },
+            },
+            outlineColor: {
+                skin: {
+                    fill: withOpacity("--color-accent"),
+                },
+            },
+            borderColor: {
+                skin: {
+                    line: withOpacity("--color-border"),
+                    fill: withOpacity("--color-text-base"),
+                    accent: withOpacity("--color-accent"),
+                },
+            },
+            fill: {
+                skin: {
+                    base: withOpacity("--color-text-base"),
+                    accent: withOpacity("--color-accent"),
+                },
+                transparent: "transparent",
+            },
+            fontFamily: {
+                mono: ["IBM Plex Mono", "monospace"],
+            },
         },
     },
 
     plugins: [
         require("@tailwindcss/typography"),
-        //下面两个插件好像有点冲突
+        // //下面两个插件好像有点冲突
         require("tw-elements/dist/plugin.cjs"),
         require("tailwindcss-animate")],
     darkMode: "class"

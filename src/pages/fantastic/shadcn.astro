@@ -1,10 +1,25 @@
 ---
 import { Button } from "@shadcn/ui/button.tsx";
-import '@styles/base.css'
-import Layout from "@layouts/Layout.astro";
+import "@styles/shadcn.css";
+import { MenubarDemo } from "@shadcn/demo/Menubar";
+import { DataTableDemo } from "@shadcn/demo/Table";
 ---
 
-
-<Layout>
-    <Button variant="outline">Hello World</Button>
-</Layout>
+<html lang="en">
+  <head>
+    <title>Astro Shadcn Play</title>
+  </head>
+  <body>
+    <div class="grid gap-8 auto-rows-max m-4">
+      <div>
+        <Button variant="outline" client:load>Hello World</Button>
+      </div>
+      <div>
+        <MenubarDemo client:load />
+      </div>
+      <div class="col-span-2">
+        <DataTableDemo client:load />
+      </div>
+    </div>
+  </body>
+</html>
