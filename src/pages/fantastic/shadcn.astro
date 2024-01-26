@@ -3,6 +3,8 @@ import { Button } from "@shadcn/ui/button.tsx";
 import "@styles/shadcn.css";
 import { MenubarDemo } from "@shadcn/demo/Menubar";
 import { DataTableDemo } from "@shadcn/demo/Table";
+import PlainCard from '@shadcn/card/PlainCard'
+
 ---
 
 <html lang="en">
@@ -19,6 +21,9 @@ import { DataTableDemo } from "@shadcn/demo/Table";
       </div>
       <div class="col-span-2">
         <DataTableDemo client:load />
+      </div>
+      <div>
+        <PlainCard client:load />
       </div>
     </div>
   </body>

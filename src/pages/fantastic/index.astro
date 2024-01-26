@@ -2,6 +2,8 @@
 import Footer from "@components/astro/UI/Footer.astro";
 import Layout from "@layouts/Layout.astro";
 import { SITE } from "@config";
+
+import PlainCard from '@shadcn/card/PlainCard'
 import FantasticCard from "@layouts/FantasticCard.astro";
 const fantasticList = [
   {
@@ -51,12 +53,7 @@ const fantasticList = [
   <div class="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
     {
       fantasticList.map((item, index) => (
-        <FantasticCard
-          name={item.name}
-          url={"/fantastic/" + item.url}
-          describtion={item.describtion}
-          index={index}
-        />
+        <PlainCard />
       ))
     }
   </div>
