@@ -3,16 +3,12 @@ import Footer from "@components/astro/UI/Footer.astro";
 import Layout from "@layouts/Layout.astro";
 import { SITE } from "@config";
 
-import PlainCard from '@shadcn/card/PlainCard'
+import PlainCard from "@shadcn/card/PlainCard";
 import FantasticCard from "@layouts/FantasticCard.astro";
 const fantasticList = [
   {
-    name: "editor",
-    describtion: "编辑器",
-  },
-  {
-    name: "lock",
-    describtion: "锁屏",
+    name: "shadcn",
+    describtion: "shadcn 组件示例",
   },
   {
     name: "news",
@@ -35,25 +31,25 @@ const fantasticList = [
     describtion: "多条件检索模版(招聘)",
   },
   {
-    name: "shadcn",
-    describtion: "shadcn 组件示例",
+    name: "editor",
+    describtion: "编辑器",
+  },
+  {
+    name: "lock",
+    describtion: "锁屏",
   },
 ];
 ---
 
 <Layout activeNav="fantastic" title={`Fantastic | ${SITE.title}`}>
-  <div class="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
     {
       fantasticList.map((item, index) => (
-        <FantasticCard
-          name={item.name}
-          url={"/fantastic/" + item.name}
-          describtion={item.describtion}
-          index={index}
-        />
-        <PlainCard title={item.name} >
-                <template slot="des">hh</template>
-        </PlainCard>
+        <>
+          <PlainCard title={item.name}>
+            {item.describtion}
+          </PlainCard>
+        </>
       ))
     }
   </div>
