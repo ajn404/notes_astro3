@@ -46,7 +46,6 @@ export default () => {
     p.mouseClicked = () => {
       yoff = p.random(1000);
       seed = p.millis();
-      console.log(yoff, seed);
     };
     const resize = () => p.setup();
     p.setup = setup;

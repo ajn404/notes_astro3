@@ -68,7 +68,13 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
     className: "text-lg card__heading pt-4 font-medium",
   };
   return (
-    <a className="card" href={href} ref={ref} data-astro-reload>
+    <a
+      className="card"
+      data-astro-prefetch
+      href={href}
+      ref={ref}
+      data-astro-reload
+    >
       <div className="card__background" style={backgroundImageStyle}></div>
       <div className="card__content pt-4">
         {secHeading ? (
