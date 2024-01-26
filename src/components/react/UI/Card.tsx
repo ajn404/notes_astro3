@@ -33,7 +33,7 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
 
   let [backgroundImageStyle, setStyle] = useState({
     backgroundImage: `radial-gradient(ellipse at top, rgb(${Math.floor(
-      Math.random() * 155
+      Math.random() * 255
     )},${Math.floor(Math.random() * 355) - 100},${
       Math.floor(Math.random() * 255) % 250
     }), transparent),
