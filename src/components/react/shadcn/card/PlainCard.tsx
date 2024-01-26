@@ -39,9 +39,11 @@ export default forwardRef<
         跳转
       </a>
     </CardFooter>
-    <iframe
-      src={props.title ? "/notes_astro3/fantastic/" + props.title : "#"}
-      className=" h-20px m-4"
-    ></iframe>
+    {props.title && (
+      <iframe
+        src={"/notes_astro3/fantastic/" + props.title}
+        className=" h-20px m-4 overflow-scroll"
+      ></iframe>
+    )}
   </Card>
 ));
