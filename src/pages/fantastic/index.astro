@@ -9,42 +9,34 @@ const fantasticList = [
   {
     name: "editor",
     describtion: "编辑器",
-    url: "editor",
   },
   {
     name: "lock",
     describtion: "锁屏",
-    url: "lock",
   },
   {
     name: "news",
     describtion: "news template",
-    url: "news",
   },
   {
     name: "pureSwipper",
     describtion: "纯css动画swipper",
-    url: "pureSwipper",
   },
   {
     name: "music",
     describtion: "音乐",
-    url: "music",
   },
   {
     name: "swipper",
     describtion: "新概念轮播图",
-    url: "swipper",
   },
   {
     name: "jobSearch",
     describtion: "多条件检索模版(招聘)",
-    url: "jobSearch",
   },
   {
     name: "shadcn",
     describtion: "shadcn 组件示例",
-    url: "shadcn",
   },
 ];
 ---
@@ -53,7 +45,15 @@ const fantasticList = [
   <div class="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
     {
       fantasticList.map((item, index) => (
-        <PlainCard />
+        <FantasticCard
+          name={item.name}
+          url={"/fantastic/" + item.name}
+          describtion={item.describtion}
+          index={index}
+        />
+        <PlainCard title={item.name} >
+                <template slot="des">hh</template>
+        </PlainCard>
       ))
     }
   </div>

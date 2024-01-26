@@ -6,20 +6,32 @@ import {
   CardTitle,
 } from "@shadcn/ui/card";
 
-export default () => {
-  return (
-    <>
-      <Card>
-        <CardHeader>
-          <CardTitle>Card Title</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p>Card Content</p>
-        </CardContent>
-        <CardFooter>
-          <p>Card Footer</p>
-        </CardFooter>
-      </Card>
-    </>
-  );
-};
+import {
+  forwardRef,
+  type AnchorHTMLAttributes,
+  type HTMLAttributeAnchorTarget,
+} from "react";
+
+export default forwardRef<
+  HTMLAnchorElement,
+  React.HTMLAttributes<HTMLAnchorElement>
+>(({ className, ...props }, ref) => (
+  <Card>
+    <CardHeader>
+      <CardTitle>{props.title}</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <slot name="des" />
+    </CardContent>
+    <CardFooter>
+      <a
+        href={props.title ? "#" : props.title}
+        className={`group inline-block ${className}`}
+        aria-label={props.title}
+        title={props.title}
+      >
+        跳转
+      </a>
+    </CardFooter>
+  </Card>
+));
