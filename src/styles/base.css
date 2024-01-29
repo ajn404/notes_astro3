@@ -316,3 +316,7 @@ details::-webkit-scrollbar {
     --highlight: oklch(98% .05 var(--hue));
   }
 }
+
+iframe{
+    max-width:calc(100% - 2em);
+}

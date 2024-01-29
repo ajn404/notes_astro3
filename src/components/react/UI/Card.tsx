@@ -65,7 +65,7 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
 
   const headerProps = {
     style: { viewTransitionName: slugifyStr(title) },
-    className: "text-lg card__heading pt-4 font-medium",
+    className: "text-lg card__heading pt-4 font-medium ",
   };
   return (
     <a
@@ -84,7 +84,6 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
         )}
 
         <Datetime className="pt-4" datetime={pubDatetime} />
-        {modDatetime && <Datetime className="pt-4" datetime={modDatetime} />}
         <Text>
           <h3>{description}</h3>
         </Text>

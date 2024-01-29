@@ -42,7 +42,7 @@ export default forwardRef<
     {props.title && (
       <iframe
         src={"/notes_astro3/fantastic/" + props.title}
-        className=" h-20px m-4 overflow-scroll"
+        className=" h-20px m-4 mx-auto overflow-scroll"
       ></iframe>
     )}
   </Card>
